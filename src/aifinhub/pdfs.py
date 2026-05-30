@@ -1,10 +1,10 @@
 """Local PDF archive with a two-stage lifecycle (all local-only, never published).
 
-  pdfs/inbox/<fp>.pdf                 temporary — this week's candidates, downloaded
-                                      at fetch, read during review.
-  pdfs/library/<surnames>_<year>.pdf  permanent — every KEPT paper (your existing
-                                      backlog plus each week's approved papers),
-                                      named name1_name2_name3_year.pdf.
+  data/pdfs/candidates/<fp>.pdf            temporary — this week's candidates,
+                                           downloaded at fetch, read during review.
+  data/pdfs/library/<surnames>_<year>.pdf  permanent — every KEPT paper (your
+                                           existing backlog plus each week's
+                                           approved), named name1_name2_name3_year.pdf.
 
 On approval a PDF is promoted inbox → library (and renamed to the library
 convention); on rejection it's discarded from the inbox. The public site links to
@@ -21,16 +21,16 @@ from typing import Optional
 
 from rich.console import Console
 
-from .config import ROOT, DB_PATH
+from .config import DB_PATH, PDF_CANDIDATES_DIR, PDF_LIBRARY_DIR
 from .db import DB
 from .models import Paper
 from .sources.base import http_get
 
 console = Console()
 
-PDF_DIR = ROOT / "pdfs"
-PDF_INBOX = PDF_DIR / "inbox"
-PDF_LIBRARY = PDF_DIR / "library"
+# Candidate PDFs (fetched, awaiting review) and the curated library.
+PDF_INBOX = PDF_CANDIDATES_DIR
+PDF_LIBRARY = PDF_LIBRARY_DIR
 
 
 def inbox_path(fp: str) -> Path:

@@ -16,11 +16,11 @@ from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 from rich.console import Console
 
-from .config import ROOT, DB_PATH
+from .config import DB_PATH, EXCEL_CORPUS_DIR
 from .db import DB
 
 console = Console()
-OUT_DIR = ROOT / "review"
+OUT_DIR = EXCEL_CORPUS_DIR
 
 # (header, width, wrap, getter)
 COLUMNS = [

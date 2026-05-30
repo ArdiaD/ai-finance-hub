@@ -22,13 +22,13 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 from rich.console import Console
 
-from .config import ROOT, DB_PATH
+from .config import DB_PATH, EXCEL_REVIEW_DIR
 from .db import DB
 from .pdfs import promote_to_library, discard_inbox
 
 console = Console()
 
-REVIEW_DIR = ROOT / "review"
+REVIEW_DIR = EXCEL_REVIEW_DIR
 DECISIONS = {"yes": ("approved", False), "feature": ("approved", True),
              "no": ("rejected", None)}
 

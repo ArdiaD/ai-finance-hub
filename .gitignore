@@ -4,13 +4,11 @@ __pycache__/
 *.egg-info/
 .env
 out/
-pdfs/
-incoming_pdfs/
-# Excel review files are transient working state (Dropbox backs them up).
-review/
-# Local pipeline DB is the working state, not committed; the curated corpus
-# lives in docs/papers.json which IS committed.
-hub.db
+
+# All working data — the database, PDF archive (incoming/candidates/library),
+# and Excel files — lives under data/ and is never committed. The published
+# corpus lives in docs/papers.json, which IS committed.
+data/
 
 # Local scratch / OS junk — never publish
 .DS_Store

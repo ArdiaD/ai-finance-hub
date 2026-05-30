@@ -22,17 +22,19 @@ python -m aifinhub review-export | tee -a "$LOG"
 
 PENDING=$(python -m aifinhub stats | grep -o "'pending': [0-9]*" | grep -o "[0-9]*" || echo "?")
 
+REVIEW_XLSX="data/excel/review/inbox_$(date +%F).xlsx"
+
 # macOS desktop notification (no-op elsewhere).
 if command -v osascript >/dev/null 2>&1; then
-  osascript -e "display notification \"$PENDING papers awaiting review in review/inbox_$(date +%F).xlsx\" with title \"AI & Finance Hub\""
+  osascript -e "display notification \"$PENDING papers awaiting review in $REVIEW_XLSX\" with title \"AI & Finance Hub\""
 fi
 
 cat <<MSG
 
 Done. Next:
-  1. Open  review/inbox_$(date +%F).xlsx  (Dropbox) and fill the decision column.
+  1. Open  $REVIEW_XLSX  (Dropbox) and fill the decision column.
   2. cd '$HERE' && source .venv/bin/activate
-     python -m aifinhub review-import review/inbox_$(date +%F).xlsx
+     python -m aifinhub review-import $REVIEW_XLSX
      python -m aifinhub build-site
      git add docs && git commit -m 'weekly update' && git push
      python -m aifinhub draft-post --since 7d

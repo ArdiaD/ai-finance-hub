@@ -36,11 +36,27 @@ pip install -r requirements.txt
 cp .env.example .env          # add optional API keys (SerpAPI, Anthropic)
 
 python -m aifinhub fetch                      # discover new papers
-python -m aifinhub review-export              # pending → review/inbox_<date>.xlsx
+python -m aifinhub review-export              # pending → data/excel/review/inbox_<date>.xlsx
 #   ... open the .xlsx, fill the decision column (yes/no/feature), save ...
-python -m aifinhub review-import review/inbox_2026-05-30.xlsx
+python -m aifinhub review-import data/excel/review/inbox_2026-05-30.xlsx
 python -m aifinhub build-site                 # regenerate docs/ for GitHub Pages
 python -m aifinhub draft-post --since 7d      # write a LinkedIn draft
+```
+
+## Folder layout
+
+```
+data/                     all working data (gitignored; Dropbox-backed)
+  pdfs/
+    incoming/             drop PDFs here to import
+    candidates/           fetched papers' PDFs, awaiting review
+    library/              curated PDFs kept in the hub (name1_name2_name3_year.pdf)
+  excel/
+    review/               weekly review spreadsheets (decide keep/drop)
+    corpus/               corpus snapshot exports (export-xlsx)
+  hub.db                  the SQLite database
+docs/                     the published GitHub Pages site (committed)
+src/aifinhub/             the pipeline code
 ```
 
 ## Configuration
@@ -66,21 +82,21 @@ python -m aifinhub retag
 
 ## Local PDF archive
 
-PDFs are kept **local-only** (in `pdfs/`, gitignored — a private archive on
-Dropbox, never published). The public site links to the original publisher URL.
+PDFs are kept **local-only** (under `data/pdfs/`, gitignored — a private archive
+on Dropbox, never published). The public site links to the original publisher URL.
 There are two folders with a simple lifecycle:
 
 ```
-  pdfs/inbox/     temporary — this week's candidates (downloaded during `fetch`),
-                  read while you review.
-  pdfs/library/   permanent — every KEPT paper: your existing backlog plus each
-                  week's approved papers.
+  data/pdfs/candidates/  temporary — this week's candidates (downloaded during
+                         `fetch`), read while you review.
+  data/pdfs/library/     permanent — every KEPT paper: your existing backlog plus
+                         each week's approved papers.
 ```
 
 - **`fetch`** auto-downloads each candidate's PDF (when a `pdf_url` exists) into
-  `pdfs/inbox/`. *(Use `fetch --no-pdfs` to skip; `fetch-pdfs` to retry later.)*
-- **`review-import`** promotes KEPT papers' PDFs `inbox → library` and deletes
-  REJECTED ones from the inbox.
+  `data/pdfs/candidates/`. *(Use `fetch --no-pdfs` to skip; `fetch-pdfs` to retry.)*
+- **`review-import`** promotes KEPT papers' PDFs `candidates → library` and
+  deletes REJECTED ones.
 - Papers from sources without PDF links (RePEc, most journals, SSRN) simply have
   no local PDF — attach one manually with:
   ```bash
@@ -89,22 +105,23 @@ There are two folders with a simple lifecycle:
 
 ### Importing your existing PDF collection (your backlog)
 
-Drop your PDFs into `incoming_pdfs/`, then:
+Drop your PDFs into `data/pdfs/incoming/`, then:
 
 ```bash
 # Already-curated backlog → straight into the permanent library:
-python -m aifinhub import-pdfs incoming_pdfs --status approved
+python -m aifinhub import-pdfs --status approved
 
-# Or route them through the Excel review first (lands in the inbox):
-python -m aifinhub import-pdfs incoming_pdfs
+# Or route them through the Excel review first (lands in candidates/):
+python -m aifinhub import-pdfs
 ```
 
-For each PDF it extracts the first-page text, finds a **DOI or arXiv id**, and
-pulls clean metadata (title / authors / abstract) from **Crossref / arXiv**. If
-no identifier is found it falls back to the filename. Imported papers skip the
-relevance filter (they're hand-picked). Archived copies land in `pdfs/library/`
-named `name1_name2_name3_year.pdf` (up to 3 author surnames + year). After import
-you can empty `incoming_pdfs/` — the archived copies are what the DB references.
+`import-pdfs` defaults to `data/pdfs/incoming/`. For each PDF it extracts the
+first-page text, finds a **DOI or arXiv id**, and pulls clean metadata (title /
+authors / abstract) from **Crossref / arXiv**; if no identifier is found it falls
+back to the filename. Imported papers skip the relevance filter (they're
+hand-picked). Archived copies land in `data/pdfs/library/` named
+`name1_name2_name3_year.pdf` (up to 3 author surnames + year). After import you
+can empty `data/pdfs/incoming/` — the library copies are what the DB references.
 
 **Enriching thin imports** — PDFs without an embedded id come in with only a
 filename-derived title. Fill in real title/authors/abstract with Claude (needs
