@@ -1,0 +1,96 @@
+# ───────────────────────────────────────────────────────────────────────────
+# AI & Finance Paper Hub — configuration
+# ───────────────────────────────────────────────────────────────────────────
+
+hub:
+  title: "AI & Finance Paper Hub"
+  subtitle: "Curated research on AI for trading & investment"
+  # Used in the site footer / LinkedIn post. Edit to your handle/site.
+  curator: "David Ardia"
+  site_url: "https://ardiad.github.io/ai-finance-hub"
+
+# How far back each source looks on a normal weekly run.
+fetch:
+  lookback_days: 10          # small overlap with the 7-day cadence avoids gaps
+  max_results_per_source: 80
+
+# ───────────────────────────────────────────────────────────────────────────
+# Relevance filtering
+#
+# An item is kept if it matches >=1 "ai" term AND >=1 "finance" term in its
+# title/abstract (cheap pre-filter), then scored. Optionally re-scored by an LLM.
+# ───────────────────────────────────────────────────────────────────────────
+relevance:
+  min_score: 2               # keyword score threshold to enter the inbox
+  use_llm: false             # set true to re-rank with Claude (needs ANTHROPIC_API_KEY)
+  llm_model: "claude-opus-4-8"
+
+  ai_terms:
+    - machine learning
+    - deep learning
+    - neural network
+    - reinforcement learning
+    - large language model
+    - "LLM"
+    - transformer
+    - natural language processing
+    - "NLP"
+    - artificial intelligence
+    - generative
+    - "GPT"
+    - embedding
+    - gradient boosting
+    - random forest
+    - graph neural
+
+  finance_terms:
+    - trading
+    - investment
+    - portfolio
+    - asset pricing
+    - stock return
+    - equity
+    - market
+    - alpha
+    - factor
+    - volatility
+    - risk
+    - hedge
+    - derivative
+    - cryptocurrency
+    - forecasting return
+    - backtest
+    - order book
+    - execution
+
+# ───────────────────────────────────────────────────────────────────────────
+# Sources. Disable any by setting `enabled: false`.
+# ───────────────────────────────────────────────────────────────────────────
+sources:
+  arxiv:
+    enabled: true
+    categories: [q-fin.TR, q-fin.PM, q-fin.CP, q-fin.ST, q-fin.GN, cs.LG, cs.CE]
+
+  repec:
+    enabled: true
+    # NEP (New Economics Papers) report codes most relevant to AI x finance.
+    nep_reports: [nep-fmk, nep-cmp, nep-big, nep-rmg, nep-fin]
+
+  ssrn:
+    enabled: true
+    # Best-effort: SSRN has no official API. Networks = topic networks to search.
+    queries: ["machine learning trading", "deep learning portfolio", "LLM finance"]
+
+  journals:
+    enabled: true
+    # name: RSS/Atom table-of-contents feed
+    feeds:
+      "Journal of Finance": "https://onlinelibrary.wiley.com/feed/15406261/most-recent"
+      "Review of Financial Studies": "https://academic.oup.com/rss/site_5293/3091.xml"
+      "Journal of Financial Economics": "https://rss.sciencedirect.com/publication/science/0304405X"
+
+  scholar:
+    enabled: false             # off by default: no API, bot-blocked. See docs.
+    queries: ["machine learning stock return prediction", "deep reinforcement learning trading"]
+    # Backend: "serpapi" (reliable, needs SERPAPI_KEY) or "scholarly" (free, fragile)
+    backend: serpapi

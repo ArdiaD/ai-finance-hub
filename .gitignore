@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+out/
+pdfs/
+# Excel review files are transient working state (Dropbox backs them up).
+review/
+# Local pipeline DB is the working state, not committed; the curated corpus
+# lives in docs/papers.json which IS committed.
+hub.db

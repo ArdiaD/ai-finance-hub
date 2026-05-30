@@ -1,0 +1,13 @@
+requests>=2.31
+feedparser>=6.0
+PyYAML>=6.0
+python-dateutil>=2.8
+rapidfuzz>=3.0
+Jinja2>=3.1
+rich>=13.0
+openpyxl>=3.1
+# Optional — only needed for the corresponding features:
+#   anthropic   : LLM relevance scoring / post drafting (set ANTHROPIC_API_KEY)
+#   google-search-results : SerpAPI Google Scholar source (set SERPAPI_KEY)
+#   scholarly   : free Google Scholar fallback (rate-limited)
+anthropic>=0.40

@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-05-30",
+  "count": 5,
+  "hub": {
+    "title": "AI & Finance Paper Hub",
+    "subtitle": "Curated research on AI for trading & investment",
+    "curator": "David Ardia",
+    "site_url": "https://ardiad.github.io/ai-finance-hub"
+  },
+  "papers": [
+    {
+      "title": "Multi-Dimensional Behavioral Evaluation of Agentic Stock Prediction Systems Using LLM Judges with Closed-Loop Reinforcement Learning Feedback",
+      "authors": [
+        "Mohammad Al Ridhawi",
+        "Mahtab Haj Ali",
+        "Hussein Al Osman"
+      ],
+      "abstract": "Agentic stock prediction systems make sequences of interdependent decisions (regime detection, pathway routing, reinforcement learning control) whose individual quality is hidden by aggregate metrics such as mean absolute percentage error (MAPE) or directional accuracy. We present a behavioral evaluation framework that addresses this gap. Behavioral traces logged at every autonomous decision point are grouped into five-day episodes and scored along six domain-specific dimensions (regime detection, routing, adaptation, risk calibration, strategy coherence, error recovery) by an ensemble of three large language model (LLM) judges (GPT 5.4, Claude 4.6 Opus, Gemini 3.1 Pro). Perturbation-based validation on 420 episodes yields targeted score drops of $-1.6$ to $-2.4$ on intended dimensions versus an average of $-0.32$ on the remaining five, with cross-model agreement up to Krippendorff's $\\alpha = 0.85$. The composite behavioral score, used here only for cross-episode reporting, correlates at $\\rho = 0.72$ with realized 20-day Sharpe ratio from offline backtesting. Closing the loop, the framework converts deficient per-dimension scores into a credit-assigned penalty term added to the Soft Actor-Critic (SAC) reward. Three short fine-tuning cycles, all confined to the validation period, produce on the held-out 2017-2025 test period a one-day MAPE reduction from 0.61% to 0.54% (an 11.5% relative reduction; $p",
+      "url": "https://d.repec.org/n?u=RePEc:arx:papers:2605.05739&r=&r=cmp",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-cmp",
+      "categories": [
+        "nep-cmp"
+      ],
+      "published": "2026-05-01",
+      "featured": true,
+      "fingerprint": "b49cbd05cda56316"
+    },
+    {
+      "title": "A Review of Large Language Models for Stock Price Forecasting from a Hedge-Fund Perspective",
+      "authors": [
+        "Olivia Zhang",
+        "Zhilin Zhang"
+      ],
+      "abstract": "Large language models (LLMs) are increasingly deployed in quantitative finance for stock price forecasting. This review synthesizes recent applications of LLMs in this domain, including extracting sentiment from financial news and social media, analyzing financial reports and earnings-call transcripts, tokenizing or symbolizing stock price series, and constructing multi-agent trading systems. Particular attention is paid to practical pitfalls that are often understated in the literature, such as fragility in sentiment analysis, dataset and horizon design, performance evaluation metrics, data leakage, illiquidity premia, and limits of stock price predictability. Organized from a hedge-fund perspective, the review is intended to guide both academic researchers and hedge fund managers in integrating LLMs into real-world trading pipelines and in stress-testing their robustness under realistic market frictions.",
+      "url": "https://d.repec.org/n?u=RePEc:arx:papers:2605.05211&r=&r=fmk",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-fmk",
+      "categories": [
+        "nep-fmk"
+      ],
+      "published": "2026-04-01",
+      "featured": false,
+      "fingerprint": "22d932ae2b65b8b9"
+    },
+    {
+      "title": "Beyond Sequential Prediction: Learning Financial Market Dynamics in Volatile and Non-Stationary Environments through Sentiment-Conditioned Generative Modelling",
+      "authors": [
+        "Alexis Lazanas",
+        "Spyridon Karpouzis"
+      ],
+      "abstract": "The problem of time-series forecasting in non-stationary and complex environments is a challenging task in machine learning, especially with heterogeneous numerical and textual data present. Traditional statistical models like AutoRegressive Integrated Moving Average (ARIMA) are based on the assumptions of linearity and stationarity, whereas recurrent neural networks like Long Short-Term Memory (LSTM) models do not necessarily represent distributional properties in highly volatile settings. This paper proposes a hybrid model that combines Generative Adversarial Networks (GANs) with Natural Language Processing (NLP)-based sentiment analysis to enable sentiment-conditioned time-series prediction. The model integrates adversarial learning on numerical sequences with contextual sentiment representations derived from unstructured text, enabling them to be jointly modelled to capture temporal dynamics and exogenous information. These results demonstrate the promise of hybrid generative and language-aware methods to enhance prediction robustness in non-stationary environments.",
+      "url": "https://d.repec.org/n?u=RePEc:arx:papers:2604.22801&r=&r=cmp",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-cmp",
+      "categories": [
+        "nep-cmp"
+      ],
+      "published": "2026-04-01",
+      "featured": true,
+      "fingerprint": "623e919c4f5d9c68"
+    },
+    {
+      "title": "Machine Learning Forecasts of Asymmetric Betas Using Firm-Specific Information",
+      "authors": [
+        "Thomas Conlon",
+        "John Cotter",
+        "Iason Kynigakis"
+      ],
+      "abstract": "We demonstrate that machine learning methods provide a powerful framework for modelling conditional asymmetric risk. Using a large cross-section of US stocks and a comprehensive set of firm characteristics, we show that allowing for nonlinearities significantly increases the out-of-sample performance across a wide range of asymmetric beta measures and forecasting horizons. Trading frictions, followed by characteristics related to intangibles, momentum and growth, emerge as the most important drivers of future risk dynamics. Reconstructing CAPM beta from forecasts of asymmetric beta components indicates that a more granular decomposition of systematic risk yields a more accurate representation of market beta. We also find that incorporating conditional beta forecasts into discounted cash flow models that account for the term structure of betas enhances equity valuation accuracy. Finally, we show that the statistical outperformance of conditional betas translates into economically significant benefits for market-neutral portfolio investors.",
+      "url": "https://d.repec.org/n?u=RePEc:arx:papers:2604.22933&r=&r=cmp",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-cmp",
+      "categories": [
+        "nep-cmp"
+      ],
+      "published": "2026-04-01",
+      "featured": false,
+      "fingerprint": "a190c85ca057f899"
+    },
+    {
+      "title": "From Hypotheses to Factors: Constrained LLM Agents in Cryptocurrency Markets",
+      "authors": [
+        "Yikuan Huang",
+        "Zheqi Fan",
+        "Kaiqi Hu",
+        "Yifan Ye"
+      ],
+      "abstract": "LLM agents are promising tools for empirical discovery, but their flexibility can also turn discovery into uncontrolled search. We study how to use agents under a reproducible protocol through cryptocurrency factor discovery. Our framework casts the task as sequential hypothesis search: an agent reads an append-only experiment trace, proposes falsifiable factor hypotheses, and maps them to executable recipes, while a deterministic engine enforces fixed data splits, selection gates, transaction costs, and portfolio tests. Candidate actions are restricted to a point-in-time factor DSL, making both successful and failed hypotheses auditable. A ridge-combined portfolio trained only on 2020--2022 data achieves a 44.55% annualized return and Sharpe ratio of 1.55 in the 2024--2026 pure out-of-sample period after a 5 basis point one-way trading cost.",
+      "url": "https://d.repec.org/n?u=RePEc:arx:papers:2604.26747&r=&r=cmp",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-cmp",
+      "categories": [
+        "nep-cmp"
+      ],
+      "published": "2026-04-01",
+      "featured": false,
+      "fingerprint": "2d9e123658ab2619"
+    }
+  ]
+}
