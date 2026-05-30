@@ -11,3 +11,7 @@ review/
 # Local pipeline DB is the working state, not committed; the curated corpus
 # lives in docs/papers.json which IS committed.
 hub.db
+
+# Local scratch / OS junk — never publish
+.DS_Store
+_other/

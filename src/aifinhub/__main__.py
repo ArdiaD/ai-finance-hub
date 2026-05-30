@@ -43,6 +43,10 @@ def main(argv=None) -> int:
     en.add_argument("--limit", type=int, default=None, help="cap how many to process")
     en.add_argument("--model", default=None, help="override the extraction model")
 
+    bf = sub.add_parser("backfill-urls",
+                        help="find DOI/URL/venue by title via Crossref + arXiv")
+    bf.add_argument("--limit", type=int, default=None, help="cap how many to process")
+
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
 
@@ -85,6 +89,9 @@ def main(argv=None) -> int:
         from .pdfs import reject_papers
         n = reject_papers(args.fingerprints)
         print(f"rejected {n}")
+    elif args.cmd == "backfill-urls":
+        from .backfill import backfill_urls
+        backfill_urls(limit=args.limit)
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()
