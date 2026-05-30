@@ -47,6 +47,23 @@ python -m aifinhub draft-post --since 7d      # write a LinkedIn draft
 
 All sources, categories, and relevance keywords live in [`config.yaml`](config.yaml).
 
+**Adapting what gets retrieved** — three independent levers:
+- *Where to look:* `sources.arxiv.categories`, `sources.repec.nep_reports`,
+  `sources.ssrn.queries`, `sources.journals.feeds`.
+- *What counts as relevant:* `relevance.ai_terms` × `relevance.finance_terms`
+  (a paper must match ≥1 of each). Raise `relevance.min_score` to be stricter.
+- *Quality re-ranking:* set `relevance.use_llm: true` (needs `ANTHROPIC_API_KEY`)
+  to score true relevance to trading/investment 0–10 with Claude.
+
+**Themes** — `config.yaml` has a `themes:` block mapping each theme to keywords.
+Every paper is auto-tagged with all matching themes (case-insensitive substring
+over title + abstract). Themes appear as a column in the Excel review and as
+filter chips on the website. Edit the taxonomy anytime, then re-apply with:
+
+```bash
+python -m aifinhub retag
+```
+
 ## Local PDF archive
 
 PDFs are kept **local-only** (in `pdfs/`, gitignored — a private archive on

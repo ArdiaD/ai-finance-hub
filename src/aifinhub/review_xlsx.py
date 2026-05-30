@@ -36,6 +36,7 @@ DECISIONS = {"yes": ("approved", False), "feature": ("approved", True),
 COLUMNS = [
     ("decision", None, 12, False),
     ("title", "title", 55, True),
+    ("themes", "_themes", 26, True),
     ("authors", "_authors", 30, True),
     ("venue", "venue", 22, True),
     ("source", "source", 14, False),
@@ -75,7 +76,8 @@ def export_review(path: Optional[str] = None) -> Path:
     # Data rows
     for r, p in enumerate(pending, start=2):
         values = {
-            "title": p.title, "_authors": ", ".join(p.authors), "venue": p.venue,
+            "title": p.title, "_themes": ", ".join(p.themes),
+            "_authors": ", ".join(p.authors), "venue": p.venue,
             "source": p.source, "published": p.published, "score": p.score,
             "relevance_note": p.relevance_note, "abstract": p.abstract,
             "url": p.url, "pdf_url": p.pdf_url, "fingerprint": p.fingerprint,

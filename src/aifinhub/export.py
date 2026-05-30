@@ -29,6 +29,7 @@ def build_site() -> None:
                 "title": p.title, "authors": p.authors, "abstract": p.abstract,
                 "url": p.url, "pdf_url": p.pdf_url, "source": p.source,
                 "venue": p.venue, "categories": p.categories,
+                "themes": p.themes,
                 "published": p.published, "featured": p.featured,
                 "fingerprint": p.fingerprint,
             }

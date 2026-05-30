@@ -38,6 +38,7 @@ def main(argv=None) -> int:
     lp.add_argument("fingerprint", help="paper fingerprint (see the Excel/stats)")
     lp.add_argument("path", help="path to the PDF file")
 
+    sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
     dp = sub.add_parser("draft-post", help="write a LinkedIn draft")
@@ -69,6 +70,9 @@ def main(argv=None) -> int:
     elif args.cmd == "link-pdf":
         from .pdfs import link_pdf
         link_pdf(args.fingerprint, args.path)
+    elif args.cmd == "retag":
+        from .themes import retag_all
+        retag_all()
     elif args.cmd == "build-site":
         from .export import build_site
         build_site()

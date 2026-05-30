@@ -26,6 +26,7 @@ class Paper:
     pdf_url: Optional[str] = None
     pdf_path: Optional[str] = None  # local archived copy (never published)
     categories: list[str] = field(default_factory=list)
+    themes: list[str] = field(default_factory=list)  # auto-tagged topics
     venue: Optional[str] = None    # journal / working-paper series
 
     # Pipeline metadata (filled in by the pipeline, not the source)

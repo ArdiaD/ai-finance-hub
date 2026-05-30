@@ -10,6 +10,7 @@ from .db import DB
 from .models import Paper
 from .relevance import score_paper
 from .sources import REGISTRY
+from .themes import tag_in_place
 
 console = Console()
 
@@ -57,6 +58,7 @@ def run_fetch(download_pdfs: bool = True) -> dict:
             if paper.score < min_score:
                 stats["irrelevant"] += 1
                 continue
+            tag_in_place(paper, cfg)
             if db.exists(paper.fingerprint) or _is_duplicate(paper, existing):
                 stats["duplicate"] += 1
                 continue

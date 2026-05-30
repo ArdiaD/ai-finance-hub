@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-05-30",
-  "count": 5,
+  "count": 6,
   "hub": {
     "title": "AI & Finance Paper Hub",
     "subtitle": "Curated research on AI for trading & investment",
@@ -23,6 +23,11 @@
       "categories": [
         "nep-cmp"
       ],
+      "themes": [
+        "LLMs & Generative AI",
+        "Reinforcement Learning",
+        "Cryptocurrency"
+      ],
       "published": "2026-05-01",
       "featured": true,
       "fingerprint": "b49cbd05cda56316"
@@ -40,6 +45,13 @@
       "venue": "RePEc/nep-fmk",
       "categories": [
         "nep-fmk"
+      ],
+      "themes": [
+        "LLMs & Generative AI",
+        "Deep Learning",
+        "NLP & Sentiment",
+        "Return Forecasting",
+        "Cryptocurrency"
       ],
       "published": "2026-04-01",
       "featured": false,
@@ -59,6 +71,11 @@
       "categories": [
         "nep-cmp"
       ],
+      "themes": [
+        "LLMs & Generative AI",
+        "Deep Learning",
+        "NLP & Sentiment"
+      ],
       "published": "2026-04-01",
       "featured": true,
       "fingerprint": "623e919c4f5d9c68"
@@ -77,6 +94,10 @@
       "venue": "RePEc/nep-cmp",
       "categories": [
         "nep-cmp"
+      ],
+      "themes": [
+        "Portfolio & Allocation",
+        "Factor Investing"
       ],
       "published": "2026-04-01",
       "featured": false,
@@ -98,9 +119,39 @@
       "categories": [
         "nep-cmp"
       ],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation",
+        "Factor Investing",
+        "Cryptocurrency"
+      ],
       "published": "2026-04-01",
       "featured": false,
       "fingerprint": "2d9e123658ab2619"
+    },
+    {
+      "title": "The double-edged mind: How LLMs expand stock market participation yet strengthen confirmation-seeking",
+      "authors": [
+        "Damm, Cara",
+        "Bauer, Kevin",
+        "Hett, Florian",
+        "Pelizzon, Loriana"
+      ],
+      "abstract": "The shift from information retrieval (keyword-based search engines) to information synthesis (generative AI) constitutes a fundamental change in how people inform themselves online. We investigate how this shift impacts investment behavior using an incentivized online experiment (N = 374), in which we vary whether participants have access to keyword-based search engines, an LLM-based chatbot, or no additional information source. We find that LLMs facilitate participation in the stock market. Participants with access to an LLM when making investment decisions are significantly more likely to enter the stock market and to remain invested compared to those with access to keyword-based search engines or no further information. Our experiment suggests that perceived difficulty of stock market participation decreases and confidence in these choices increases when using an LLM. However, we also document a substantial risk. Access to LLMs enables individuals to confirm and strengthen experimentally induced beliefs. Even when the chatbot itself is not biased, users can prompt the model to validate beliefs they want to hold. Overall, our findings suggest that while LLMs can reduce participation frictions and encourage stock market investments, their effectiveness in confirmation-seeking can also have detrimental consequences. Consequently, these results highlight the critical need for consumer protection frameworks and financial literacy programs that specifically address the unique dynamics of human-AI interaction in modern retail investing.",
+      "url": "https://d.repec.org/n?u=RePEc:zbw:safewp:340833&r=&r=fmk",
+      "pdf_url": null,
+      "source": "repec",
+      "venue": "RePEc/nep-fmk",
+      "categories": [
+        "nep-fmk"
+      ],
+      "themes": [
+        "LLMs & Generative AI",
+        "Volatility & Risk"
+      ],
+      "published": "2026-01-01",
+      "featured": false,
+      "fingerprint": "6b3d3532cf9a40a5"
     }
   ]
 }

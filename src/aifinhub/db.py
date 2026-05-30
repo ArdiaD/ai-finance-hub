@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS papers (
     source        TEXT,
     venue         TEXT,
     categories    TEXT,            -- JSON array
+    themes        TEXT,            -- JSON array (auto-tagged topics)
     published     TEXT,
     score         REAL DEFAULT 0,
     relevance_note TEXT DEFAULT '',
@@ -49,7 +50,7 @@ class DB:
     def _migrate(self) -> None:
         """Add columns introduced after a DB was first created."""
         existing = {r["name"] for r in self.conn.execute("PRAGMA table_info(papers)")}
-        for col, decl in [("pdf_path", "TEXT")]:
+        for col, decl in [("pdf_path", "TEXT"), ("themes", "TEXT")]:
             if col not in existing:
                 self.conn.execute(f"ALTER TABLE papers ADD COLUMN {col} {decl}")
 
@@ -68,14 +69,14 @@ class DB:
         self.conn.execute(
             """INSERT INTO papers
                (fingerprint, title, authors, abstract, url, pdf_url, pdf_path,
-                source, venue, categories, published, score, relevance_note, status,
-                featured, fetched_at)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                source, venue, categories, themes, published, score, relevance_note,
+                status, featured, fetched_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 p.fingerprint, p.title, json.dumps(p.authors), p.abstract, p.url,
                 p.pdf_url, p.pdf_path, p.source, p.venue, json.dumps(p.categories),
-                p.published, p.score, p.relevance_note, p.status, int(p.featured),
-                p.fetched_at,
+                json.dumps(p.themes), p.published, p.score, p.relevance_note,
+                p.status, int(p.featured), p.fetched_at,
             ),
         )
         self.conn.commit()
@@ -109,7 +110,8 @@ class DB:
             title=r["title"], authors=json.loads(r["authors"]),
             abstract=r["abstract"] or "", url=r["url"] or "", source=r["source"] or "",
             published=r["published"], pdf_url=r["pdf_url"], pdf_path=r["pdf_path"],
-            categories=json.loads(r["categories"] or "[]"), venue=r["venue"],
+            categories=json.loads(r["categories"] or "[]"),
+            themes=json.loads(r["themes"] or "[]"), venue=r["venue"],
             score=r["score"], relevance_note=r["relevance_note"] or "",
             status=r["status"], featured=bool(r["featured"]),
             fetched_at=r["fetched_at"], fingerprint=r["fingerprint"],

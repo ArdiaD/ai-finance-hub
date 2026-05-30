@@ -22,6 +22,7 @@ from .db import DB
 from .metadata import find_identifiers, resolve
 from .models import Paper
 from .pdfs import inbox_path, library_path
+from .themes import tag_in_place
 
 console = Console()
 FUZZY_THRESHOLD = 92
@@ -118,6 +119,7 @@ def import_pdfs(folder: str, status: str = "pending") -> dict:
             categories=meta.get("categories", []),
             score=99.0, relevance_note="manual PDF import", status=status,
         )
+        tag_in_place(paper, cfg)
 
         if _is_dup(paper, db):
             stats["duplicate"] += 1

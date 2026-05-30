@@ -64,6 +64,26 @@ relevance:
     - execution
 
 # ───────────────────────────────────────────────────────────────────────────
+# Themes — keyword-based topics auto-assigned to each paper (a paper can match
+# several). Surfaced as a column in the Excel review and as filter chips on the
+# website. Matching is case-insensitive substring over the title + abstract.
+# Edit freely; run `python -m aifinhub retag` to re-apply to existing papers.
+# ───────────────────────────────────────────────────────────────────────────
+themes:
+  "LLMs & Generative AI": [large language model, "LLM", "GPT", generative, transformer, chatbot, foundation model]
+  "Reinforcement Learning": [reinforcement learning, deep rl, q-learning, policy gradient, actor-critic, agentic]
+  "Deep Learning": [deep learning, neural network, lstm, cnn, attention, autoencoder, graph neural]
+  "NLP & Sentiment": [sentiment, natural language, text mining, news, embedding, topic model, "NLP"]
+  "Portfolio & Allocation": [portfolio, asset allocation, mean-variance, diversification, rebalanc, weight]
+  "Factor Investing": [factor, anomaly, cross-section, characteristic, smart beta, style]
+  "Return Forecasting": [return prediction, return forecast, predictability, expected return, stock return]
+  "Volatility & Risk": [volatility, value-at-risk, "VaR", tail risk, drawdown, covariance, risk management]
+  "Trading & Execution": [trading strateg, execution, order book, market making, high-frequency, limit order, microstructure]
+  "Cryptocurrency": [crypto, bitcoin, blockchain, "defi", digital asset, token]
+  "Derivatives & Options": [option, derivative, futures, hedging, implied volatility]
+  "Macro & Forecasting": [macroeconomic, recession, inflation, gdp, business cycle, nowcast]
+
+# ───────────────────────────────────────────────────────────────────────────
 # Sources. Disable any by setting `enabled: false`.
 # ───────────────────────────────────────────────────────────────────────────
 sources:
