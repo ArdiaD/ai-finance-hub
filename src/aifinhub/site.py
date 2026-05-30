@@ -81,7 +81,7 @@ function card(p){{
   const cats=(p.categories||[]).slice(0,4).map(c=>`<span class="badge">${{esc(c)}}</span>`).join('');
   const themes=(p.themes||[]).map(t=>`<span class="badge theme" onclick="pickTheme('${{esc(t)}}')">${{esc(t)}}</span>`).join('');
   const authors=(p.authors||[]).slice(0,8).join(', ');
-  const pdf=p.pdf_url?`<a href="${{esc(p.pdf_url)}}">PDF</a>`:'';
+  const pdf=p.pdf_url?`<div class="links"><a href="${{esc(p.pdf_url)}}" target="_blank" rel="noopener">PDF</a></div>`:'';
   const abs=esc(p.abstract||'');
   const long=(p.abstract||'').length>320;
   const more=long?`<button class="more" onclick="toggleAbs(this)">Show more ▾</button>`:'';
@@ -90,7 +90,7 @@ function card(p){{
     <div class="meta">${{badge}}${{esc(authors)}} · <b>${{esc(p.venue||p.source)}}</b> · ${{esc(p.published||'')}}</div>
     <div class="meta">${{themes}}${{cats}}</div>
     <div class="abs">${{abs}}</div>${{more}}
-    <div class="links"><a href="${{esc(p.url)}}" target="_blank" rel="noopener">Link</a>${{pdf}}</div>
+    ${{pdf}}
   </div>`;
 }}
 function pickTheme(t){{ el('theme').value=t; render(); window.scrollTo(0,0); }}

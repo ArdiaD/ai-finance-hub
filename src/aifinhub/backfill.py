@@ -203,6 +203,79 @@ def fix_dates() -> dict:
     return stats
 
 
+def _kind(url: str) -> str:
+    if not url:
+        return "none"
+    if "10.2139/ssrn" in url or "ssrn.com" in url:
+        return "ssrn"
+    if "arxiv.org" in url:
+        return "arxiv"
+    if "doi.org" in url:
+        return "journal"
+    return "other"
+
+
+def _best_preferred(paper, cands, prio: dict):
+    """Pick the accepted candidate with the highest source priority, then ratio."""
+    nt = _norm(paper.title)
+    first_sur = _surname(paper.authors[0]) if paper.authors else ""
+    accepted = []
+    for c in cands:
+        if not c.get("url"):
+            continue
+        r = fuzz.token_sort_ratio(nt, _norm(c["title"]))
+        if r < ACCEPT:
+            continue
+        if r < STRICT and first_sur:
+            cand_sur = " ".join(_surname(a) for a in c.get("authors", []))
+            if first_sur not in cand_sur:
+                continue
+        accepted.append((prio.get(_kind(c["url"]), 0), r, c))
+    if not accepted:
+        return None
+    accepted.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    return accepted[0][2]
+
+
+def refresh_urls(prefer=("ssrn", "arxiv", "journal"), status: str = "approved") -> dict:
+    """Re-resolve every paper's link, choosing the source by preference order.
+
+    Fixes wrong journal matches and applies the SSRN-first preference. Uses
+    Semantic Scholar (authoritative, needs key) + Crossref (has SSRN DOIs).
+    """
+    prio = {k: (len(prefer) - i) for i, k in enumerate(prefer)}
+    db = DB(DB_PATH)
+    papers = db.query(status=None if status == "all" else status)
+    console.print(f"Re-resolving [bold]{len(papers)}[/bold] papers "
+                  f"(prefer {' > '.join(prefer)})…\n")
+    stats = {"changed": 0, "same": 0, "nomatch": 0}
+    for p in papers:
+        cands = _semanticscholar(p.title) + _crossref(p.title)
+        best = _best_preferred(p, cands, prio)
+        time.sleep(0.5)
+        if not best:
+            stats["nomatch"] += 1
+            continue
+        if best["url"] == p.url:
+            stats["same"] += 1
+            continue
+        o = _origin(best["url"]) or (p.source, None)
+        fields = {"url": best["url"], "source": o[0]}
+        ven = best.get("venue") or o[1]
+        if ven:
+            fields["venue"] = ven
+        if best.get("pdf_url"):
+            fields["pdf_url"] = best["pdf_url"]
+        db.update_fields(p.fingerprint, **fields)
+        stats["changed"] += 1
+        console.print(f"  [yellow]{_kind(p.url)}→{o[0]}[/yellow]  {best['url']}  "
+                      f"| {p.title[:38]}")
+    console.print(f"\n[bold green]Re-resolved:[/bold green] changed={stats['changed']} "
+                  f"unchanged={stats['same']} no-match={stats['nomatch']}")
+    console.print("Now run [bold]fix-dates[/bold] then [bold]build-site[/bold].")
+    return stats
+
+
 def _origin(url: str):
     """Map a paper URL to (source, default_venue) for accurate provenance."""
     if not url:

@@ -54,47 +54,6 @@
       "fingerprint": "87a08f0ddb90934d"
     },
     {
-      "title": "(Generative) AI in Financial Economics",
-      "authors": [
-        "Hongwei Mo",
-        "Shumiao Ouyang"
-      ],
-      "abstract": "This review article synthesizes the burgeoning literature on the intersection of (generative) artificial intelligence (AI) and finance. We organize our review around six key areas: (1) the emergent role of generative AI, especially large language models (LLMs), as analytic tools, external shocks to the economy, and autonomous economic agents; (2) corporate finance, focusing on how firms respond to and benefit from AI; (3) asset pricing, examining how AI brings novel methodologies for return predictability, stochastic discount factor estimation, and investment; (4) household finance, investigating how AI promotes financial inclusion and improves financial services; (5) labor economics, analyzing AI's impact on labor market dynamics; and (6) the risks and challenges associated with AI in financial markets. We conclude by identifying unanswered questions and discussing promising avenues for future research.",
-      "url": "https://doi.org/10.66977/oxsci.2605.0002",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": null,
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Factor Investing",
-        "Return Forecasting"
-      ],
-      "published": "2026-05-11",
-      "featured": false,
-      "fingerprint": "b973ce0711e18c95"
-    },
-    {
-      "title": "Dissecting AI Trading: Behavioral Finance and Market Bubbles",
-      "authors": [
-        "Shumiao Ouyang",
-        "Pengfei Sui"
-      ],
-      "abstract": "We study how AI agents form expectations and trade in experimental asset markets. Using a simulated open-call auction populated by autonomous Large Language Model (LLM) agents, we document three main findings. First, AI agents exhibit classic behavioral patterns: a pronounced disposition effect and recency-weighted extrapolative beliefs. Second, these individual-level patterns aggregate into equilibrium dynamics that replicate classic experimental findings (Smith et al. (1988)), including the predictive power of excess demand for future prices and the positive relationship between disagreement and trading volume. Third, by analyzing the agents' reasoning text through a twenty-mechanism scoring framework, we show that targeted prompt interventions causally amplify or suppress specific behavioral mechanisms, significantly altering the magnitude of market bubbles.",
-      "url": "https://doi.org/10.66977/oxsci.2604.0001",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": null,
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Portfolio & Allocation"
-      ],
-      "published": "2026-04-23",
-      "featured": false,
-      "fingerprint": "e64294bb0c3c6e33"
-    },
-    {
       "title": "Agentic Artificial Intelligence in Finance: A Comprehensive Survey",
       "authors": [
         "Irene Aldridge",
@@ -125,7 +84,7 @@
         "Waner Zheng"
       ],
       "abstract": "The emergence of agentic artificial intelligence (AI) represents a fundamental transformation in financial markets, characterized by autonomous systems capable of reasoning, planning, and adaptive decision-making with minimal human intervention. This comprehensive survey synthesizes recent advances in agentic AI across multiple dimensions of financial operations, including system architecture, market applications, regulatory frameworks, and systemic implications. We examine how agentic AI differs from traditional algorithmic trading and generative AI through its capacity for goal-oriented autonomy, continuous learning, and multi-agent coordination. Our analysis shows that while agentic AI offers substantial potential for enhanced market efficiency, liquidity provision, and risk management, it also introduces novel challenges related to market stability, regulatory compliance, interpretability, and systemic risk. Through a systematic review of foundational research, technical architectures, market applications, and governance frameworks, this survey provides scholars and practitioners with a structured understanding of how agentic AI is reshaping financial markets and identifies critical research directions for ensuring that these systems enhance both operational efficiency and market resilience.",
-      "url": "https://arxiv.org/abs/2604.21672v1",
+      "url": "https://arxiv.org/abs/2604.21672",
       "pdf_url": "https://arxiv.org/pdf/2604.21672v1",
       "source": "arxiv",
       "venue": "arXiv preprint",
@@ -138,6 +97,26 @@
       "published": "2026-04-01",
       "featured": false,
       "fingerprint": "b629895c835a208a"
+    },
+    {
+      "title": "Dissecting AI Trading: Behavioral Finance and Market Bubbles",
+      "authors": [
+        "Shumiao Ouyang",
+        "Pengfei Sui"
+      ],
+      "abstract": "We study how AI agents form expectations and trade in experimental asset markets. Using a simulated open-call auction populated by autonomous Large Language Model (LLM) agents, we document three main findings. First, AI agents exhibit classic behavioral patterns: a pronounced disposition effect and recency-weighted extrapolative beliefs. Second, these individual-level patterns aggregate into equilibrium dynamics that replicate classic experimental findings (Smith et al. (1988)), including the predictive power of excess demand for future prices and the positive relationship between disagreement and trading volume. Third, by analyzing the agents' reasoning text through a twenty-mechanism scoring framework, we show that targeted prompt interventions causally amplify or suppress specific behavioral mechanisms, significantly altering the magnitude of market bubbles.",
+      "url": "https://arxiv.org/abs/2604.18373",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "arXiv preprint",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation"
+      ],
+      "published": "2026-04-01",
+      "featured": false,
+      "fingerprint": "e64294bb0c3c6e33"
     },
     {
       "title": "AlphaNiftyAI: conquering the Indian stock market with AI",
@@ -171,7 +150,7 @@
         "Yiqing Wang"
       ],
       "abstract": "Forecasting crude oil prices remains challenging because market-relevant information is embedded in large volumes of unstructured news and is not fully captured by traditional polarity-based sentiment measures. This paper examines whether multi-dimensional sentiment signals extracted by large language models improve the prediction of weekly WTI crude oil futures returns. Using energy-sector news articles from 2020 to 2025, we construct five sentiment dimensions covering relevance, polarity, intensity, uncertainty, and forwardness based on GPT-4o, Llama 3.2-3b, and two benchmark models, FinBERT and AlphaVantage. We aggregate article-level signals to the weekly level and evaluate their predictive performance in a classification framework. The best results are achieved by combining GPT-4o and FinBERT, suggesting that LLM-based and conventional financial sentiment models provide complementary predictive information. SHAP analysis further shows that intensity- and uncertainty-related features are among the most important predictors, indicating that the predictive value of news sentiment extends beyond simple polarity. Overall, the results suggest that multi-dimensional LLM-based sentiment measures can improve commodity return forecasting and support energy-market risk monitoring.",
-      "url": "https://arxiv.org/abs/2603.11408v2",
+      "url": "https://arxiv.org/abs/2603.11408",
       "pdf_url": "https://arxiv.org/pdf/2603.11408v2",
       "source": "arxiv",
       "venue": "arXiv preprint",
@@ -276,26 +255,6 @@
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "521ebbe4a3627ae3"
-    },
-    {
-      "title": "Complex forecasting and investment strategy optimization via chain-of-thought of large language models",
-      "authors": [
-        "Meiqun Yin",
-        "Mengzhu Guo"
-      ],
-      "abstract": "This paper pioneers the application of chain-of-thought (CoT) prompting in large language models (LLMs) for financial forecasting and portfolio optimization. Leveraging anonymized financial statements from 608 Chinese A-share listed companies (2010 – 2023), we benchmark ChatGPT 4.0 against human analysts in earnings direction prediction. The CoT-enhanced model achieved superior accuracy (64.35% vs. 58.37%) and generated a 17.14% alpha with a Sharpe ratio of 1.5959 in backtests, demonstrating LLMs ' capacity to automate financial reasoning while reducing reliance on specialized expertise. Our findings bridge AI and quantitative finance by validating LLMs ' cross-domain adaptability using purely numerical data, offering practical implications for AI-driven investment decision systems.",
-      "url": "https://doi.org/10.1016/j.eswa.2025.129913",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Expert Systems with Applications",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Portfolio & Allocation"
-      ],
-      "published": "2026-03-01",
-      "featured": false,
-      "fingerprint": "308c6aa6cd9cfbc7"
     },
     {
       "title": "Forecasting Future Language: Context Design for Mention Markets",
@@ -409,10 +368,10 @@
         "Hassan Jaleel"
       ],
       "abstract": "We attempt to mitigate the persistent tradeoff between risk and return in medium- to long-term portfolio management. This paper proposes a novel LLM-guided no-regret portfolio allocation framework that integrates online learning dynamics, market sentiment indicators, and large language model (LLM)-based hedging to construct high-Sharpe ratio portfolios tailored for risk-averse investors and institutional fund managers. Our approach builds on a follow-the-leader approach, enriched with sentiment-based trade filtering and LLM-driven downside protection. Empirical results demonstrate that our method outperforms a SPY buy-and-hold baseline by 69% in annualized returns and 119% in Sharpe ratio.",
-      "url": "https://arxiv.org/abs/2601.17021v1",
+      "url": "https://arxiv.org/abs/2601.17021",
       "pdf_url": "https://arxiv.org/pdf/2601.17021v1",
       "source": "arxiv",
-      "venue": "arXiv preprint",
+      "venue": "arXiv.org",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
@@ -446,6 +405,30 @@
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "a5731920f9d79b2d"
+    },
+    {
+      "title": "Transformer-based CoVaR: Systemic Risk in Textual Information",
+      "authors": [
+        "Junyu Chen",
+        "Tom Boot",
+        "Lingwei Kong",
+        "Weining Wang"
+      ],
+      "abstract": "Conditional Value-at-Risk (CoVaR) quantifies systemic financial risk by measuring the loss quantile of one asset, conditional on another asset experiencing distress. We develop a Transformer-based methodology that integrates financial news articles directly with market data to improve CoVaR estimates. Unlike approaches that use predefined sentiment scores, our method incorporates raw text embeddings generated by a large language model (LLM). We prove explicit error bounds for our Transformer CoVaR estimator, showing that accurate CoVaR learning is possible even with small datasets. Using U.S. market returns and Reuters news items from 2006–2013, our out-of-sample results show that textual information impacts the CoVaR forecasts. With better predictive performance, we identify a pronounced negative dip during market stress periods across several equity assets when comparing the Transformer-based CoVaR to both the CoVaR without text and the CoVaR using traditional sentiment measures. Our results show that textual data can be used to effectively model systemic risk without requiring prohibitively large data sets.",
+      "url": "https://doi.org/10.2139/ssrn.6231278",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Volatility & Risk",
+        "Cryptocurrency"
+      ],
+      "published": "2026-01-01",
+      "featured": false,
+      "fingerprint": "fb67443ed42ff5d7"
     },
     {
       "title": "Signal or Noise in Multi-Agent LLM-based Stock Recommendations?",
@@ -677,10 +660,10 @@
         "Shreyas Subramanian"
       ],
       "abstract": "Financial AI systems suffer from a critical blind spot: while Retrieval-Augmented Generation (RAG) excels at finding relevant documents, language models still generate calculation errors and regulatory violations during reasoning, even with perfect retrieval. This paper introduces VERAFI (Verified Agentic Financial Intelligence), an agentic framework with neurosymbolic policy generation for verified financial intelligence. VERAFI combines state-of-the-art dense retrieval and cross-encoder reranking with financial tool-enabled agents and automated reasoning policies covering GAAP compliance, SEC requirements, and mathematical validation. Our comprehensive evaluation on FinanceBench demonstrates remarkable improvements: while traditional dense retrieval with reranking achieves only 52.4% factual correctness, VERAFI's integrated approach reaches 94.7%, an 81% relative improvement. The neurosymbolic policy layer alone contributes a 4.3 percentage point gain over pure agentic processing, specifically targeting persistent mathematical and logical errors. By integrating financial domain expertise directly into the reasoning process, VERAFI offers a practical pathway toward trustworthy financial AI that meets the stringent accuracy demands of regulatory compliance, investment decisions, and risk management.",
-      "url": "https://arxiv.org/abs/2512.14744v1",
+      "url": "https://arxiv.org/abs/2512.14744",
       "pdf_url": "https://arxiv.org/pdf/2512.14744v1",
       "source": "arxiv",
-      "venue": "arXiv preprint",
+      "venue": "arXiv.org",
       "categories": [],
       "themes": [
         "Reinforcement Learning",
@@ -768,101 +751,6 @@
       "fingerprint": "f02a1e84f9312ea9"
     },
     {
-      "title": "Language Model Guided Reinforcement Learning in Quantitative Trading",
-      "authors": [
-        "Adam Darmanin",
-        "Vince Vella"
-      ],
-      "abstract": "Algorithmic trading requires short-term tactical decisions consistent with long-term financial objectives. Reinforcement Learning (RL) has been applied to such problems, but adoption is limited by myopic behaviour and opaque policies. Large Language Models (LLMs) offer complementary strategic reasoning and multi-modal signal interpretation when guided by well-structured prompts. This paper proposes a hybrid framework in which LLMs generate high-level trading strategies to guide RL agents. We evaluate (i) the economic rationale of LLM-generated strategies through expert review, and (ii) the performance of LLM-guided agents against unguided RL baselines using Sharpe Ratio (SR) and Maximum Drawdown (MDD). Empirical results indicate that LLM guidance improves both return and risk metrics relative to standard RL.",
-      "url": "https://doi.org/10.1109/fllm67465.2025.11390898",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "2025 3rd International Conference on Foundation and Large Language Models (FLLM)",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Reinforcement Learning",
-        "Volatility & Risk",
-        "Trading & Execution",
-        "Derivatives & Options"
-      ],
-      "published": "2025-11-25",
-      "featured": false,
-      "fingerprint": "f977b27063d3721b"
-    },
-    {
-      "title": "Your AI, Not Your View: The Bias of LLMs in Investment Analysis",
-      "authors": [
-        "Hoyoung Lee",
-        "Junhyuk Seo",
-        "Suhwan Park",
-        "Junhyeong Lee",
-        "Wonbin Ahn",
-        "Chanyeol Choi",
-        "Alejandro Lopez-Lira",
-        "Yongjae Lee"
-      ],
-      "abstract": "In finance, Large Language Models (LLMs) face frequent knowledge conflicts arising from discrepancies between their pre-trained parametric knowledge and real-time market data. These conflicts are especially problematic in real-world investment services, where a model's inherent biases can misalign with institutional objectives, leading to unreliable recommendations. Despite this risk, the intrinsic investment biases of LLMs remain underexplored. We propose an experimental framework to investigate emergent behaviors in such conflict scenarios, offering a quantitative analysis of bias in LLM-based investment analysis. Using hypothetical scenarios with balanced and imbalanced arguments, we extract the latent biases of models and measure their persistence. Our analysis, centered on sector, size, and momentum, reveals distinct, model-specific biases. Across most models, a tendency to prefer technology stocks, large-cap stocks, and contrarian strategies is observed. These foundational biases often escalate into confirmation bias, causing models to cling to initial judgments even when faced with increasing counter-evidence. A public leaderboard benchmarking bias across a broader set of models is available at https://linqalpha.com/leaderboard.",
-      "url": "https://doi.org/10.1145/3768292.3770375",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the 6th ACM International Conference on AI in Finance",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI"
-      ],
-      "published": "2025-11-15",
-      "featured": false,
-      "fingerprint": "bd54c78fafd14fc8"
-    },
-    {
-      "title": "Large Language Model Agents for Investment Management: Foundations, Benchmarks, and Research Frontiers",
-      "authors": [
-        "Preetha Saha",
-        "Jingrao Lyu",
-        "Arnav Saxena",
-        "Tianjiao Zhao",
-        "Dhagash Mehta"
-      ],
-      "abstract": "Recent advances in Large Language Models (LLMs) have triggered a new wave of intelligent financial agents capable of complex reasoning, tool use, and autonomous decision-making. This survey presents a comprehensive review of LLM-based agents in the context of investment and trading, focusing on applications such as portfolio optimization, risk management, information retrieval, and automated strategy generation. We systematically categorize the literature by use case and architectural innovations including multi-agent collaborations, reflection mechanisms, and tool-augmented pipelines. Additionally, we review emerging evaluation frameworks and benchmark datasets tailored to finance-specific agent tasks. The survey identifies current trends, technical limitations, and open challenges related to robustness, explainability, and real-world deployment. We conclude with emerging directions for building more capable, adaptive, and trustworthy financial AI agents aligned with the demands of modern investment ecosystems.",
-      "url": "https://doi.org/10.1145/3768292",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": null,
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Portfolio & Allocation",
-        "Volatility & Risk"
-      ],
-      "published": "2025-11-15",
-      "featured": false,
-      "fingerprint": "aa39a6df3ef12b1f"
-    },
-    {
-      "title": "MarketSenseAI 2.0: Enhancing Stock Analysis through LLM Agents",
-      "authors": [
-        "George Fatouros",
-        "Kostas Metaxas",
-        "John Soldatos",
-        "Manos Karathanassis"
-      ],
-      "abstract": "MarketSenseAI is a novel framework for holistic stock analysis which leverages Large Language Models (LLMs) to process financial news, historical prices, company fundamentals and the macroeconomic environment to support decision making in stock analysis and selection. In this paper, we present the latest advancements on MarketSenseAI, driven by rapid technological expansion in LLMs. Through a novel architecture combining Retrieval-Augmented Generation and LLM agents, the framework processes SEC filings and earnings calls, while enriching macroeconomic analysis through systematic processing of diverse institutional reports. We demonstrate a significant improvement in fundamental analysis accuracy over the previous version. Empirical evaluation on S&P 100 stocks over two years (2023-2024) shows MarketSenseAI achieving cumulative returns of 125.9% compared to the index return of 73.5%, while maintaining comparable risk profiles. Further validation on S&P 500 stocks during 2024 demonstrates the framework's scalability, delivering a 33.8% higher Sortino ratio than the market. This work marks a significant advancement in applying LLM technology to financial analysis, offering insights into the robustness of LLM-driven investment strategies.",
-      "url": "https://doi.org/10.1109/icdmw69685.2025.00105",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "2025 IEEE International Conference on Data Mining Workshops (ICDMW)",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Macro & Forecasting"
-      ],
-      "published": "2025-11-12",
-      "featured": false,
-      "fingerprint": "efe5dd1f15d6932b"
-    },
-    {
       "title": "Generative AI and Finance",
       "authors": [
         "Andrea L. Eisfeldt",
@@ -906,31 +794,6 @@
       "fingerprint": "0207e46794b2397e"
     },
     {
-      "title": "ChatGPT in Systematic Investing: Enhancing Risk-Adjusted Returns with LLMs",
-      "authors": [
-        "Nikolas Anic",
-        "Andrea Barbon",
-        "Ralf Seiz",
-        "Carlo Zarattini"
-      ],
-      "abstract": "This paper investigates whether large language models (LLMs) can improve cross-sectional momentum strategies by extracting predictive signals from firm-specific news. We combine daily U.S. equity returns for S&P 500 constituents with high-frequency news data and use prompt-engineered queries to ChatGPT that inform the model when a stock is about to enter a momentum portfolio. The LLM evaluates whether recent news supports a continuation of past returns, producing scores that condition both stock selection and portfolio weights. An LLM-enhanced momentum strategy outperforms a standard long-only momentum benchmark, delivering higher Sharpe and Sortino ratios both in-sample and in a truly out-of-sample period after the model's pre-training cut-off. These gains are robust to transaction costs, prompt design, and portfolio constraints, and are strongest for concentrated, high-conviction portfolios. The results suggest that LLMs can serve as effective real-time interpreters of financial news, adding incremental value to established factor-based investment strategies.",
-      "url": "https://arxiv.org/abs/2510.26228v1",
-      "pdf_url": "https://arxiv.org/pdf/2510.26228v1",
-      "source": "arxiv",
-      "venue": "arXiv preprint",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Portfolio & Allocation",
-        "Factor Investing",
-        "Trading & Execution"
-      ],
-      "published": "2025-10-01",
-      "featured": false,
-      "fingerprint": "d8e4bbc1ec0e6442"
-    },
-    {
       "title": "Uncovering Representation Bias for Investment Decisions in Open-Source Large Language Models",
       "authors": [
         "Fabrizio Dimino",
@@ -953,30 +816,6 @@
       "published": "2025-10-01",
       "featured": false,
       "fingerprint": "f0007abad152144d"
-    },
-    {
-      "title": "Can Large Language Models beat wall street? Evaluating GPT-4's impact on financial decision-making with MarketSenseAI",
-      "authors": [
-        "George Fatouros",
-        "Kostas Metaxas",
-        "John Soldatos",
-        "Dimosthenis Kyriazis"
-      ],
-      "abstract": "This paper introduces MarketSenseAI, an innovative framework leveraging GPT-4's advanced reasoning for selecting stocks in financial markets. By integrating Chain of Thought and In-Context Learning, MarketSenseAI analyzes diverse data sources, including market trends, news, fundamentals, and macroeconomic factors, to emulate expert investment decision-making. The development, implementation, and validation of the framework are elaborately discussed, underscoring its capability to generate actionable and interpretable investment signals. A notable feature of this work is employing GPT-4 both as a predictive mechanism and signal evaluator, revealing the significant impact of the AI-generated explanations on signal accuracy, reliability, and acceptance. Through empirical testing on the competitive S&P 100 stocks over a 15-month period, MarketSenseAI demonstrated exceptional performance, delivering excess alpha of 10–30% and achieving a cumulative return of up to 72% over the period, while maintaining a risk profile comparable to the broader market. Our findings highlight the transformative potential of Large Language Models in financial decision-making, marking a significant leap in integrating generative AI into financial analytics and investment strategies.",
-      "url": "https://doi.org/10.1007/s00521-024-10613-4",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Neural Computing and Applications",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Factor Investing",
-        "Macro & Forecasting"
-      ],
-      "published": "2025-10-01",
-      "featured": false,
-      "fingerprint": "853bbe519b3ba4a1"
     },
     {
       "title": "FinPos: A Position-Aware Trading Agent System for Real Financial Markets",
@@ -1047,49 +886,6 @@
       "fingerprint": "5967affcaebc4f21"
     },
     {
-      "title": "Can Large Language Models Effectively Process and Execute Financial Trading Instructions?",
-      "authors": [
-        "Yu Kang",
-        "Ge Wang",
-        "Xin Yang",
-        "Yuda Wang",
-        "Mingwen Liu"
-      ],
-      "abstract": "The development of Large Language Models (LLMs) has created transformative opportunities for the financial industry, especially in the area of financial trading. However, how to integrate LLMs with trading systems has become a challenge. To address this problem, we propose an intelligent trade order recognition pipeline that enables the conversion of trade orders into a standard format in trade execution. The system improves the ability of human traders to interact with trading platforms while addressing the problem of misinformation acquisition in trade execution. In addition, we have created a trade order dataset of 500 pieces of data to simulate real-world trading scenarios. Moreover, we designed several metrics to provide a comprehensive assessment of dataset reliability and the generative power of big models in finance by experimenting with five state-of-the-art LLMs on our dataset. The results indicate that while LLMs demonstrate high generation rates (87.50% to 98.33%) and perfect follow-up rates, they face significant challenges in accuracy (5% to 10%) and completeness, with high missing rates (14.29% to 67.29%). In addition, LLMs tend to over-interrogate, suggesting that large models tend to collect more information, carrying certain challenges for information security.",
-      "url": "https://doi.org/10.1631/fitee.2500285",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Frontiers of Information Technology &amp; Electronic Engineering",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Trading & Execution"
-      ],
-      "published": "2025-10-01",
-      "featured": false,
-      "fingerprint": "da36be45e168cd00"
-    },
-    {
-      "title": "Outperforming equal weighting",
-      "authors": [
-        "Antonello Cirulli",
-        "Patrick S. Walker"
-      ],
-      "abstract": "The equally weighted portfolio has been shown to outperform many more sophisticated ones, despite not requiring any computations. We demonstrate that the equally weighted stock portfolio can be consistently enhanced by avoiding negative exposure to some of the most prominent equity factors. This can be achieved while preserving the simplicity of the portfolio construction process. Specifically, we introduce three simple long-only portfolios that rely solely on historical return data. These portfolios are slight conceptual deviations from the equally weighted strategy, yet they consistently generate significantly higher risk-adjusted returns in realistic out-of-sample assessments. We provide the most straightforward examples to challenge the notion that outperforming the equally weighted strategy is difficult.",
-      "url": "https://doi.org/10.1016/j.econlet.2025.112552",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Economics Letters",
-      "categories": [],
-      "themes": [
-        "Portfolio & Allocation",
-        "Factor Investing"
-      ],
-      "published": "2025-09-01",
-      "featured": false,
-      "fingerprint": "d573cd09a4626626"
-    },
-    {
       "title": "Toward profitable energy futures trading strategies using reinforcement learning incorporating disagreement and connectedness methods enabled by large language models",
       "authors": [
         "Tianxiang Cui",
@@ -1120,29 +916,6 @@
       "published": "2025-09-01",
       "featured": false,
       "fingerprint": "69c3348b06ec4610"
-    },
-    {
-      "title": "Large Language Models in equity markets: applications, techniques, and insights",
-      "authors": [
-        "Aakanksha Jadhav",
-        "Vishal Mirza"
-      ],
-      "abstract": "Recent breakthroughs in Large Language Models (LLMs) have the potential to disrupt equity investing by enabling sophisticated data analysis, market prediction, and automated trading. This paper presents a comprehensive review of 84 research studies conducted between 2022 and early 2025, synthesizing the state of LLM applications in stock investing. We provide a dual-layered categorization: first, by financial applications such as stock price forecasting, sentiment analysis, portfolio management, and algorithmic trading; second, by technical methodologies, including prompting, fine-tuning, multi-agent frameworks, reinforcement learning, and custom architectures. Additionally, we consolidate findings on the datasets used, ranging from financial statements to multimodal data (news, market trends, earnings transcripts, social media), and systematically compare general-purpose vs. finance-specialized LLMs used in research. Our analysis identifies key research trends, commonalities, and divergences across studies, evaluating both their empirical contributions and methodological innovations. We highlight the strengths of existing research, such as improved sentiment extraction and the use of reinforcement learning to factor market feedback, alongside critical gaps in scalability, interpretability, and real-world validation. Finally, we propose directions for future research, emphasizing hybrid modeling approaches, architectures that factor reasoning and large context windows, and robust evaluation frameworks to advance AI-driven financial strategies. By mapping the intersection of LLMs and equity markets, this review provides a foundation and roadmap for future research and practical implementation in the financial sector.",
-      "url": "https://doi.org/10.3389/frai.2025.1608365",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Frontiers in Artificial Intelligence",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Reinforcement Learning",
-        "NLP & Sentiment",
-        "Portfolio & Allocation",
-        "Factor Investing"
-      ],
-      "published": "2025-08-27",
-      "featured": false,
-      "fingerprint": "c795adada5e98458"
     },
     {
       "title": "Enhancing portfolio optimization with multi-LLM sentiment aggregation: A Black-Litterman integration approach",
@@ -1191,6 +964,29 @@
       "fingerprint": "9bf6ae4bf6b11fe0"
     },
     {
+      "title": "Language Model Guided Reinforcement Learning in Quantitative Trading",
+      "authors": [
+        "Adam Darmanin",
+        "Vince Vella"
+      ],
+      "abstract": "Algorithmic trading requires short-term tactical decisions consistent with long-term financial objectives. Reinforcement Learning (RL) has been applied to such problems, but adoption is limited by myopic behaviour and opaque policies. Large Language Models (LLMs) offer complementary strategic reasoning and multi-modal signal interpretation when guided by well-structured prompts. This paper proposes a hybrid framework in which LLMs generate high-level trading strategies to guide RL agents. We evaluate (i) the economic rationale of LLM-generated strategies through expert review, and (ii) the performance of LLM-guided agents against unguided RL baselines using Sharpe Ratio (SR) and Maximum Drawdown (MDD). Empirical results indicate that LLM guidance improves both return and risk metrics relative to standard RL.",
+      "url": "https://arxiv.org/abs/2508.02366",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "2025 3rd International Conference on Foundation and Large Language Models (FLLM)",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Reinforcement Learning",
+        "Volatility & Risk",
+        "Trading & Execution",
+        "Derivatives & Options"
+      ],
+      "published": "2025-08-01",
+      "featured": false,
+      "fingerprint": "f977b27063d3721b"
+    },
+    {
       "title": "Generative Artificial Intelligence in Finance: A Systematic Litera‑ ture Review and a Research Agenda",
       "authors": [
         "Yunfei Chen",
@@ -1214,24 +1010,29 @@
       "fingerprint": "5816761ee26a33cb"
     },
     {
-      "title": "AI-Powered Trading, Algorithmic Collusion, and Price Efficiency",
+      "title": "Your AI, Not Your View: The Bias of LLMs in Investment Analysis",
       "authors": [
-        "Winston Wei Dou",
-        "Itay Goldstein",
-        "Yan Ji"
+        "Hoyoung Lee",
+        "Junhyuk Seo",
+        "Suhwan Park",
+        "Junhyeong Lee",
+        "Wonbin Ahn",
+        "Chanyeol Choi",
+        "Alejandro Lopez-Lira",
+        "Yongjae Lee"
       ],
-      "abstract": "The integration of algorithmic trading with reinforcement learning, termed AI-powered trading, is transforming financial markets. Alongside the benefits, it raises concerns for collusion. This study first develops a model to explore the possibility of collusion among informed speculators in a theoretical environment. We then conduct simulation experiments, replacing the speculators in the model with informed AI speculators who trade based on reinforcement-learning algorithms. We show that they autonomously sustain collusive supra-competitive profits without agreement, communication, or intent. Such collusion undermines competition and market efficiency. We demonstrate that two separate mechanisms are underlying this collusion and characterize when each one arises.",
-      "url": "https://doi.org/10.3386/w34054",
+      "abstract": "In finance, Large Language Models (LLMs) face frequent knowledge conflicts arising from discrepancies between their pre-trained parametric knowledge and real-time market data. These conflicts are especially problematic in real-world investment services, where a model's inherent biases can misalign with institutional objectives, leading to unreliable recommendations. Despite this risk, the intrinsic investment biases of LLMs remain underexplored. We propose an experimental framework to investigate emergent behaviors in such conflict scenarios, offering a quantitative analysis of bias in LLM-based investment analysis. Using hypothetical scenarios with balanced and imbalanced arguments, we extract the latent biases of models and measure their persistence. Our analysis, centered on sector, size, and momentum, reveals distinct, model-specific biases. Across most models, a tendency to prefer technology stocks, large-cap stocks, and contrarian strategies is observed. These foundational biases often escalate into confirmation bias, causing models to cling to initial judgments even when faced with increasing counter-evidence. A public leaderboard benchmarking bias across a broader set of models is available at https://linqalpha.com/leaderboard.",
+      "url": "https://arxiv.org/abs/2507.20957",
       "pdf_url": null,
-      "source": "journal",
-      "venue": null,
+      "source": "arxiv",
+      "venue": "International Conference on AI in Finance",
       "categories": [],
       "themes": [
-        "Reinforcement Learning"
+        "LLMs & Generative AI"
       ],
       "published": "2025-07-01",
       "featured": false,
-      "fingerprint": "4f1c7daa3fe0686e"
+      "fingerprint": "bd54c78fafd14fc8"
     },
     {
       "title": "Integrating Large Language Models in Financial Investments and Market Analysis: A Survey",
@@ -1299,25 +1100,6 @@
       "fingerprint": "d64dc6421f14e2ea"
     },
     {
-      "title": "Designing Heterogeneous LLM Agents for Financial Sentiment Analysis",
-      "authors": [
-        "Frank Xing"
-      ],
-      "abstract": "Large language models (LLMs) have drastically changed the possible ways to design intelligent systems, shifting the focus from massive data acquisition and new model training to human alignment and strategic elicitation of the full potential of existing pre-trained models. This paradigm shift, however, is not fully realized in financial sentiment analysis (FSA) due to the discriminative nature of this task and a lack of prescriptive knowledge of how to leverage existing generative models in such a context. This study investigates the effectiveness of the new paradigm, that is, using LLMs without fine-tuning for FSA. Rooted in Minsky’s theory of mind and emotions, a design framework with heterogeneous LLM agents is proposed and applied to FSA. The framework instantiates specialized agents using prior guiding knowledge from both linguistics and finance. Then, a summative agent reasons on the aggregated agent discussions. Comprehensive evaluations using six FSA datasets show that the framework yields better accuracies compared to many alternative multi-LLM agent settings, especially when the discussion contents are substantial. This study contributes to the design foundations and paves new avenues for LLMs-based FSA and potentially other tasks. Implications for business and management have also been discussed.",
-      "url": "https://doi.org/10.1145/3688399",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "ACM Transactions on Management Information Systems",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment"
-      ],
-      "published": "2025-03-31",
-      "featured": false,
-      "fingerprint": "5c390193f24e2c66"
-    },
-    {
       "title": "Enhancing Automated Trading with Sentiment Analysis: Leveraging Large Language Models for Stock Market Predictions",
       "authors": [
         "Md Tarake Siddique",
@@ -1355,7 +1137,7 @@
         "Wu Zhu"
       ],
       "abstract": "We study whether ChatGPT and DeepSeek can extract information from the Wall Street Journal to predict the stock market and the macroeconomy. We find that ChatGPT has predictive power. DeepSeek underperforms ChatGPT, which is trained more extensively in English. Other large language models also underperform. Consistent with financial theories, the predictability is driven by investors' underreaction to positive news, especially during periods of economic downturn and high information uncertainty. Negative news correlates with returns but lacks predictive value. At present, ChatGPT appears to be the only model capable of capturing economic news that links to the market risk premium.",
-      "url": "https://arxiv.org/abs/2502.10008v1",
+      "url": "https://arxiv.org/abs/2502.10008",
       "pdf_url": "https://arxiv.org/pdf/2502.10008v1",
       "source": "arxiv",
       "venue": "arXiv preprint",
@@ -1368,6 +1150,29 @@
       "published": "2025-02-01",
       "featured": false,
       "fingerprint": "441497e2336ead11"
+    },
+    {
+      "title": "MarketSenseAI 2.0: Enhancing Stock Analysis through LLM Agents",
+      "authors": [
+        "George Fatouros",
+        "Kostas Metaxas",
+        "John Soldatos",
+        "Manos Karathanassis"
+      ],
+      "abstract": "MarketSenseAI is a novel framework for holistic stock analysis which leverages Large Language Models (LLMs) to process financial news, historical prices, company fundamentals and the macroeconomic environment to support decision making in stock analysis and selection. In this paper, we present the latest advancements on MarketSenseAI, driven by rapid technological expansion in LLMs. Through a novel architecture combining Retrieval-Augmented Generation and LLM agents, the framework processes SEC filings and earnings calls, while enriching macroeconomic analysis through systematic processing of diverse institutional reports. We demonstrate a significant improvement in fundamental analysis accuracy over the previous version. Empirical evaluation on S&P 100 stocks over two years (2023-2024) shows MarketSenseAI achieving cumulative returns of 125.9% compared to the index return of 73.5%, while maintaining comparable risk profiles. Further validation on S&P 500 stocks during 2024 demonstrates the framework's scalability, delivering a 33.8% higher Sortino ratio than the market. This work marks a significant advancement in applying LLM technology to financial analysis, offering insights into the robustness of LLM-driven investment strategies.",
+      "url": "https://arxiv.org/abs/2502.00415",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "2025 IEEE International Conference on Data Mining Workshops (ICDMW)",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Macro & Forecasting"
+      ],
+      "published": "2025-02-01",
+      "featured": false,
+      "fingerprint": "efe5dd1f15d6932b"
     },
     {
       "title": "LLM Agents Do Not Replicate Human Market Traders: Evidence from Experimental Finance",
@@ -1417,6 +1222,31 @@
       "published": "2025-01-31",
       "featured": false,
       "fingerprint": "cb4a9e83d6d87a3c"
+    },
+    {
+      "title": "ChatGPT in Systematic Investing: Enhancing Risk-Adjusted Returns with LLMs",
+      "authors": [
+        "Nikolas Anic",
+        "Andrea Barbon",
+        "Ralf Seiz",
+        "Carlo Zarattini"
+      ],
+      "abstract": "This paper investigates whether large language models (LLMs) can improve cross-sectional momentum strategies by extracting predictive signals from firm-specific news. We combine daily U.S. equity returns for S&P 500 constituents with high-frequency news data and use prompt-engineered queries to ChatGPT that inform the model when a stock is about to enter a momentum portfolio. The LLM evaluates whether recent news supports a continuation of past returns, producing scores that condition both stock selection and portfolio weights. An LLM-enhanced momentum strategy outperforms a standard long-only momentum benchmark, delivering higher Sharpe and Sortino ratios both in-sample and in a truly out-of-sample period after the model's pre-training cut-off. These gains are robust to transaction costs, prompt design, and portfolio constraints, and are strongest for concentrated, high-conviction portfolios. The results suggest that LLMs can serve as effective real-time interpreters of financial news, adding incremental value to established factor-based investment strategies.",
+      "url": "https://doi.org/10.2139/ssrn.5680782",
+      "pdf_url": "https://arxiv.org/pdf/2510.26228v1",
+      "source": "ssrn",
+      "venue": "SSRN",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Portfolio & Allocation",
+        "Factor Investing",
+        "Trading & Execution"
+      ],
+      "published": "2025-01-01",
+      "featured": false,
+      "fingerprint": "d8e4bbc1ec0e6442"
     },
     {
       "title": "AI in Finance and Information Overload",
@@ -1576,30 +1406,6 @@
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "ca1c969e5a99fb88"
-    },
-    {
-      "title": "Transformer-based CoVaR: Systemic Risk in Textual Information",
-      "authors": [
-        "Junyu Chen",
-        "Tom Boot",
-        "Lingwei Kong",
-        "Weining Wang"
-      ],
-      "abstract": "Conditional Value-at-Risk (CoVaR) quantifies systemic financial risk by measuring the loss quantile of one asset, conditional on another asset experiencing distress. We develop a Transformer-based methodology that integrates financial news articles directly with market data to improve CoVaR estimates. Unlike approaches that use predefined sentiment scores, our method incorporates raw text embeddings generated by a large language model (LLM). We prove explicit error bounds for our Transformer CoVaR estimator, showing that accurate CoVaR learning is possible even with small datasets. Using U.S. market returns and Reuters news items from 2006–2013, our out-of-sample results show that textual information impacts the CoVaR forecasts. With better predictive performance, we identify a pronounced negative dip during market stress periods across several equity assets when comparing the Transformer-based CoVaR to both the CoVaR without text and the CoVaR using traditional sentiment measures. Our results show that textual data can be used to effectively model systemic risk without requiring prohibitively large data sets.",
-      "url": "https://doi.org/10.24818/ida-cl/2025.57",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": null,
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Volatility & Risk",
-        "Cryptocurrency"
-      ],
-      "published": "2025-01-01",
-      "featured": false,
-      "fingerprint": "fb67443ed42ff5d7"
     },
     {
       "title": "Large Language Models and Futures Price Factors in China",
@@ -1796,30 +1602,27 @@
       "fingerprint": "9acf64142fe98c82"
     },
     {
-      "title": "Automate Strategy Finding with LLM in Quant Investment",
+      "title": "Large Language Models in equity markets: applications, techniques, and insights",
       "authors": [
-        "Zhizhuo Kou",
-        "Holam Yu",
-        "Junyu Luo",
-        "Jingshu Peng",
-        "Lei Chen"
+        "Aakanksha Jadhav",
+        "Vishal Mirza"
       ],
-      "abstract": "Despite significant progress in deep learning for financial trading, existing models often face instability and high uncertainty, hindering their practical application. Leveraging advancements in Large Language Models (LLMs) and multi-agent architectures, we propose a novel framework for quantitative stock investment in portfolio management and alpha mining. Our framework addresses these issues by integrating LLMs to generate diversified alphas and employing a multi-agent approach to dynamically evaluate market conditions. This paper proposes a framework where large language models (LLMs) mine alpha factors from multimodal financial data, ensuring a comprehensive understanding of market dynamics. The first module extracts predictive signals by integrating numerical data, research papers, and visual charts. The second module uses ensemble learning to construct a diverse pool of trading agents with varying risk preferences, enhancing strategy performance through a broader market analysis. In the third module, a dynamic weight-gating mechanism selects and assigns weights to the most relevant agents based on real-time market conditions, enabling the creation of an adaptive and context-aware composite alpha formula. Extensive experiments on the Chinese stock markets demonstrate that this framework significantly outperforms state-of-the-art baselines across multiple financial metrics. The results underscore the efficacy of combining LLM-generated alphas with a multi-agent architecture to achieve superior trading performance and stability.",
-      "url": "https://doi.org/10.18653/v1/2025.findings-emnlp.1005",
+      "abstract": "Recent breakthroughs in Large Language Models (LLMs) have the potential to disrupt equity investing by enabling sophisticated data analysis, market prediction, and automated trading. This paper presents a comprehensive review of 84 research studies conducted between 2022 and early 2025, synthesizing the state of LLM applications in stock investing. We provide a dual-layered categorization: first, by financial applications such as stock price forecasting, sentiment analysis, portfolio management, and algorithmic trading; second, by technical methodologies, including prompting, fine-tuning, multi-agent frameworks, reinforcement learning, and custom architectures. Additionally, we consolidate findings on the datasets used, ranging from financial statements to multimodal data (news, market trends, earnings transcripts, social media), and systematically compare general-purpose vs. finance-specialized LLMs used in research. Our analysis identifies key research trends, commonalities, and divergences across studies, evaluating both their empirical contributions and methodological innovations. We highlight the strengths of existing research, such as improved sentiment extraction and the use of reinforcement learning to factor market feedback, alongside critical gaps in scalability, interpretability, and real-world validation. Finally, we propose directions for future research, emphasizing hybrid modeling approaches, architectures that factor reasoning and large context windows, and robust evaluation frameworks to advance AI-driven financial strategies. By mapping the intersection of LLMs and equity markets, this review provides a foundation and roadmap for future research and practical implementation in the financial sector.",
+      "url": "https://doi.org/10.2139/ssrn.5198854",
       "pdf_url": null,
-      "source": "journal",
-      "venue": "Findings of the Association for Computational Linguistics: EMNLP 2025",
+      "source": "ssrn",
+      "venue": "SSRN",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
-        "Deep Learning",
+        "Reinforcement Learning",
+        "NLP & Sentiment",
         "Portfolio & Allocation",
-        "Factor Investing",
-        "Volatility & Risk"
+        "Factor Investing"
       ],
       "published": "2025-01-01",
       "featured": false,
-      "fingerprint": "916cf35d24b99394"
+      "fingerprint": "c795adada5e98458"
     },
     {
       "title": "Can LLM-based Financial Investing Strategies Outperform the Market in Long Run?",
@@ -1896,10 +1699,10 @@
         "Ashesh Rambachan"
       ],
       "abstract": "Large language models (LLMs) enable researchers to analyze text at unprecedented scale and minimal cost. Researchers can now revisit old questions and tackle novel ones with rich data. We provide an econometric framework for realizing this potential in two empirical uses. For prediction problems – forecasting outcomes from text – valid conclusions require \"no training leakage\" between the LLM's training data and the researcher's sample, which can be enforced through careful model choice and research design. For estimation problems – automating the measurement of economic concepts for downstream analysis – valid downstream inference requires combining LLM outputs with a small validation sample to deliver consistent and precise estimates. Absent a validation sample, researchers cannot assess possible errors in LLM outputs, and consequently seemingly innocuous choices (which model, which prompt) can produce dramatically different parameter estimates. When used appropriately, LLMs are powerful tools that can expand the frontier of empirical economics.",
-      "url": "https://doi.org/10.3386/w33344",
+      "url": "https://doi.org/10.2139/ssrn.5094968",
       "pdf_url": null,
-      "source": "journal",
-      "venue": null,
+      "source": "ssrn",
+      "venue": "SSRN Electronic Journal",
       "categories": [],
       "themes": [
         "LLMs & Generative AI"
@@ -1934,6 +1737,27 @@
       "fingerprint": "28921bcd867b5592"
     },
     {
+      "title": "(Generative) AI in Financial Economics",
+      "authors": [
+        "Hongwei Mo",
+        "Shumiao Ouyang"
+      ],
+      "abstract": "This review article synthesizes the burgeoning literature on the intersection of (generative) artificial intelligence (AI) and finance. We organize our review around six key areas: (1) the emergent role of generative AI, especially large language models (LLMs), as analytic tools, external shocks to the economy, and autonomous economic agents; (2) corporate finance, focusing on how firms respond to and benefit from AI; (3) asset pricing, examining how AI brings novel methodologies for return predictability, stochastic discount factor estimation, and investment; (4) household finance, investigating how AI promotes financial inclusion and improves financial services; (5) labor economics, analyzing AI's impact on labor market dynamics; and (6) the risks and challenges associated with AI in financial markets. We conclude by identifying unanswered questions and discussing promising avenues for future research.",
+      "url": "https://doi.org/10.2139/ssrn.5287110",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN Electronic Journal",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Factor Investing",
+        "Return Forecasting"
+      ],
+      "published": "2025-01-01",
+      "featured": false,
+      "fingerprint": "b973ce0711e18c95"
+    },
+    {
       "title": "Re(Visiting) Time Series Foundation Models in Finance",
       "authors": [
         "Eghbal Rahimikia",
@@ -1954,6 +1778,30 @@
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "b008fee5d3cfbd18"
+    },
+    {
+      "title": "Large Language Model Agents for Investment Management: Foundations, Benchmarks, and Research Frontiers",
+      "authors": [
+        "Preetha Saha",
+        "Jingrao Lyu",
+        "Arnav Saxena",
+        "Tianjiao Zhao",
+        "Dhagash Mehta"
+      ],
+      "abstract": "Recent advances in Large Language Models (LLMs) have triggered a new wave of intelligent financial agents capable of complex reasoning, tool use, and autonomous decision-making. This survey presents a comprehensive review of LLM-based agents in the context of investment and trading, focusing on applications such as portfolio optimization, risk management, information retrieval, and automated strategy generation. We systematically categorize the literature by use case and architectural innovations including multi-agent collaborations, reflection mechanisms, and tool-augmented pipelines. Additionally, we review emerging evaluation frameworks and benchmark datasets tailored to finance-specific agent tasks. The survey identifies current trends, technical limitations, and open challenges related to robustness, explainability, and real-world deployment. We conclude with emerging directions for building more capable, adaptive, and trustworthy financial AI agents aligned with the demands of modern investment ecosystems.",
+      "url": "https://doi.org/10.2139/ssrn.5447274",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation",
+        "Volatility & Risk"
+      ],
+      "published": "2025-01-01",
+      "featured": false,
+      "fingerprint": "aa39a6df3ef12b1f"
     },
     {
       "title": "An Adaptive Multi-Agent Bitcoin Trading System",
@@ -2073,6 +1921,26 @@
       "fingerprint": "2372c8a721648473"
     },
     {
+      "title": "Complex forecasting and investment strategy optimization via chain-of-thought of large language models",
+      "authors": [
+        "Meiqun Yin",
+        "Mengzhu Guo"
+      ],
+      "abstract": "This paper pioneers the application of chain-of-thought (CoT) prompting in large language models (LLMs) for financial forecasting and portfolio optimization. Leveraging anonymized financial statements from 608 Chinese A-share listed companies (2010 – 2023), we benchmark ChatGPT 4.0 against human analysts in earnings direction prediction. The CoT-enhanced model achieved superior accuracy (64.35% vs. 58.37%) and generated a 17.14% alpha with a Sharpe ratio of 1.5959 in backtests, demonstrating LLMs ' capacity to automate financial reasoning while reducing reliance on specialized expertise. Our findings bridge AI and quantitative finance by validating LLMs ' cross-domain adaptability using purely numerical data, offering practical implications for AI-driven investment decision systems.",
+      "url": "https://doi.org/10.2139/ssrn.5186607",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation"
+      ],
+      "published": "2025-01-01",
+      "featured": false,
+      "fingerprint": "308c6aa6cd9cfbc7"
+    },
+    {
       "title": "Beyond the Global Giant: Comparing ChatGPT and Three Chinese Large Language Models in Predicting Stock Returns from News Headlines",
       "authors": [
         "Lisheng Yu",
@@ -2143,10 +2011,10 @@
         "Hua Wang"
       ],
       "abstract": "This study conducts a comparative analysis of market prediction accuracy between Large Language Model (LLM)-based systems and human expertise within the financial analysis domain. Leveraging Quantum, an advanced LLM specialized for financial forecasting, we evaluate its predictive performance against human analysts and general-purpose LLMs, including GPT-3, GPT-4, FinGPT, and FinBERT. Employing a dataset of historical financial data, news headlines, and social media sentiment, we systematically assess predictive accuracy, response efficiency, and interpretability across models. The integration of sentiment analysis and machine learning further strengthens prediction reliability. Results reveal that Quantum's specialized model demonstrates superior accuracy and speed in financial forecasting compared to human predictions and generalized LLMs, particularly in fast-moving, data-rich contexts. Nevertheless, limitations in nuanced contextual understanding and adaptability persist, highlighting the enduring value of human expertise. This research reinforces the potential of LLMs as robust tools for financial decision-making while identifying key areas for refinement to enhance synergy with human analytical insights.",
-      "url": "https://doi.org/10.1109/dsit61374.2024.10881868",
+      "url": "https://doi.org/10.1109/DSIT61374.2024.10881868",
       "pdf_url": null,
       "source": "journal",
-      "venue": "2024 7th International Conference on Data Science and Information Technology (DSIT)",
+      "venue": "International Conference on Data Science and Information Technology",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
@@ -2196,6 +2064,29 @@
       "published": "2024-12-01",
       "featured": false,
       "fingerprint": "7a74e551e45032fe"
+    },
+    {
+      "title": "Can Large Language Models Effectively Process and Execute Financial Trading Instructions?",
+      "authors": [
+        "Yu Kang",
+        "Ge Wang",
+        "Xin Yang",
+        "Yuda Wang",
+        "Mingwen Liu"
+      ],
+      "abstract": "The development of Large Language Models (LLMs) has created transformative opportunities for the financial industry, especially in the area of financial trading. However, how to integrate LLMs with trading systems has become a challenge. To address this problem, we propose an intelligent trade order recognition pipeline that enables the conversion of trade orders into a standard format in trade execution. The system improves the ability of human traders to interact with trading platforms while addressing the problem of misinformation acquisition in trade execution. In addition, we have created a trade order dataset of 500 pieces of data to simulate real-world trading scenarios. Moreover, we designed several metrics to provide a comprehensive assessment of dataset reliability and the generative power of big models in finance by experimenting with five state-of-the-art LLMs on our dataset. The results indicate that while LLMs demonstrate high generation rates (87.50% to 98.33%) and perfect follow-up rates, they face significant challenges in accuracy (5% to 10%) and completeness, with high missing rates (14.29% to 67.29%). In addition, LLMs tend to over-interrogate, suggesting that large models tend to collect more information, carrying certain challenges for information security.",
+      "url": "https://arxiv.org/abs/2412.04856",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "arXiv.org",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Trading & Execution"
+      ],
+      "published": "2024-12-01",
+      "featured": false,
+      "fingerprint": "da36be45e168cd00"
     },
     {
       "title": "FinGPT: Enhancing Sentiment-Based Stock Movement Prediction with Dissemination-Aware and Context-Enriched LLMs",
@@ -2249,29 +2140,27 @@
       "fingerprint": "c0c3d96feb3f2edb"
     },
     {
-      "title": "ECC Analyzer: Extract Trading Signal from Earnings Conference Calls using Large Language Model for Stock Volatility Prediction",
+      "title": "TradExpert: Revolutionizing Trading with Mixture of Expert LLMs",
       "authors": [
-        "Yupeng Cao",
-        "Zhi Chen",
-        "Qingyun Pei",
-        "Nathan Jinseok Lee",
-        "K.P. Subbalakshmi",
-        "Papa Momar Ndiaye"
+        "Qianggang Ding",
+        "Haochen Shi",
+        "Jiadong Guo",
+        "Bang Liu"
       ],
-      "abstract": "In the realm of financial analytics, leveraging unstructured data, such as earnings conference calls (ECCs), to forecast stock volatility is a critical challenge that has attracted both academics and investors. While previous studies have used multimodal deep learning-based models to obtain a general view of ECCs for volatility predicting, they often fail to capture detailed, complex information. Our research introduces a novel framework: ECC Analyzer, which utilizes large language models (LLMs) to extract richer, more predictive content from ECCs to aid the model's prediction performance. We use the pre-trained large models to extract textual and audio features from ECCs and implement a hierarchical information extraction strategy to extract more fine-grained information. This strategy first extracts paragraph-level general information by summarizing the text and then extracts fine-grained focus sentences using Retrieval-Augmented Generation (RAG). These features are then fused through multimodal feature fusion to perform volatility prediction. Experimental results demonstrate that our model outperforms traditional analytical benchmarks, confirming the effectiveness of advanced LLM techniques in financial analysis.",
-      "url": "https://doi.org/10.1145/3677052.3698689",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the 5th ACM International Conference on AI in Finance",
+      "abstract": "The integration of Artificial Intelligence (AI) in the financial domain has opened new avenues for quantitative trading, particularly through the use of Large Language Models (LLMs). However, the challenge of effectively synthesizing insights from diverse data sources and integrating structured and unstructured data persists. This paper presents TradExpert, a novel framework that employs a mix of experts (MoE) approach, using four specialized LLMs, each analyzing distinct sources of financial data, including news articles, market data, alpha factors, and fundamental data. The insights of these expert LLMs are further synthesized by a General Expert LLM to make a final prediction or decision. With specific prompts, TradExpert can be switched between the prediction mode and the ranking mode for stock movement prediction and quantitative stock trading, respectively. In addition to existing benchmarks, we also release a large-scale financial dataset to comprehensively evaluate TradExpert's effectiveness. Our experimental results demonstrate TradExpert's superior performance across all trading scenarios.",
+      "url": "https://arxiv.org/abs/2411.00782",
+      "pdf_url": "https://arxiv.org/pdf/2411.00782v2",
+      "source": "arxiv",
+      "venue": "arXiv.org",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
-        "Deep Learning",
-        "Volatility & Risk"
+        "NLP & Sentiment",
+        "Factor Investing"
       ],
-      "published": "2024-11-14",
+      "published": "2024-11-01",
       "featured": false,
-      "fingerprint": "98e9e62716cdb076"
+      "fingerprint": "7247fec5ac63914e"
     },
     {
       "title": "AI in Investment Analysis: LLMs for Equity Stock Ratings",
@@ -2282,10 +2171,10 @@
         "Tucker Balch"
       ],
       "abstract": "Investment Analysis is a cornerstone of the Financial Services industry. The rapid integration of advanced machine learning techniques, particularly Large Language Models (LLMs), offers opportunities to enhance the equity stock rating process. This paper explores the application of LLMs to predict stock performance and generate stock ratings by ingesting diverse datasets. Traditional stock rating methods rely heavily on the expertise of financial analysts, and face several challenges such as data overload, inconsistencies in filings, and delayed reactions to market events. Our study addresses these issues by leveraging LLMs to improve the accuracy and consistency of stock ratings. Additionally, we assess the efficacy of using different data modalities with LLMs for the financial domain. We utilize varied datasets comprising fundamental financial, market, and news data from January 2022 to June 2024, along with GPT-4-32k (v0613) (with a training cutoff in Sep. 2021 to prevent information leakage). Our results show that our benchmark method outperforms traditional stock rating methods when assessed by forward returns. Specifically, incorporating financial fundamentals enhances ratings accuracy. While integrating news data improves short-term performance, substituting detailed news summaries with sentiment scores reduces token use without loss of performance. In many cases, omitting news data entirely enhances performance by reducing bias. Our research shows that LLMs can be leveraged to effectively utilize large amounts of multimodal financial data, as showcased by their effectiveness at the stock rating prediction task. Our work provides a reproducible framework for generating consistent and accurate stock ratings, offering a cost-effective and efficient alternative to traditional methods. Future work will extend the analysis to longer time horizons, incorporating more diverse data, and utilizing newer models to enhance detailed investment analysis and reports.",
-      "url": "https://doi.org/10.1145/3677052.3698694",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the 5th ACM International Conference on AI in Finance",
+      "url": "https://arxiv.org/abs/2411.00856",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3677052.3698694",
+      "source": "arxiv",
+      "venue": "International Conference on AI in Finance",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
@@ -2293,32 +2182,9 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "published": "2024-11-14",
-      "featured": false,
-      "fingerprint": "d459359c21d85205"
-    },
-    {
-      "title": "TradExpert: Revolutionizing Trading with Mixture of Expert LLMs",
-      "authors": [
-        "Qianggang Ding",
-        "Haochen Shi",
-        "Jiadong Guo",
-        "Bang Liu"
-      ],
-      "abstract": "The integration of Artificial Intelligence (AI) in the financial domain has opened new avenues for quantitative trading, particularly through the use of Large Language Models (LLMs). However, the challenge of effectively synthesizing insights from diverse data sources and integrating structured and unstructured data persists. This paper presents TradExpert, a novel framework that employs a mix of experts (MoE) approach, using four specialized LLMs, each analyzing distinct sources of financial data, including news articles, market data, alpha factors, and fundamental data. The insights of these expert LLMs are further synthesized by a General Expert LLM to make a final prediction or decision. With specific prompts, TradExpert can be switched between the prediction mode and the ranking mode for stock movement prediction and quantitative stock trading, respectively. In addition to existing benchmarks, we also release a large-scale financial dataset to comprehensively evaluate TradExpert's effectiveness. Our experimental results demonstrate TradExpert's superior performance across all trading scenarios.",
-      "url": "https://arxiv.org/abs/2411.00782v2",
-      "pdf_url": "https://arxiv.org/pdf/2411.00782v2",
-      "source": "arxiv",
-      "venue": "arXiv preprint",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Factor Investing"
-      ],
       "published": "2024-11-01",
       "featured": false,
-      "fingerprint": "7247fec5ac63914e"
+      "fingerprint": "d459359c21d85205"
     },
     {
       "title": "Financial News-Driven LLM Reinforcement Learning for Portfolio Management",
@@ -2363,28 +2229,6 @@
       "fingerprint": "3304af5e0badc945"
     },
     {
-      "title": "From Man vs. Machine to Man + Machine: The art and AI of stock analyses",
-      "authors": [
-        "Sean Cao",
-        "Wei Jiang",
-        "Junbo Wang",
-        "Baozhong Yang"
-      ],
-      "abstract": "An AI analyst trained to digest corporate disclosures, industry trends, and macroeconomic indicators surpasses most analysts in stock return predictions. Nevertheless, humans win \"Man vs. Machine\" when institutional knowledge is crucial, e.g., involving intangible assets and financial distress. AI wins when information is transparent but voluminous. Humans provide significant incremental value in \"Man + Machine\", which also substantially reduces extreme errors. Analysts catch up with machines after \"alternative data\" become available if their employers build AI capabilities. Documented synergies between humans and machines inform how humans can leverage their advantage for better adaptation to the growing AI prowess.",
-      "url": "https://doi.org/10.1016/j.jfineco.2024.103910",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Journal of Financial Economics",
-      "categories": [],
-      "themes": [
-        "Return Forecasting",
-        "Macro & Forecasting"
-      ],
-      "published": "2024-10-01",
-      "featured": false,
-      "fingerprint": "5d49f5adb89fa823"
-    },
-    {
       "title": "A Comprehensive Review of Generative AI in Finance",
       "authors": [
         "David Kuo Chuen Lee",
@@ -2406,6 +2250,32 @@
       "published": "2024-09-20",
       "featured": false,
       "fingerprint": "c89e9f71fa2df268"
+    },
+    {
+      "title": "Automate Strategy Finding with LLM in Quant Investment",
+      "authors": [
+        "Zhizhuo Kou",
+        "Holam Yu",
+        "Junyu Luo",
+        "Jingshu Peng",
+        "Lei Chen"
+      ],
+      "abstract": "Despite significant progress in deep learning for financial trading, existing models often face instability and high uncertainty, hindering their practical application. Leveraging advancements in Large Language Models (LLMs) and multi-agent architectures, we propose a novel framework for quantitative stock investment in portfolio management and alpha mining. Our framework addresses these issues by integrating LLMs to generate diversified alphas and employing a multi-agent approach to dynamically evaluate market conditions. This paper proposes a framework where large language models (LLMs) mine alpha factors from multimodal financial data, ensuring a comprehensive understanding of market dynamics. The first module extracts predictive signals by integrating numerical data, research papers, and visual charts. The second module uses ensemble learning to construct a diverse pool of trading agents with varying risk preferences, enhancing strategy performance through a broader market analysis. In the third module, a dynamic weight-gating mechanism selects and assigns weights to the most relevant agents based on real-time market conditions, enabling the creation of an adaptive and context-aware composite alpha formula. Extensive experiments on the Chinese stock markets demonstrate that this framework significantly outperforms state-of-the-art baselines across multiple financial metrics. The results underscore the efficacy of combining LLM-generated alphas with a multi-agent architecture to achieve superior trading performance and stability.",
+      "url": "https://arxiv.org/abs/2409.06289",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "Conference on Empirical Methods in Natural Language Processing",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Deep Learning",
+        "Portfolio & Allocation",
+        "Factor Investing",
+        "Volatility & Risk"
+      ],
+      "published": "2024-09-01",
+      "featured": false,
+      "fingerprint": "916cf35d24b99394"
     },
     {
       "title": "StockTime: A Time Series Specialized Large Language Model Architecture for Stock Price Prediction",
@@ -2455,6 +2325,33 @@
       "fingerprint": "e4d06f69271fb33f"
     },
     {
+      "title": "A Reflective LLM-based Agent to Guide Zero-shot Cryptocurrency Trading",
+      "authors": [
+        "Yuan Li",
+        "Bingqiao Luo",
+        "Qian Wang",
+        "Nuo Chen",
+        "Xu Liu",
+        "Bingsheng He"
+      ],
+      "abstract": "The utilization of Large Language Models (LLMs) in financial trading has primarily been concentrated within the stock market, aiding in economic and financial decisions. Yet, the unique opportunities presented by the cryptocurrency market, noted for its on-chain data's transparency and the critical influence of off-chain signals like news, remain largely untapped by LLMs. This work aims to bridge the gap by developing an LLM-based trading agent, CryptoTrade, which uniquely combines the analysis of on-chain and off-chain data. This approach leverages the transparency and immutability of on-chain data, as well as the timeliness and influence of off-chain signals, providing a comprehensive overview of the cryptocurrency market. CryptoTrade incorporates a reflective mechanism specifically engineered to refine its daily trading decisions by analyzing the outcomes of prior trading decisions. This research makes two significant contributions. Firstly, it broadens the applicability of LLMs to the domain of cryptocurrency trading. Secondly, it establishes a benchmark for cryptocurrency trading strategies. Through extensive experiments, CryptoTrade has demonstrated superior performance in maximizing returns compared to traditional trading strategies and time-series baselines across various cryptocurrencies and market conditions.",
+      "url": "https://arxiv.org/abs/2407.09546",
+      "pdf_url": null,
+      "source": "arxiv",
+      "venue": "arXiv.org",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Volatility & Risk",
+        "Trading & Execution",
+        "Cryptocurrency"
+      ],
+      "published": "2024-07-01",
+      "featured": false,
+      "fingerprint": "8e59ba1a47c20ba9"
+    },
+    {
       "title": "When AI Meets Finance (StockAgent): Large Language Model-based Stock Trading in Simulated Real-world Environments",
       "authors": [
         "Chong Zhang",
@@ -2487,27 +2384,6 @@
       "fingerprint": "439e096b4799cb88"
     },
     {
-      "title": "Can ChatGPT improve investment decisions? From a portfolio management perspective",
-      "authors": [
-        "Hyungjin Ko",
-        "Jaewook Lee"
-      ],
-      "abstract": "We examine ChatGPT, a prominent Large Language Model (LLM), in supporting portfolio management with a focus on asset selection and diversification through quantitative methods. We use ChatGPT to select assets from various asset classes and evaluate the diversification effect of its selections. Our results suggest that ChatGPT's selections are statistically significantly better in diversity index than randomly selected assets. We also construct portfolios based on ChatGPT's selections and find that they outperform portfolios built on randomly selected assets. Overall, our study contributes to a better understanding of the role of LLMs like ChatGPT as potential assistants for portfolio managers.",
-      "url": "https://doi.org/10.1016/j.frl.2024.105433",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Finance Research Letters",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Portfolio & Allocation",
-        "Volatility & Risk"
-      ],
-      "published": "2024-06-01",
-      "featured": false,
-      "fingerprint": "74c108d30daa242f"
-    },
-    {
       "title": "A Survey of Large Language Models for Financial Applications: Progress, Prospects and Challenges",
       "authors": [
         "Yuqi Nie",
@@ -2535,32 +2411,29 @@
       "fingerprint": "d88c097e9990fcd6"
     },
     {
-      "title": "FINMEM: A PERFORMANCE-ENHANCED LLM TRADING AGENT WITH LAYERED MEMORY AND CHARACTER DESIGN",
+      "title": "ECC Analyzer: Extract Trading Signal from Earnings Conference Calls using Large Language Model for Stock Volatility Prediction",
       "authors": [
-        "Yangyang Yu",
-        "Haohang Li",
+        "Yupeng Cao",
         "Zhi Chen",
-        "Yuechen Jiang",
-        "Yang Li",
-        "Denghui Zhang",
-        "Rong Liu",
-        "Jordan W. Suchow",
-        "Khaldoun Khashanah"
+        "Qingyun Pei",
+        "Nathan Jinseok Lee",
+        "K.P. Subbalakshmi",
+        "Papa Momar Ndiaye"
       ],
-      "abstract": "Recent advancements in Large Language Models (LLMs) have exhibited notable efficacy in question-answering (QA) tasks across diverse domains. Their prowess in integrating extensive web knowledge has fueled interest in developing LLM-based autonomous agents. While LLMs are efficient in decoding human instructions and deriving solutions by holistically processing historical inputs, transitioning to purpose-driven agents requires a supplementary rational architecture to process multi-source information, establish reasoning chains, and prioritize critical tasks. Addressing this, we introduce FINMEM, a novel LLM-based agent framework devised for financial decision-making. It encompasses three core modules: Profiling, to customize the agent's characteristics; Memory, with layered message processing, to aid the agent in assimilating hierarchical financial data; and Decision-making, to convert insights gained from memories into investment decisions. Notably, FINMEM's memory module aligns closely with the cognitive structure of human traders, offering robust interpretability and real-time tuning. Its adjustable cognitive span allows for the retention of critical information beyond human perceptual limits, thereby enhancing trading outcomes. This framework enables the agent to self-evolve its professional knowledge, react agilely to new investment cues, and continuously refine trading decisions in the volatile financial environment. We first compare FINMEM with various algorithmic agents on a scalable real-world financial dataset, underscoring its leading trading performance in stocks. We then fine-tuned the agent's perceptual span and character setting to achieve a significantly enhanced trading performance. Collectively, FINMEM presents a cutting-edge LLM agent framework for automated trading, boosting cumulative investment returns.",
-      "url": "https://doi.org/10.1609/aaaiss.v3i1.31290",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the AAAI Symposium Series",
+      "abstract": "In the realm of financial analytics, leveraging unstructured data, such as earnings conference calls (ECCs), to forecast stock volatility is a critical challenge that has attracted both academics and investors. While previous studies have used multimodal deep learning-based models to obtain a general view of ECCs for volatility predicting, they often fail to capture detailed, complex information. Our research introduces a novel framework: ECC Analyzer, which utilizes large language models (LLMs) to extract richer, more predictive content from ECCs to aid the model's prediction performance. We use the pre-trained large models to extract textual and audio features from ECCs and implement a hierarchical information extraction strategy to extract more fine-grained information. This strategy first extracts paragraph-level general information by summarizing the text and then extracts fine-grained focus sentences using Retrieval-Augmented Generation (RAG). These features are then fused through multimodal feature fusion to perform volatility prediction. Experimental results demonstrate that our model outperforms traditional analytical benchmarks, confirming the effectiveness of advanced LLM techniques in financial analysis.",
+      "url": "https://arxiv.org/abs/2404.18470",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3677052.3698689",
+      "source": "arxiv",
+      "venue": "International Conference on AI in Finance",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
-        "Factor Investing",
+        "Deep Learning",
         "Volatility & Risk"
       ],
-      "published": "2024-05-20",
+      "published": "2024-04-01",
       "featured": false,
-      "fingerprint": "14ab5601c46bef1c"
+      "fingerprint": "98e9e62716cdb076"
     },
     {
       "title": "Learning to Generate Explainable Stock Predictions using Self-Reflective Large Language Models",
@@ -2571,10 +2444,10 @@
         "Tat-Seng Chua"
       ],
       "abstract": "Explaining stock predictions is generally a difficult task for traditional non-generative deep learning models, where explanations are limited to visualizing the attention weights on important texts. Today, Large Language Models (LLMs) present a solution to this problem, given their known capabilities to generate human-readable explanations for their decision-making process. However, the task of stock prediction remains challenging for LLMs, as it requires the ability to weigh the varying impacts of chaotic social texts on stock prices. The problem gets progressively harder with the introduction of the explanation component, which requires LLMs to explain verbally why certain factors are more important than the others. On the other hand, to fine-tune LLMs for such a task, one would need expert-annotated samples of explanation for every stock movement in the training set, which is expensive and impractical to scale. To tackle these issues, we propose our Summarize-Explain-Predict (SEP) framework, which utilizes a verbal self-reflective agent and Proximal Policy Optimization (PPO) that allow a LLM teach itself how to generate explainable stock predictions, in a fully autonomous manner. The reflective agent learns how to explain past stock movements through a self-reasoning process, while the PPO trainer trains the model to generate the most likely explanations given the input texts at test-time. The training samples for the PPO trainer are also the responses generated during the reflective process, which eliminates the need for human annotators. Using our SEP framework, we fine-tune a specialized LLM that can outperform both traditional deep-learning and LLM methods in prediction accuracy and Matthews correlation coefficient, for the stock classification task. To justify the generalization capability of our framework, we further test it on the portfolio construction task, and demonstrate its effectiveness through various portfolio metrics.",
-      "url": "https://doi.org/10.1145/3589334.3645611",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the ACM Web Conference 2024",
+      "url": "https://arxiv.org/abs/2402.03659",
+      "pdf_url": "https://arxiv.org/pdf/2402.03659",
+      "source": "arxiv",
+      "venue": "The Web Conference",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
@@ -2583,30 +2456,9 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "published": "2024-05-13",
+      "published": "2024-02-01",
       "featured": false,
       "fingerprint": "85036fe19b81aa78"
-    },
-    {
-      "title": "Sentiment trading with large language models",
-      "authors": [
-        "Kemal Kirtac",
-        "Guido Germano"
-      ],
-      "abstract": "We analyse the performance of the large language models (LLMs) OPT, BERT, and FinBERT, alongside the traditional Loughran-McDonald dictionary, in the sentiment analysis of 965,375 U.S. financial news articles from 2010 to 2023. Our findings reveal that the GPT-3-based OPT model significantly outperforms the others, predicting stock market returns with an accuracy of 74.4%. A long-short strategy based on OPT, accounting for 10 basis points (bps) in transaction costs, yields an exceptional Sharpe ratio of 3.05. From August 2021 to July 2023, this strategy produces an impressive 355% gain, outperforming other strategies and traditional market portfolios. This underscores the transformative potential of LLMs in financial market prediction and portfolio management and the necessity of employing sophisticated language models to develop effective investment strategies based on news sentiment.",
-      "url": "https://doi.org/10.1016/j.frl.2024.105227",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Finance Research Letters",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Portfolio & Allocation"
-      ],
-      "published": "2024-04-01",
-      "featured": false,
-      "fingerprint": "3d1758f96e99c12e"
     },
     {
       "title": "QuantAgent: Seeking Holy Grail in Trading by Self-Improving Large Language Model",
@@ -2651,6 +2503,30 @@
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "a94f4f2b91160556"
+    },
+    {
+      "title": "Can Large Language Models beat wall street? Evaluating GPT-4's impact on financial decision-making with MarketSenseAI",
+      "authors": [
+        "George Fatouros",
+        "Kostas Metaxas",
+        "John Soldatos",
+        "Dimosthenis Kyriazis"
+      ],
+      "abstract": "This paper introduces MarketSenseAI, an innovative framework leveraging GPT-4's advanced reasoning for selecting stocks in financial markets. By integrating Chain of Thought and In-Context Learning, MarketSenseAI analyzes diverse data sources, including market trends, news, fundamentals, and macroeconomic factors, to emulate expert investment decision-making. The development, implementation, and validation of the framework are elaborately discussed, underscoring its capability to generate actionable and interpretable investment signals. A notable feature of this work is employing GPT-4 both as a predictive mechanism and signal evaluator, revealing the significant impact of the AI-generated explanations on signal accuracy, reliability, and acceptance. Through empirical testing on the competitive S&P 100 stocks over a 15-month period, MarketSenseAI demonstrated exceptional performance, delivering excess alpha of 10–30% and achieving a cumulative return of up to 72% over the period, while maintaining a risk profile comparable to the broader market. Our findings highlight the transformative potential of Large Language Models in financial decision-making, marking a significant leap in integrating generative AI into financial analytics and investment strategies.",
+      "url": "https://arxiv.org/abs/2401.03737",
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s00521-024-10613-4.pdf",
+      "source": "arxiv",
+      "venue": "Neural computing & applications (Print)",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Factor Investing",
+        "Macro & Forecasting"
+      ],
+      "published": "2024-01-01",
+      "featured": false,
+      "fingerprint": "853bbe519b3ba4a1"
     },
     {
       "title": "Using large language models for financial advice",
@@ -2700,52 +2576,25 @@
       "fingerprint": "f9fbb1f434873e75"
     },
     {
-      "title": "A Reflective LLM-based Agent to Guide Zero-shot Cryptocurrency Trading",
+      "title": "Sentiment trading with large language models",
       "authors": [
-        "Yuan Li",
-        "Bingqiao Luo",
-        "Qian Wang",
-        "Nuo Chen",
-        "Xu Liu",
-        "Bingsheng He"
+        "Kemal Kirtac",
+        "Guido Germano"
       ],
-      "abstract": "The utilization of Large Language Models (LLMs) in financial trading has primarily been concentrated within the stock market, aiding in economic and financial decisions. Yet, the unique opportunities presented by the cryptocurrency market, noted for its on-chain data's transparency and the critical influence of off-chain signals like news, remain largely untapped by LLMs. This work aims to bridge the gap by developing an LLM-based trading agent, CryptoTrade, which uniquely combines the analysis of on-chain and off-chain data. This approach leverages the transparency and immutability of on-chain data, as well as the timeliness and influence of off-chain signals, providing a comprehensive overview of the cryptocurrency market. CryptoTrade incorporates a reflective mechanism specifically engineered to refine its daily trading decisions by analyzing the outcomes of prior trading decisions. This research makes two significant contributions. Firstly, it broadens the applicability of LLMs to the domain of cryptocurrency trading. Secondly, it establishes a benchmark for cryptocurrency trading strategies. Through extensive experiments, CryptoTrade has demonstrated superior performance in maximizing returns compared to traditional trading strategies and time-series baselines across various cryptocurrencies and market conditions.",
-      "url": "https://doi.org/10.18653/v1/2024.emnlp-main.63",
+      "abstract": "We analyse the performance of the large language models (LLMs) OPT, BERT, and FinBERT, alongside the traditional Loughran-McDonald dictionary, in the sentiment analysis of 965,375 U.S. financial news articles from 2010 to 2023. Our findings reveal that the GPT-3-based OPT model significantly outperforms the others, predicting stock market returns with an accuracy of 74.4%. A long-short strategy based on OPT, accounting for 10 basis points (bps) in transaction costs, yields an exceptional Sharpe ratio of 3.05. From August 2021 to July 2023, this strategy produces an impressive 355% gain, outperforming other strategies and traditional market portfolios. This underscores the transformative potential of LLMs in financial market prediction and portfolio management and the necessity of employing sophisticated language models to develop effective investment strategies based on news sentiment.",
+      "url": "https://doi.org/10.2139/ssrn.4706629",
       "pdf_url": null,
-      "source": "journal",
-      "venue": "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+      "source": "ssrn",
+      "venue": "SSRN",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
         "NLP & Sentiment",
-        "Volatility & Risk",
-        "Trading & Execution",
-        "Cryptocurrency"
+        "Portfolio & Allocation"
       ],
       "published": "2024-01-01",
       "featured": false,
-      "fingerprint": "8e59ba1a47c20ba9"
-    },
-    {
-      "title": "Can ChatGPT assist in picking stocks?",
-      "authors": [
-        "Matthias Pelster",
-        "Joel Val"
-      ],
-      "abstract": "This paper studies whether ChatGPT-4 with access to the internet is able to provide valuable investment advice and evaluate financial information in a timely manner. Using a live experiment, we find a positive correlation between ChatGPT-4 ratings and future earnings announcements and stock returns. We find evidence that ChatGPT-4 adjusts ratings in response to earnings surprises and news events information in a timely manner. An investment strategy based on \"attractiveness ratings\" by ChatGPT-4 yields positive returns.",
-      "url": "https://doi.org/10.1016/j.frl.2023.104786",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Finance Research Letters",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "NLP & Sentiment",
-        "Return Forecasting"
-      ],
-      "published": "2024-01-01",
-      "featured": false,
-      "fingerprint": "b34637133de8637d"
+      "fingerprint": "3d1758f96e99c12e"
     },
     {
       "title": "Lookahead Bias in Pretrained Language Models",
@@ -2813,6 +2662,25 @@
       "fingerprint": "8e65c6fea53da397"
     },
     {
+      "title": "Designing Heterogeneous LLM Agents for Financial Sentiment Analysis",
+      "authors": [
+        "Frank Xing"
+      ],
+      "abstract": "Large language models (LLMs) have drastically changed the possible ways to design intelligent systems, shifting the focus from massive data acquisition and new model training to human alignment and strategic elicitation of the full potential of existing pre-trained models. This paradigm shift, however, is not fully realized in financial sentiment analysis (FSA) due to the discriminative nature of this task and a lack of prescriptive knowledge of how to leverage existing generative models in such a context. This study investigates the effectiveness of the new paradigm, that is, using LLMs without fine-tuning for FSA. Rooted in Minsky’s theory of mind and emotions, a design framework with heterogeneous LLM agents is proposed and applied to FSA. The framework instantiates specialized agents using prior guiding knowledge from both linguistics and finance. Then, a summative agent reasons on the aggregated agent discussions. Comprehensive evaluations using six FSA datasets show that the framework yields better accuracies compared to many alternative multi-LLM agent settings, especially when the discussion contents are substantial. This study contributes to the design foundations and paves new avenues for LLMs-based FSA and potentially other tasks. Implications for business and management have also been discussed.",
+      "url": "https://arxiv.org/abs/2401.05799",
+      "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3688399",
+      "source": "arxiv",
+      "venue": "ACM Transactions on Management Information Systems",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment"
+      ],
+      "published": "2024-01-01",
+      "featured": false,
+      "fingerprint": "5c390193f24e2c66"
+    },
+    {
       "title": "Measuring Readability with Language Predictability: A Large Language Model Approach",
       "authors": [
         "Amy Y. Zang",
@@ -2855,69 +2723,32 @@
       "fingerprint": "dd8d2e03f88c4450"
     },
     {
-      "title": "Transforming sentiment analysis in the financial domain with ChatGPT",
+      "title": "FINMEM: A PERFORMANCE-ENHANCED LLM TRADING AGENT WITH LAYERED MEMORY AND CHARACTER DESIGN",
       "authors": [
-        "Georgios Fatouros",
-        "John Soldatos",
-        "Kalliopi Kouroumali",
-        "Georgios Makridis",
-        "Dimosthenis Kyriazis"
+        "Yangyang Yu",
+        "Haohang Li",
+        "Zhi Chen",
+        "Yuechen Jiang",
+        "Yang Li",
+        "Denghui Zhang",
+        "Rong Liu",
+        "Jordan W. Suchow",
+        "Khaldoun Khashanah"
       ],
-      "abstract": "Financial sentiment analysis plays a crucial role in decoding market trends and guiding strategic trading decisions. Despite the deployment of advanced deep learning techniques and language models to refine sentiment analysis in finance, this study breaks new ground by investigating the potential of large language models, particularly ChatGPT 3.5, in financial sentiment analysis, with a strong emphasis on the foreign exchange market (forex). Employing a zero-shot prompting approach, we examine multiple ChatGPT prompts on a meticulously curated dataset of forex-related news headlines, measuring performance using metrics such as precision, recall, f1-score, and Mean Absolute Error (MAE) of the sentiment class. Additionally, we probe the correlation between predicted sentiment and market returns as an addition evaluation approach. ChatGPT, compared to FinBERT, a well-established sentiment analysis model for financial texts, exhibited approximately 35% enhanced performance in sentiment classification and a 36% higher correlation with market returns. By underlining the significance of prompt engineering, particularly in zero-shot contexts, this study spotlights ChatGPT's potential to substantially boost sentiment analysis in financial applications. By sharing the utilized dataset, our intention is to stimulate further research and advancements in the field of financial services.",
-      "url": "https://doi.org/10.1016/j.mlwa.2023.100508",
+      "abstract": "Recent advancements in Large Language Models (LLMs) have exhibited notable efficacy in question-answering (QA) tasks across diverse domains. Their prowess in integrating extensive web knowledge has fueled interest in developing LLM-based autonomous agents. While LLMs are efficient in decoding human instructions and deriving solutions by holistically processing historical inputs, transitioning to purpose-driven agents requires a supplementary rational architecture to process multi-source information, establish reasoning chains, and prioritize critical tasks. Addressing this, we introduce FINMEM, a novel LLM-based agent framework devised for financial decision-making. It encompasses three core modules: Profiling, to customize the agent's characteristics; Memory, with layered message processing, to aid the agent in assimilating hierarchical financial data; and Decision-making, to convert insights gained from memories into investment decisions. Notably, FINMEM's memory module aligns closely with the cognitive structure of human traders, offering robust interpretability and real-time tuning. Its adjustable cognitive span allows for the retention of critical information beyond human perceptual limits, thereby enhancing trading outcomes. This framework enables the agent to self-evolve its professional knowledge, react agilely to new investment cues, and continuously refine trading decisions in the volatile financial environment. We first compare FINMEM with various algorithmic agents on a scalable real-world financial dataset, underscoring its leading trading performance in stocks. We then fine-tuned the agent's perceptual span and character setting to achieve a significantly enhanced trading performance. Collectively, FINMEM presents a cutting-edge LLM agent framework for automated trading, boosting cumulative investment returns.",
+      "url": "https://arxiv.org/abs/2311.13743",
       "pdf_url": null,
-      "source": "journal",
-      "venue": "Machine Learning with Applications",
+      "source": "arxiv",
+      "venue": "IEEE Transactions on Big Data",
       "categories": [],
       "themes": [
         "LLMs & Generative AI",
-        "Deep Learning",
-        "NLP & Sentiment"
-      ],
-      "published": "2023-12-01",
-      "featured": false,
-      "fingerprint": "8b3ca1c88ff9efef"
-    },
-    {
-      "title": "GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice",
-      "authors": [
-        "Paweł Niszczota",
-        "Sami Abbas"
-      ],
-      "abstract": "We assess the ability of GPT – a large language model – to serve as a financial robo-advisor for the masses, by using a financial literacy test. Davinci and ChatGPT based on GPT-3.5 score 66% and 65% on the financial literacy test, respectively, compared to a baseline of 33%. However, ChatGPT based on GPT-4 achieves a near-perfect 99% score, pointing to financial literacy becoming an emergent ability of state-of-the-art models. We use the Judge-Advisor System and a savings dilemma to illustrate how researchers might assess advice-utilization from large language models. We also present a number of directions for future research.",
-      "url": "https://doi.org/10.1016/j.frl.2023.104333",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Finance Research Letters",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI"
-      ],
-      "published": "2023-12-01",
-      "featured": false,
-      "fingerprint": "979332a89b41ec96"
-    },
-    {
-      "title": "ChatGPT-based Investment Portfolio Selection",
-      "authors": [
-        "Oleksandr Romanko",
-        "Akhilesh Narayan",
-        "Roy H. Kwon"
-      ],
-      "abstract": "In this paper, we explore potential uses of generative AI models, such as ChatGPT, for investment portfolio selection. Trusting investment advice from Generative Pre-Trained Transformer (GPT) models is a challenge due to model \"hallucinations\", necessitating careful verification and validation of the output. Therefore, we take an alternative approach. We use ChatGPT to obtain a universe of stocks from S&P500 market index that are potentially attractive for investing. Subsequently, we compared various portfolio optimization strategies that utilized this AI-generated trading universe, evaluating those against quantitative portfolio optimization models as well as comparing to some of the popular investment funds. Our findings indicate that ChatGPT is effective in stock selection but may not perform as well in assigning optimal weights to stocks within the portfolio. But when stocks selection by ChatGPT is combined with established portfolio optimization models, we achieve even better results. By blending strengths of AI-generated stock selection with advanced quantitative optimization techniques, we observed the potential for more robust and favorable investment outcomes, suggesting a hybrid approach for more effective and reliable investment decision-making in the future.",
-      "url": "https://doi.org/10.1007/s43069-023-00277-6",
-      "pdf_url": null,
-      "source": "journal",
-      "venue": "Operations Research Forum",
-      "categories": [],
-      "themes": [
-        "LLMs & Generative AI",
-        "Portfolio & Allocation",
+        "Factor Investing",
         "Volatility & Risk"
       ],
-      "published": "2023-11-23",
+      "published": "2023-11-01",
       "featured": false,
-      "fingerprint": "efcc62817bf892bd"
+      "fingerprint": "14ab5601c46bef1c"
     },
     {
       "title": "FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets",
@@ -2965,6 +2796,25 @@
       "fingerprint": "1ad9525a0886c9db"
     },
     {
+      "title": "GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice",
+      "authors": [
+        "Paweł Niszczota",
+        "Sami Abbas"
+      ],
+      "abstract": "We assess the ability of GPT – a large language model – to serve as a financial robo-advisor for the masses, by using a financial literacy test. Davinci and ChatGPT based on GPT-3.5 score 66% and 65% on the financial literacy test, respectively, compared to a baseline of 33%. However, ChatGPT based on GPT-4 achieves a near-perfect 99% score, pointing to financial literacy becoming an emergent ability of state-of-the-art models. We use the Judge-Advisor System and a savings dilemma to illustrate how researchers might assess advice-utilization from large language models. We also present a number of directions for future research.",
+      "url": "https://arxiv.org/abs/2309.00649",
+      "pdf_url": "https://arxiv.org/pdf/2309.00649",
+      "source": "arxiv",
+      "venue": "Finance Research Letters",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI"
+      ],
+      "published": "2023-09-01",
+      "featured": false,
+      "fingerprint": "979332a89b41ec96"
+    },
+    {
       "title": "InvestLM: A Large Language Model for Investment using Financial Domain Instruction Tuning",
       "authors": [
         "Yi Yang",
@@ -2984,6 +2834,30 @@
       "published": "2023-09-01",
       "featured": false,
       "fingerprint": "1d0286637ed636f8"
+    },
+    {
+      "title": "Transforming sentiment analysis in the financial domain with ChatGPT",
+      "authors": [
+        "Georgios Fatouros",
+        "John Soldatos",
+        "Kalliopi Kouroumali",
+        "Georgios Makridis",
+        "Dimosthenis Kyriazis"
+      ],
+      "abstract": "Financial sentiment analysis plays a crucial role in decoding market trends and guiding strategic trading decisions. Despite the deployment of advanced deep learning techniques and language models to refine sentiment analysis in finance, this study breaks new ground by investigating the potential of large language models, particularly ChatGPT 3.5, in financial sentiment analysis, with a strong emphasis on the foreign exchange market (forex). Employing a zero-shot prompting approach, we examine multiple ChatGPT prompts on a meticulously curated dataset of forex-related news headlines, measuring performance using metrics such as precision, recall, f1-score, and Mean Absolute Error (MAE) of the sentiment class. Additionally, we probe the correlation between predicted sentiment and market returns as an addition evaluation approach. ChatGPT, compared to FinBERT, a well-established sentiment analysis model for financial texts, exhibited approximately 35% enhanced performance in sentiment classification and a 36% higher correlation with market returns. By underlining the significance of prompt engineering, particularly in zero-shot contexts, this study spotlights ChatGPT's potential to substantially boost sentiment analysis in financial applications. By sharing the utilized dataset, our intention is to stimulate further research and advancements in the field of financial services.",
+      "url": "https://arxiv.org/abs/2308.07935",
+      "pdf_url": "https://arxiv.org/pdf/2308.07935",
+      "source": "arxiv",
+      "venue": "Machine Learning with Applications",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Deep Learning",
+        "NLP & Sentiment"
+      ],
+      "published": "2023-08-01",
+      "featured": false,
+      "fingerprint": "8b3ca1c88ff9efef"
     },
     {
       "title": "<scp>FinBERT</scp>: A Large Language Model for Extracting Information from Financial Text*",
@@ -3037,6 +2911,46 @@
       "fingerprint": "ce5e000c9725142b"
     },
     {
+      "title": "Outperforming equal weighting",
+      "authors": [
+        "Antonello Cirulli",
+        "Patrick S. Walker"
+      ],
+      "abstract": "The equally weighted portfolio has been shown to outperform many more sophisticated ones, despite not requiring any computations. We demonstrate that the equally weighted stock portfolio can be consistently enhanced by avoiding negative exposure to some of the most prominent equity factors. This can be achieved while preserving the simplicity of the portfolio construction process. Specifically, we introduce three simple long-only portfolios that rely solely on historical return data. These portfolios are slight conceptual deviations from the equally weighted strategy, yet they consistently generate significantly higher risk-adjusted returns in realistic out-of-sample assessments. We provide the most straightforward examples to challenge the notion that outperforming the equally weighted strategy is difficult.",
+      "url": "https://doi.org/10.2139/ssrn.4669267",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "Social Science Research Network",
+      "categories": [],
+      "themes": [
+        "Portfolio & Allocation",
+        "Factor Investing"
+      ],
+      "published": "2023-01-01",
+      "featured": false,
+      "fingerprint": "d573cd09a4626626"
+    },
+    {
+      "title": "AI-Powered Trading, Algorithmic Collusion, and Price Efficiency",
+      "authors": [
+        "Winston Wei Dou",
+        "Itay Goldstein",
+        "Yan Ji"
+      ],
+      "abstract": "The integration of algorithmic trading with reinforcement learning, termed AI-powered trading, is transforming financial markets. Alongside the benefits, it raises concerns for collusion. This study first develops a model to explore the possibility of collusion among informed speculators in a theoretical environment. We then conduct simulation experiments, replacing the speculators in the model with informed AI speculators who trade based on reinforcement-learning algorithms. We show that they autonomously sustain collusive supra-competitive profits without agreement, communication, or intent. Such collusion undermines competition and market efficiency. We demonstrate that two separate mechanisms are underlying this collusion and characterize when each one arises.",
+      "url": "https://doi.org/10.2139/ssrn.4452704",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "Social Science Research Network",
+      "categories": [],
+      "themes": [
+        "Reinforcement Learning"
+      ],
+      "published": "2023-01-01",
+      "featured": false,
+      "fingerprint": "4f1c7daa3fe0686e"
+    },
+    {
       "title": "Assessing Look-Ahead Bias in Stock Return Predictions Generated By GPT Sentiment Analysis",
       "authors": [
         "Paul Glasserman",
@@ -3057,6 +2971,27 @@
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "5b5a2cd588847e05"
+    },
+    {
+      "title": "Can ChatGPT improve investment decisions? From a portfolio management perspective",
+      "authors": [
+        "Hyungjin Ko",
+        "Jaewook Lee"
+      ],
+      "abstract": "We examine ChatGPT, a prominent Large Language Model (LLM), in supporting portfolio management with a focus on asset selection and diversification through quantitative methods. We use ChatGPT to select assets from various asset classes and evaluate the diversification effect of its selections. Our results suggest that ChatGPT's selections are statistically significantly better in diversity index than randomly selected assets. We also construct portfolios based on ChatGPT's selections and find that they outperform portfolios built on randomly selected assets. Overall, our study contributes to a better understanding of the role of LLMs like ChatGPT as potential assistants for portfolio managers.",
+      "url": "https://doi.org/10.2139/ssrn.4390529",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "Social Science Research Network",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation",
+        "Volatility & Risk"
+      ],
+      "published": "2023-01-01",
+      "featured": false,
+      "fingerprint": "74c108d30daa242f"
     },
     {
       "title": "Can ChatGPT Forecast Stock Price Movements? Return Predictability and Large Language Models",
@@ -3081,6 +3016,49 @@
       "fingerprint": "4fcc2027315a4f91"
     },
     {
+      "title": "Can ChatGPT assist in picking stocks?",
+      "authors": [
+        "Matthias Pelster",
+        "Joel Val"
+      ],
+      "abstract": "This paper studies whether ChatGPT-4 with access to the internet is able to provide valuable investment advice and evaluate financial information in a timely manner. Using a live experiment, we find a positive correlation between ChatGPT-4 ratings and future earnings announcements and stock returns. We find evidence that ChatGPT-4 adjusts ratings in response to earnings surprises and news events information in a timely manner. An investment strategy based on \"attractiveness ratings\" by ChatGPT-4 yields positive returns.",
+      "url": "https://doi.org/10.2139/ssrn.4602452",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "Social Science Research Network",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "NLP & Sentiment",
+        "Return Forecasting"
+      ],
+      "published": "2023-01-01",
+      "featured": false,
+      "fingerprint": "b34637133de8637d"
+    },
+    {
+      "title": "ChatGPT-based Investment Portfolio Selection",
+      "authors": [
+        "Oleksandr Romanko",
+        "Akhilesh Narayan",
+        "Roy H. Kwon"
+      ],
+      "abstract": "In this paper, we explore potential uses of generative AI models, such as ChatGPT, for investment portfolio selection. Trusting investment advice from Generative Pre-Trained Transformer (GPT) models is a challenge due to model \"hallucinations\", necessitating careful verification and validation of the output. Therefore, we take an alternative approach. We use ChatGPT to obtain a universe of stocks from S&P500 market index that are potentially attractive for investing. Subsequently, we compared various portfolio optimization strategies that utilized this AI-generated trading universe, evaluating those against quantitative portfolio optimization models as well as comparing to some of the popular investment funds. Our findings indicate that ChatGPT is effective in stock selection but may not perform as well in assigning optimal weights to stocks within the portfolio. But when stocks selection by ChatGPT is combined with established portfolio optimization models, we achieve even better results. By blending strengths of AI-generated stock selection with advanced quantitative optimization techniques, we observed the potential for more robust and favorable investment outcomes, suggesting a hybrid approach for more effective and reliable investment decision-making in the future.",
+      "url": "https://doi.org/10.2139/ssrn.4538502",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN Electronic Journal",
+      "categories": [],
+      "themes": [
+        "LLMs & Generative AI",
+        "Portfolio & Allocation",
+        "Volatility & Risk"
+      ],
+      "published": "2023-01-01",
+      "featured": false,
+      "fingerprint": "efcc62817bf892bd"
+    },
+    {
       "title": "Instruct-FinGPT: Financial Sentiment Analysis by Instruction Tuning of General-Purpose Large Language Models",
       "authors": [
         "Boyu Zhang",
@@ -3100,6 +3078,28 @@
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "2710b4f7db431a27"
+    },
+    {
+      "title": "From Man vs. Machine to Man + Machine: The art and AI of stock analyses",
+      "authors": [
+        "Sean Cao",
+        "Wei Jiang",
+        "Junbo Wang",
+        "Baozhong Yang"
+      ],
+      "abstract": "An AI analyst trained to digest corporate disclosures, industry trends, and macroeconomic indicators surpasses most analysts in stock return predictions. Nevertheless, humans win \"Man vs. Machine\" when institutional knowledge is crucial, e.g., involving intangible assets and financial distress. AI wins when information is transparent but voluminous. Humans provide significant incremental value in \"Man + Machine\", which also substantially reduces extreme errors. Analysts catch up with machines after \"alternative data\" become available if their employers build AI capabilities. Documented synergies between humans and machines inform how humans can leverage their advantage for better adaptation to the growing AI prowess.",
+      "url": "https://doi.org/10.2139/ssrn.3847545",
+      "pdf_url": null,
+      "source": "ssrn",
+      "venue": "SSRN Electronic Journal",
+      "categories": [],
+      "themes": [
+        "Return Forecasting",
+        "Macro & Forecasting"
+      ],
+      "published": "2021-01-01",
+      "featured": false,
+      "fingerprint": "5d49f5adb89fa823"
     },
     {
       "title": "The Promises and Pitfalls of Robo-advising",

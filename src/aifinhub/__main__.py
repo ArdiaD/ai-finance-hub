@@ -48,6 +48,13 @@ def main(argv=None) -> int:
                         help="find DOI/URL/venue by title via Crossref + arXiv")
     bf.add_argument("--limit", type=int, default=None, help="cap how many to process")
 
+    rf = sub.add_parser("refresh-urls",
+                        help="re-resolve links with a source preference (SSRN>arXiv>journal)")
+    rf.add_argument("--prefer", default="ssrn,arxiv,journal",
+                    help="comma-separated source priority order")
+    rf.add_argument("--status", default="approved",
+                    choices=["approved", "pending", "all"])
+
     sub.add_parser("relabel-sources",
                    help="set source/venue (arXiv/SSRN/journal) from each paper's URL")
     sub.add_parser("fix-dates",
@@ -106,6 +113,9 @@ def main(argv=None) -> int:
     elif args.cmd == "backfill-urls":
         from .backfill import backfill_urls
         backfill_urls(limit=args.limit)
+    elif args.cmd == "refresh-urls":
+        from .backfill import refresh_urls
+        refresh_urls(prefer=tuple(args.prefer.split(",")), status=args.status)
     elif args.cmd == "relabel-sources":
         from .backfill import relabel_sources
         relabel_sources()
