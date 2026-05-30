@@ -52,6 +52,9 @@ def main(argv=None) -> int:
                    help="set source/venue (arXiv/SSRN/journal) from each paper's URL")
     sub.add_parser("fix-dates",
                    help="set authoritative publication dates (arXiv id / Crossref)")
+    sub.add_parser("polish",
+                   help="run all metadata cleanup passes: enrich → backfill-urls "
+                        "→ relabel-sources → fix-dates")
 
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
@@ -109,6 +112,9 @@ def main(argv=None) -> int:
     elif args.cmd == "fix-dates":
         from .backfill import fix_dates
         fix_dates()
+    elif args.cmd == "polish":
+        from .polish import polish
+        polish()
     elif args.cmd == "export-xlsx":
         from .corpus_xlsx import export_corpus
         export_corpus(status=args.status, path=args.out)

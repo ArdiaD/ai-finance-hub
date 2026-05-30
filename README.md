@@ -123,6 +123,22 @@ hand-picked). Archived copies land in `data/pdfs/library/` named
 `name1_name2_name3_year.pdf` (up to 3 author surnames + year). After import you
 can empty `data/pdfs/human_incoming/` — the library copies are what the DB uses.
 
+**Polish the metadata.** After importing, one command runs every cleanup pass
+(safe to re-run — each only touches what still needs work):
+
+```bash
+python -m aifinhub polish        # enrich → backfill-urls → relabel-sources → fix-dates
+python -m aifinhub build-site
+```
+
+- **enrich** — LLM-extract title/authors/abstract for PDFs without an embedded id
+  (needs `ANTHROPIC_API_KEY`).
+- **backfill-urls** — find DOI/URL/venue by title (Crossref + arXiv + Semantic
+  Scholar; set `SEMANTIC_SCHOLAR_KEY` to avoid rate limits).
+- **relabel-sources** — set the real source/venue (arXiv/SSRN/journal) from the URL.
+- **fix-dates** — authoritative publication dates (arXiv id encodes year-month;
+  Crossref for DOIs).
+
 **Enriching thin imports** — PDFs without an embedded id come in with only a
 filename-derived title. Fill in real title/authors/abstract with Claude (needs
 `ANTHROPIC_API_KEY` in `.env`):
