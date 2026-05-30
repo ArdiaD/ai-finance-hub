@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-05-30",
-  "count": 135,
+  "count": 136,
   "hub": {
     "title": "AI & Finance Paper Hub",
     "subtitle": "Curated research on AI for trading & investment",
@@ -2149,6 +2149,25 @@
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "b34637133de8637d"
+    },
+    {
+      "title": "Lookahead Bias in Pretrained Language Models",
+      "authors": [
+        "Suproteem K. Sarkar",
+        "Keyon Vafa"
+      ],
+      "abstract": "Empirical analysis that uses outputs from pretrained language models can be subject to a form of temporal lookahead bias. This bias arises when a language model's pretraining data contains information about the future, which then leaks into analysis that should only use information from the past. In this paper we develop direct tests for lookahead bias, based on the assumption that some events are unpredictable given a prespecified information set. Using these tests, we find evidence of lookahead bias in two applications of language models to social science: Predicting risk factors from corporate earnings calls and predicting election winners from candidate biographies. We additionally discuss the limitations of prompting-based approaches to counteract this bias. The issues we raise can be addressed by using models whose pretraining data is free of survivorship bias and contains only language produced prior to the analysis period of interest.",
+      "url": "",
+      "pdf_url": null,
+      "source": "manual",
+      "venue": null,
+      "categories": [],
+      "themes": [
+        "Factor Investing"
+      ],
+      "published": "2024-01-01",
+      "featured": false,
+      "fingerprint": "46d4235262a59eb8"
     },
     {
       "title": "Large Language Models and Return Prediction in China",
