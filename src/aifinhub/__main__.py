@@ -50,6 +50,11 @@ def main(argv=None) -> int:
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
 
+    ex = sub.add_parser("export-xlsx", help="export the corpus to a rich Excel file")
+    ex.add_argument("--status", default="approved",
+                    choices=["approved", "pending", "rejected", "all"])
+    ex.add_argument("--out", default=None, help="output .xlsx path")
+
     sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
@@ -92,6 +97,9 @@ def main(argv=None) -> int:
     elif args.cmd == "backfill-urls":
         from .backfill import backfill_urls
         backfill_urls(limit=args.limit)
+    elif args.cmd == "export-xlsx":
+        from .corpus_xlsx import export_corpus
+        export_corpus(status=args.status, path=args.out)
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()
