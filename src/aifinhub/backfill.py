@@ -146,6 +146,45 @@ def _best(paper, cands: list[dict]) -> Optional[dict]:
     return best
 
 
+def _origin(url: str):
+    """Map a paper URL to (source, default_venue) for accurate provenance."""
+    if not url:
+        return None
+    if "arxiv.org" in url:
+        return ("arxiv", "arXiv preprint")
+    if "10.2139/ssrn" in url or "ssrn.com" in url:
+        return ("ssrn", "SSRN")
+    if "doi.org" in url:
+        return ("journal", None)  # venue (journal name) usually already set
+    return None
+
+
+def relabel_sources() -> dict:
+    """Replace 'manual' source with the real origin (arXiv/SSRN/journal) by URL.
+
+    Imported papers all carry source='manual' (how they entered); this rewrites
+    that to where the paper actually lives, so cards/filters read correctly.
+    """
+    db = DB(DB_PATH)
+    manual = [p for p in db.query() if p.source == "manual"]
+    counts: dict[str, int] = {}
+    for p in manual:
+        o = _origin(p.url)
+        if not o:
+            continue
+        src, ven = o
+        fields = {"source": src}
+        if ven and not p.venue:
+            fields["venue"] = ven
+        db.update_fields(p.fingerprint, **fields)
+        counts[src] = counts.get(src, 0) + 1
+    left = len([p for p in db.query() if p.source == "manual"])
+    console.print(f"[green]Relabeled:[/green] " +
+                  " ".join(f"{k}={v}" for k, v in counts.items()) +
+                  f" · still 'manual' (no URL): {left}")
+    return counts
+
+
 def backfill_urls(limit: Optional[int] = None) -> dict:
     db = DB(DB_PATH)
     targets = [p for p in db.query() if not p.url]
