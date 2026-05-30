@@ -23,14 +23,14 @@ def main(argv=None) -> int:
     ri.add_argument("path", help="the reviewed .xlsx file")
 
     fp = sub.add_parser("fetch-pdfs",
-                        help="(re)download candidate PDFs into data/pdfs/candidates/")
+                        help="(re)download candidate PDFs into data/pdfs/claude_incoming/")
     fp.add_argument("--status", default="pending",
                     choices=["approved", "pending", "all"],
                     help="which papers to download PDFs for (default pending)")
 
     ip = sub.add_parser("import-pdfs", help="import a folder of existing PDFs")
-    ip.add_argument("folder", nargs="?", default="data/pdfs/incoming",
-                    help="folder with PDFs (default data/pdfs/incoming, recursive)")
+    ip.add_argument("folder", nargs="?", default="data/pdfs/human_incoming",
+                    help="folder with PDFs (default data/pdfs/human_incoming, recursive)")
     ip.add_argument("--status", default="pending", choices=["pending", "approved"],
                     help="pending → inbox + Excel review (default); "
                          "approved → straight into the permanent library")

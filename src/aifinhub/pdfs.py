@@ -1,6 +1,6 @@
 """Local PDF archive with a two-stage lifecycle (all local-only, never published).
 
-  data/pdfs/candidates/<fp>.pdf            temporary — this week's candidates,
+  data/pdfs/claude_incoming/<fp>.pdf       temporary — auto-fetched candidates,
                                            downloaded at fetch, read during review.
   data/pdfs/library/<surnames>_<year>.pdf  permanent — every KEPT paper (your
                                            existing backlog plus each week's
@@ -21,15 +21,15 @@ from typing import Optional
 
 from rich.console import Console
 
-from .config import DB_PATH, PDF_CANDIDATES_DIR, PDF_LIBRARY_DIR
+from .config import DB_PATH, CLAUDE_INCOMING_DIR, PDF_LIBRARY_DIR
 from .db import DB
 from .models import Paper
 from .sources.base import http_get
 
 console = Console()
 
-# Candidate PDFs (fetched, awaiting review) and the curated library.
-PDF_INBOX = PDF_CANDIDATES_DIR
+# Auto-fetched candidate PDFs (awaiting review) and the curated library.
+PDF_INBOX = CLAUDE_INCOMING_DIR
 PDF_LIBRARY = PDF_LIBRARY_DIR
 
 

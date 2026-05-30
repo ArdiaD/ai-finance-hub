@@ -48,8 +48,8 @@ python -m aifinhub draft-post --since 7d      # write a LinkedIn draft
 ```
 data/                     all working data (gitignored; Dropbox-backed)
   pdfs/
-    incoming/             drop PDFs here to import
-    candidates/           fetched papers' PDFs, awaiting review
+    human_incoming/       PDFs you drop here to import
+    claude_incoming/      PDFs the pipeline auto-fetches, awaiting review
     library/              curated PDFs kept in the hub (name1_name2_name3_year.pdf)
   excel/
     review/               weekly review spreadsheets (decide keep/drop)
@@ -87,15 +87,15 @@ on Dropbox, never published). The public site links to the original publisher UR
 There are two folders with a simple lifecycle:
 
 ```
-  data/pdfs/candidates/  temporary — this week's candidates (downloaded during
-                         `fetch`), read while you review.
-  data/pdfs/library/     permanent — every KEPT paper: your existing backlog plus
-                         each week's approved papers.
+  data/pdfs/claude_incoming/  temporary — auto-fetched candidates (downloaded
+                              during `fetch`), read while you review.
+  data/pdfs/library/          permanent — every KEPT paper: your existing backlog
+                              plus each week's approved papers.
 ```
 
 - **`fetch`** auto-downloads each candidate's PDF (when a `pdf_url` exists) into
-  `data/pdfs/candidates/`. *(Use `fetch --no-pdfs` to skip; `fetch-pdfs` to retry.)*
-- **`review-import`** promotes KEPT papers' PDFs `candidates → library` and
+  `data/pdfs/claude_incoming/`. *(Use `fetch --no-pdfs` to skip; `fetch-pdfs`.)*
+- **`review-import`** promotes KEPT papers' PDFs `claude_incoming → library` and
   deletes REJECTED ones.
 - Papers from sources without PDF links (RePEc, most journals, SSRN) simply have
   no local PDF — attach one manually with:
@@ -105,23 +105,23 @@ There are two folders with a simple lifecycle:
 
 ### Importing your existing PDF collection (your backlog)
 
-Drop your PDFs into `data/pdfs/incoming/`, then:
+Drop your PDFs into `data/pdfs/human_incoming/`, then:
 
 ```bash
 # Already-curated backlog → straight into the permanent library:
 python -m aifinhub import-pdfs --status approved
 
-# Or route them through the Excel review first (lands in candidates/):
+# Or route them through the Excel review first:
 python -m aifinhub import-pdfs
 ```
 
-`import-pdfs` defaults to `data/pdfs/incoming/`. For each PDF it extracts the
-first-page text, finds a **DOI or arXiv id**, and pulls clean metadata (title /
-authors / abstract) from **Crossref / arXiv**; if no identifier is found it falls
-back to the filename. Imported papers skip the relevance filter (they're
+`import-pdfs` defaults to `data/pdfs/human_incoming/`. For each PDF it extracts
+the first-page text, finds a **DOI or arXiv id**, and pulls clean metadata (title
+/ authors / abstract) from **Crossref / arXiv**; if no identifier is found it
+falls back to the filename. Imported papers skip the relevance filter (they're
 hand-picked). Archived copies land in `data/pdfs/library/` named
 `name1_name2_name3_year.pdf` (up to 3 author surnames + year). After import you
-can empty `data/pdfs/incoming/` — the library copies are what the DB references.
+can empty `data/pdfs/human_incoming/` — the library copies are what the DB uses.
 
 **Enriching thin imports** — PDFs without an embedded id come in with only a
 filename-derived title. Fill in real title/authors/abstract with Claude (needs
