@@ -168,6 +168,30 @@ def discard_inbox(fingerprint: str) -> None:
     inbox_path(fingerprint).unlink(missing_ok=True)
 
 
+def remove_pdf(paper: Paper) -> None:
+    """Delete a paper's archived PDF wherever it lives (library or inbox)."""
+    if paper.pdf_path:
+        Path(paper.pdf_path).unlink(missing_ok=True)
+    inbox_path(paper.fingerprint).unlink(missing_ok=True)
+
+
+def reject_papers(fingerprints: list[str]) -> int:
+    """Mark papers rejected and delete their archived PDFs."""
+    db = DB(DB_PATH)
+    n = 0
+    for fp in fingerprints:
+        paper = db.get(fp)
+        if not paper:
+            console.print(f"[yellow]no paper {fp}[/yellow]")
+            continue
+        remove_pdf(paper)
+        db.set_status(fp, "rejected")
+        db.update_fields(fp, pdf_path=None)
+        console.print(f"[red]rejected[/red] {paper.title[:60]}")
+        n += 1
+    return n
+
+
 # ---- manual attach -------------------------------------------------------
 def link_pdf(fingerprint: str, src_path: str) -> None:
     """Attach a manually downloaded PDF (e.g. a paywalled one) to a paper.

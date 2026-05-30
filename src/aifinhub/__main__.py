@@ -43,6 +43,9 @@ def main(argv=None) -> int:
     en.add_argument("--limit", type=int, default=None, help="cap how many to process")
     en.add_argument("--model", default=None, help="override the extraction model")
 
+    rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
+    rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
+
     sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
@@ -78,6 +81,10 @@ def main(argv=None) -> int:
     elif args.cmd == "enrich":
         from .enrich import enrich, DEFAULT_MODEL
         enrich(limit=args.limit, model=args.model or DEFAULT_MODEL)
+    elif args.cmd == "reject":
+        from .pdfs import reject_papers
+        n = reject_papers(args.fingerprints)
+        print(f"rejected {n}")
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()
