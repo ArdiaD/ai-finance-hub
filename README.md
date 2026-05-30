@@ -47,6 +47,31 @@ python -m aifinhub draft-post --since 7d      # write a LinkedIn draft
 
 All sources, categories, and relevance keywords live in [`config.yaml`](config.yaml).
 
+## Local PDF archive
+
+PDFs are kept **local-only** (in `pdfs/`, gitignored — a private archive on
+Dropbox, never published). The public site links to the original publisher URL.
+
+```bash
+# Download PDFs for curated papers (arXiv etc. that expose a pdf_url)
+python -m aifinhub fetch-pdfs --status approved
+
+# Attach a manually downloaded PDF (e.g. a paywalled journal article)
+python -m aifinhub link-pdf <fingerprint> ~/Downloads/paper.pdf
+```
+
+### Importing an existing PDF collection
+
+```bash
+python -m aifinhub import-pdfs ~/path/to/your/pdf/folder
+```
+
+For each PDF it extracts the first-page text, finds a **DOI or arXiv id**, and
+pulls clean metadata (title / authors / abstract) from **Crossref / arXiv**. If
+no identifier is found it falls back to LLM extraction (needs `ANTHROPIC_API_KEY`)
+then to the filename. Imported papers land as `pending` (so they flow through the
+normal Excel review) and skip the relevance filter since they're hand-picked.
+
 ## Status
 
 MVP. arXiv and RePEc are the reliable backbone. SSRN and Google Scholar are

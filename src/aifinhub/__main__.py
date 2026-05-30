@@ -20,6 +20,20 @@ def main(argv=None) -> int:
     ri = sub.add_parser("review-import", help="read yes/no/feature decisions from Excel")
     ri.add_argument("path", help="the reviewed .xlsx file")
 
+    fp = sub.add_parser("fetch-pdfs", help="download PDFs locally (private archive)")
+    fp.add_argument("--status", default="approved",
+                    choices=["approved", "pending", "all"],
+                    help="which papers to download PDFs for (default approved)")
+
+    ip = sub.add_parser("import-pdfs", help="import a folder of existing PDFs")
+    ip.add_argument("folder", help="folder containing the PDFs (searched recursively)")
+    ip.add_argument("--status", default="pending", choices=["pending", "approved"],
+                    help="status for imported papers (default pending → Excel review)")
+
+    lp = sub.add_parser("link-pdf", help="attach a manually downloaded PDF to a paper")
+    lp.add_argument("fingerprint", help="paper fingerprint (see the Excel/stats)")
+    lp.add_argument("path", help="path to the PDF file")
+
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
     dp = sub.add_parser("draft-post", help="write a LinkedIn draft")
@@ -42,6 +56,15 @@ def main(argv=None) -> int:
     elif args.cmd == "review-import":
         from .review_xlsx import import_review
         import_review(args.path)
+    elif args.cmd == "fetch-pdfs":
+        from .pdfs import download_pdfs
+        download_pdfs(status=args.status)
+    elif args.cmd == "import-pdfs":
+        from .ingest_pdf import import_pdfs
+        import_pdfs(args.folder, status=args.status)
+    elif args.cmd == "link-pdf":
+        from .pdfs import link_pdf
+        link_pdf(args.fingerprint, args.path)
     elif args.cmd == "build-site":
         from .export import build_site
         build_site()

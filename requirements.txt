@@ -6,6 +6,7 @@ rapidfuzz>=3.0
 Jinja2>=3.1
 rich>=13.0
 openpyxl>=3.1
+pypdf>=4.0
 # Optional — only needed for the corresponding features:
 #   anthropic   : LLM relevance scoring / post drafting (set ANTHROPIC_API_KEY)
 #   google-search-results : SerpAPI Google Scholar source (set SERPAPI_KEY)

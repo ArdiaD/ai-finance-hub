@@ -24,6 +24,7 @@ class Paper:
     source: str                    # arxiv | repec | ssrn | journal:<name> | scholar
     published: Optional[str] = None  # ISO date string (YYYY-MM-DD) if known
     pdf_url: Optional[str] = None
+    pdf_path: Optional[str] = None  # local archived copy (never published)
     categories: list[str] = field(default_factory=list)
     venue: Optional[str] = None    # journal / working-paper series
 
