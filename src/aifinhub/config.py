@@ -21,7 +21,7 @@ EXCEL_REVIEW_DIR = DATA_DIR / "excel" / "review"  # review spreadsheets
 EXCEL_CORPUS_DIR = DATA_DIR / "excel" / "corpus"  # corpus exports
 
 DOCS_DIR = ROOT / "docs"
-OUT_DIR = ROOT / "out"
+LINKEDIN_DIR = ROOT / "linkedin"   # generated LinkedIn post drafts
 
 
 def _load_dotenv() -> None:

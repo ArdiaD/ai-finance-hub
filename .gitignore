@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 *.egg-info/
 .env
-out/
+linkedin/
 
 # All working data — the database, PDF archive (incoming/candidates/library),
 # and Excel files — lives under data/ and is never committed. The published

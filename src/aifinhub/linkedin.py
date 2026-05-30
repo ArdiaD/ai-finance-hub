@@ -7,7 +7,7 @@ from datetime import date, datetime, timedelta, timezone
 
 from rich.console import Console
 
-from .config import load_config, DB_PATH, OUT_DIR, env
+from .config import load_config, DB_PATH, LINKEDIN_DIR, env
 from .db import DB
 
 console = Console()
@@ -94,9 +94,9 @@ def draft_post(since: str = "7d", use_llm: bool = True) -> None:
     post = (_llm_post(cfg, featured, len(recent)) if use_llm else None) \
         or _template_post(cfg, featured, len(recent))
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    LINKEDIN_DIR.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    path = OUT_DIR / f"linkedin_{stamp}.md"
+    path = LINKEDIN_DIR / f"linkedin_{stamp}.md"
     path.write_text(post + "\n")
     console.print(f"[green]Draft written → {path}[/green]\n")
     console.print(post)

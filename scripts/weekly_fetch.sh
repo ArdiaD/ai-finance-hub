@@ -12,8 +12,8 @@ cd "$HERE"
 # shellcheck disable=SC1091
 source .venv/bin/activate
 
-LOG="$HERE/out/weekly_$(date +%F).log"
-mkdir -p "$HERE/out"
+LOG="$HERE/data/logs/weekly_$(date +%F).log"
+mkdir -p "$HERE/data/logs"
 
 python -m aifinhub fetch | tee "$LOG"
 
