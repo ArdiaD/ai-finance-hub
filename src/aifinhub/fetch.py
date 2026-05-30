@@ -27,13 +27,14 @@ def _is_duplicate(paper: Paper, existing_titles: list[tuple[str, str]]) -> bool:
     return False
 
 
-def run_fetch() -> dict:
+def run_fetch(download_pdfs: bool = True) -> dict:
     cfg = load_config()
     db = DB(DB_PATH)
     fetch_cfg = cfg["fetch"]
     min_score = cfg["relevance"]["min_score"]
 
     existing = [(fp, t) for fp, t in db.all_norm_titles()]
+    new_papers: list[Paper] = []
     stats = {"fetched": 0, "kept": 0, "duplicate": 0, "irrelevant": 0, "by_source": {}}
 
     for name, src_cfg in cfg["sources"].items():
@@ -61,6 +62,7 @@ def run_fetch() -> dict:
                 continue
             if db.insert(paper):
                 existing.append((paper.fingerprint, paper.title))
+                new_papers.append(paper)
                 stats["kept"] += 1
 
     console.print(
@@ -70,6 +72,19 @@ def run_fetch() -> dict:
     )
     for s, n in stats["by_source"].items():
         console.print(f"  {s}: {n}")
-    console.print(f"\nPending in inbox: [bold]{db.counts().get('pending', 0)}[/bold]")
-    console.print("Next: [bold]python -m aifinhub review[/bold]")
+
+    # Download this run's keepers' PDFs into the temporary inbox folder so they
+    # can be read during review.
+    if download_pdfs and new_papers:
+        from .pdfs import download_for, PDF_INBOX
+        console.print("\n[cyan]→ downloading candidate PDFs…[/cyan]")
+        ps = download_for(new_papers, db)
+        stats["pdfs"] = ps
+        console.print(
+            f"  PDFs: downloaded={ps['downloaded']} failed={ps['failed']} "
+            f"no-url={ps['no_url']} → {PDF_INBOX}"
+        )
+
+    console.print(f"\nPending for review: [bold]{db.counts().get('pending', 0)}[/bold]")
+    console.print("Next: [bold]python -m aifinhub review-export[/bold]")
     return stats

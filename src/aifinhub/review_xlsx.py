@@ -24,6 +24,7 @@ from rich.console import Console
 
 from .config import ROOT, DB_PATH
 from .db import DB
+from .pdfs import promote_to_library, discard_inbox
 
 console = Console()
 
@@ -137,6 +138,14 @@ def import_review(path: str) -> dict:
             continue
         status, featured = DECISIONS[decision]
         db.set_status(fp, status, featured=featured)
+        # PDF lifecycle: keep → promote inbox→library; reject → discard from inbox.
+        if status == "approved":
+            moved = promote_to_library(fp)
+            if moved:
+                db.update_fields(fp, pdf_path=str(moved))
+        else:
+            discard_inbox(fp)
+            db.update_fields(fp, pdf_path=None)
         if decision == "feature":
             stats["featured"] += 1
         elif decision == "yes":

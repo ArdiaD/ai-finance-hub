@@ -51,26 +51,43 @@ All sources, categories, and relevance keywords live in [`config.yaml`](config.y
 
 PDFs are kept **local-only** (in `pdfs/`, gitignored — a private archive on
 Dropbox, never published). The public site links to the original publisher URL.
+There are two folders with a simple lifecycle:
 
-```bash
-# Download PDFs for curated papers (arXiv etc. that expose a pdf_url)
-python -m aifinhub fetch-pdfs --status approved
-
-# Attach a manually downloaded PDF (e.g. a paywalled journal article)
-python -m aifinhub link-pdf <fingerprint> ~/Downloads/paper.pdf
+```
+  pdfs/inbox/     temporary — this week's candidates (downloaded during `fetch`),
+                  read while you review.
+  pdfs/library/   permanent — every KEPT paper: your existing backlog plus each
+                  week's approved papers.
 ```
 
-### Importing an existing PDF collection
+- **`fetch`** auto-downloads each candidate's PDF (when a `pdf_url` exists) into
+  `pdfs/inbox/`. *(Use `fetch --no-pdfs` to skip; `fetch-pdfs` to retry later.)*
+- **`review-import`** promotes KEPT papers' PDFs `inbox → library` and deletes
+  REJECTED ones from the inbox.
+- Papers from sources without PDF links (RePEc, most journals, SSRN) simply have
+  no local PDF — attach one manually with:
+  ```bash
+  python -m aifinhub link-pdf <fingerprint> ~/Downloads/paper.pdf
+  ```
+
+### Importing your existing PDF collection (your backlog)
+
+Drop your PDFs into `incoming_pdfs/`, then:
 
 ```bash
-python -m aifinhub import-pdfs ~/path/to/your/pdf/folder
+# Already-curated backlog → straight into the permanent library:
+python -m aifinhub import-pdfs incoming_pdfs --status approved
+
+# Or route them through the Excel review first (lands in the inbox):
+python -m aifinhub import-pdfs incoming_pdfs
 ```
 
 For each PDF it extracts the first-page text, finds a **DOI or arXiv id**, and
 pulls clean metadata (title / authors / abstract) from **Crossref / arXiv**. If
 no identifier is found it falls back to LLM extraction (needs `ANTHROPIC_API_KEY`)
-then to the filename. Imported papers land as `pending` (so they flow through the
-normal Excel review) and skip the relevance filter since they're hand-picked.
+then to the filename. Imported papers skip the relevance filter (they're
+hand-picked). After import you can empty `incoming_pdfs/` — the archived copies
+are what the database references.
 
 ## Status
 

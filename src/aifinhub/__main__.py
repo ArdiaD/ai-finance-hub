@@ -12,7 +12,9 @@ def main(argv=None) -> int:
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    sub.add_parser("fetch", help="discover new papers from all sources")
+    ft = sub.add_parser("fetch", help="discover new papers from all sources")
+    ft.add_argument("--no-pdfs", action="store_true",
+                    help="skip downloading candidate PDFs into the inbox")
     sub.add_parser("review", help="curate the pending inbox (interactive CLI)")
 
     rx = sub.add_parser("review-export", help="write pending papers to an Excel file")
@@ -20,15 +22,17 @@ def main(argv=None) -> int:
     ri = sub.add_parser("review-import", help="read yes/no/feature decisions from Excel")
     ri.add_argument("path", help="the reviewed .xlsx file")
 
-    fp = sub.add_parser("fetch-pdfs", help="download PDFs locally (private archive)")
-    fp.add_argument("--status", default="approved",
+    fp = sub.add_parser("fetch-pdfs",
+                        help="(re)download candidate PDFs into pdfs/inbox/")
+    fp.add_argument("--status", default="pending",
                     choices=["approved", "pending", "all"],
-                    help="which papers to download PDFs for (default approved)")
+                    help="which papers to download PDFs for (default pending)")
 
     ip = sub.add_parser("import-pdfs", help="import a folder of existing PDFs")
     ip.add_argument("folder", help="folder containing the PDFs (searched recursively)")
     ip.add_argument("--status", default="pending", choices=["pending", "approved"],
-                    help="status for imported papers (default pending → Excel review)")
+                    help="pending → inbox + Excel review (default); "
+                         "approved → straight into the permanent library")
 
     lp = sub.add_parser("link-pdf", help="attach a manually downloaded PDF to a paper")
     lp.add_argument("fingerprint", help="paper fingerprint (see the Excel/stats)")
@@ -46,7 +50,7 @@ def main(argv=None) -> int:
 
     if args.cmd == "fetch":
         from .fetch import run_fetch
-        run_fetch()
+        run_fetch(download_pdfs=not args.no_pdfs)
     elif args.cmd == "review":
         from .review import run_review
         run_review()
