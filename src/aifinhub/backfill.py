@@ -146,6 +146,63 @@ def _best(paper, cands: list[dict]) -> Optional[dict]:
     return best
 
 
+_ARXIV_ABS = re.compile(r"arxiv\.org/abs/(\d{2})(\d{2})\.\d+")
+_DOI_IN_URL = re.compile(r"doi\.org/(10\.[^\s?#]+)", re.I)
+
+
+def _date_from_arxiv(url: str) -> Optional[str]:
+    """arXiv ids encode YYMM, e.g. 2408.06361 → 2024-08."""
+    m = _ARXIV_ABS.search(url or "")
+    if not m:
+        return None
+    return f"20{m.group(1)}-{m.group(2)}-01"
+
+
+def _date_from_crossref(doi: str) -> Optional[str]:
+    mailto = env("CROSSREF_MAILTO") or "research@example.com"
+    try:
+        r = http_get(f"https://api.crossref.org/works/{doi}",
+                     params={"mailto": mailto}, timeout=15)
+        m = r.json()["message"]
+    except Exception:  # noqa: BLE001
+        return None
+    for field in ("published-print", "published-online", "issued", "created"):
+        parts = ((m.get(field) or {}).get("date-parts") or [[None]])[0]
+        if parts and parts[0]:
+            y = parts[0]
+            mo = parts[1] if len(parts) > 1 else 1
+            d = parts[2] if len(parts) > 2 else 1
+            return f"{y:04d}-{mo:02d}-{d:02d}"
+    return None
+
+
+def fix_dates() -> dict:
+    """Replace guessed dates with authoritative ones (arXiv id / Crossref)."""
+    db = DB(DB_PATH)
+    papers = [p for p in db.query() if p.url]
+    stats = {"fixed": 0, "unchanged": 0, "no_source": 0}
+    for p in papers:
+        new = None
+        if "arxiv.org" in p.url:
+            new = _date_from_arxiv(p.url)
+        elif (mm := _DOI_IN_URL.search(p.url)):
+            new = _date_from_crossref(mm.group(1).rstrip(".,;)"))
+        if not new:
+            stats["no_source"] += 1
+            continue
+        if new != p.published:
+            db.update_fields(p.fingerprint, published=new)
+            stats["fixed"] += 1
+            console.print(f"  [green]{new}[/green]  (was {p.published or '—'})  "
+                          f"{p.title[:42]}")
+        else:
+            stats["unchanged"] += 1
+    console.print(f"\n[bold green]Dates fixed: {stats['fixed']}[/bold green] · "
+                  f"already-correct {stats['unchanged']} · "
+                  f"no-source {stats['no_source']}")
+    return stats
+
+
 def _origin(url: str):
     """Map a paper URL to (source, default_venue) for accurate provenance."""
     if not url:

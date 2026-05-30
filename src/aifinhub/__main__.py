@@ -50,6 +50,8 @@ def main(argv=None) -> int:
 
     sub.add_parser("relabel-sources",
                    help="set source/venue (arXiv/SSRN/journal) from each paper's URL")
+    sub.add_parser("fix-dates",
+                   help="set authoritative publication dates (arXiv id / Crossref)")
 
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
@@ -104,6 +106,9 @@ def main(argv=None) -> int:
     elif args.cmd == "relabel-sources":
         from .backfill import relabel_sources
         relabel_sources()
+    elif args.cmd == "fix-dates":
+        from .backfill import fix_dates
+        fix_dates()
     elif args.cmd == "export-xlsx":
         from .corpus_xlsx import export_corpus
         export_corpus(status=args.status, path=args.out)
