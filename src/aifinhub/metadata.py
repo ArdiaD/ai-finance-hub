@@ -36,7 +36,7 @@ def resolve_doi(doi: str) -> Optional[dict]:
     mailto = env("CROSSREF_MAILTO") or "research@example.com"
     try:
         r = http_get(f"https://api.crossref.org/works/{doi}",
-                     params={"mailto": mailto})
+                     params={"mailto": mailto}, timeout=15)
         m = r.json()["message"]
     except Exception:  # noqa: BLE001
         return None
@@ -61,7 +61,8 @@ def resolve_doi(doi: str) -> Optional[dict]:
 
 def resolve_arxiv(aid: str) -> Optional[dict]:
     try:
-        r = http_get("http://export.arxiv.org/api/query", params={"id_list": aid})
+        r = http_get("http://export.arxiv.org/api/query",
+                     params={"id_list": aid}, timeout=15)
         feed = feedparser.parse(r.text)
         if not feed.entries:
             return None

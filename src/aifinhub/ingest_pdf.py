@@ -21,7 +21,7 @@ from .config import DB_PATH, env, load_config
 from .db import DB
 from .metadata import find_identifiers, resolve
 from .models import Paper
-from .pdfs import inbox_path, library_path
+from .pdfs import inbox_path, unique_library_path
 from .themes import tag_in_place
 
 console = Console()
@@ -79,9 +79,8 @@ def _is_dup(paper: Paper, db: DB) -> bool:
 def import_pdfs(folder: str, status: str = "pending") -> dict:
     cfg = load_config()
     db = DB(DB_PATH)
-    # Approved imports go straight to the permanent library; pending ones wait
-    # in the inbox until review.
-    dest_for = library_path if status == "approved" else inbox_path
+    # Approved imports go straight to the permanent library (named by convention);
+    # pending ones wait in the inbox until review.
     root = Path(folder).expanduser()
     pdf_files = sorted(root.rglob("*.pdf"))
     if not pdf_files:
@@ -126,9 +125,14 @@ def import_pdfs(folder: str, status: str = "pending") -> dict:
             console.print(f"  [dim]dup:[/dim] {paper.title[:60]}")
             continue
 
-        # Archive the PDF under the fingerprint and record the local path.
-        dest = dest_for(paper.fingerprint)
-        dest.parent.mkdir(parents=True, exist_ok=True)
+        # Archive the PDF and record the local path. Approved → library with the
+        # name1_name2_name3_year.pdf convention (falling back to the original
+        # filename when no authors resolved); pending → inbox under fingerprint.
+        if status == "approved":
+            dest = unique_library_path(paper, fallback_stem=pf.stem)
+        else:
+            dest = inbox_path(paper.fingerprint)
+            dest.parent.mkdir(parents=True, exist_ok=True)
         if not dest.exists():
             shutil.copy2(pf, dest)
         paper.pdf_path = str(dest)

@@ -101,10 +101,22 @@ python -m aifinhub import-pdfs incoming_pdfs
 
 For each PDF it extracts the first-page text, finds a **DOI or arXiv id**, and
 pulls clean metadata (title / authors / abstract) from **Crossref / arXiv**. If
-no identifier is found it falls back to LLM extraction (needs `ANTHROPIC_API_KEY`)
-then to the filename. Imported papers skip the relevance filter (they're
-hand-picked). After import you can empty `incoming_pdfs/` — the archived copies
-are what the database references.
+no identifier is found it falls back to the filename. Imported papers skip the
+relevance filter (they're hand-picked). Archived copies land in `pdfs/library/`
+named `name1_name2_name3_year.pdf` (up to 3 author surnames + year). After import
+you can empty `incoming_pdfs/` — the archived copies are what the DB references.
+
+**Enriching thin imports** — PDFs without an embedded id come in with only a
+filename-derived title. Fill in real title/authors/abstract with Claude (needs
+`ANTHROPIC_API_KEY` in `.env`):
+
+```bash
+python -m aifinhub enrich            # all thin imports (uses Claude Haiku)
+python -m aifinhub enrich --limit 3  # try a few first
+```
+
+It reads each PDF's text, extracts the metadata, re-tags themes, and renames the
+library file to the surname convention now that authors are known.
 
 ## Status
 

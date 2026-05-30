@@ -13,7 +13,8 @@ TIMEOUT = 30
 
 def http_get(url: str, **kwargs) -> requests.Response:
     headers = {"User-Agent": UA, **kwargs.pop("headers", {})}
-    r = requests.get(url, headers=headers, timeout=TIMEOUT, **kwargs)
+    timeout = kwargs.pop("timeout", TIMEOUT)
+    r = requests.get(url, headers=headers, timeout=timeout, **kwargs)
     r.raise_for_status()
     return r
 

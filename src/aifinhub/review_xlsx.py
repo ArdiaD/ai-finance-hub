@@ -142,7 +142,7 @@ def import_review(path: str) -> dict:
         db.set_status(fp, status, featured=featured)
         # PDF lifecycle: keep → promote inbox→library; reject → discard from inbox.
         if status == "approved":
-            moved = promote_to_library(fp)
+            moved = promote_to_library(db.get(fp))
             if moved:
                 db.update_fields(fp, pdf_path=str(moved))
         else:

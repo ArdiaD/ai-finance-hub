@@ -25,7 +25,11 @@ def _load_dotenv() -> None:
         if not line or line.startswith("#") or "=" not in line:
             continue
         key, _, val = line.partition("=")
-        os.environ.setdefault(key.strip(), val.strip())
+        key, val = key.strip(), val.strip()
+        # Fill in vars that are unset OR present-but-empty (some shells export
+        # empty placeholders); never clobber a real exported value.
+        if val and not os.environ.get(key):
+            os.environ[key] = val
 
 
 def load_config() -> dict[str, Any]:

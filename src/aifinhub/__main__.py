@@ -38,6 +38,11 @@ def main(argv=None) -> int:
     lp.add_argument("fingerprint", help="paper fingerprint (see the Excel/stats)")
     lp.add_argument("path", help="path to the PDF file")
 
+    en = sub.add_parser("enrich",
+                        help="LLM-extract metadata for thin imported PDFs")
+    en.add_argument("--limit", type=int, default=None, help="cap how many to process")
+    en.add_argument("--model", default=None, help="override the extraction model")
+
     sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
@@ -70,6 +75,9 @@ def main(argv=None) -> int:
     elif args.cmd == "link-pdf":
         from .pdfs import link_pdf
         link_pdf(args.fingerprint, args.path)
+    elif args.cmd == "enrich":
+        from .enrich import enrich, DEFAULT_MODEL
+        enrich(limit=args.limit, model=args.model or DEFAULT_MODEL)
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()
