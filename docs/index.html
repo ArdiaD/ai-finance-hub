@@ -76,7 +76,7 @@ function card(p){
   const more=long?`<button class="more" onclick="toggleAbs(this)">Show more ▾</button>`:'';
   return `<div class="card${feat}">
     <h2><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></h2>
-    <div class="meta">${badge}${esc(authors)} · <b>${esc(p.venue||p.source)}</b> · ${esc(p.published||'')}</div>
+    <div class="meta">${badge}${esc(authors)} · <b>${esc(p.venue||p.source)}</b> · ${esc((p.published||'').slice(0,7))}</div>
     <div class="meta">${themes}${cats}</div>
     <div class="abs">${abs}</div>${more}
   </div>`;
