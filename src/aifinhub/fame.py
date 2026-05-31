@@ -17,7 +17,7 @@ from .db import DB
 
 console = Console()
 
-FAME_THRESHOLD = 8                       # >= this = FAME-relevant (directly GenAI/LLM core)
+FAME_THRESHOLD = 6                       # >= this = FAME-relevant (the score shows how central)
 DEFAULT_MODEL = "claude-haiku-4-5-20251001"
 SUMMARY_PATH = ROOT / "fame" / "FAME_summary.md"
 
