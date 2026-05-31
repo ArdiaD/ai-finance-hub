@@ -68,8 +68,7 @@ INDEX_HTML = """<!doctype html>
 </div>
 <main id="list"></main>
 <footer>
-  <span id="count"></span> · Curated by {curator} ·
-  <a href="papers.json" style="color:var(--muted)">data</a>
+  <span id="count"></span> · Curated by {curator}
 </footer>
 <script>
 let PAPERS=[];

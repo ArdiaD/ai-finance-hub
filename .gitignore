@@ -13,3 +13,6 @@ data/
 # Local scratch / OS junk — never publish
 .DS_Store
 _other/
+
+# Local editor/preview config (machine-specific paths)
+.claude/
