@@ -16,8 +16,7 @@ DATA_DIR = ROOT / "data"
 DB_PATH = DATA_DIR / "hub.db"
 INCOMING_DIR = DATA_DIR / "pdfs" / "incoming"   # PDFs you drop here to import
 PDF_LIBRARY_DIR = DATA_DIR / "pdfs" / "library"  # EVERY paper's PDF (status flags in/out of hub)
-EXCEL_REVIEW_DIR = DATA_DIR / "excel" / "review"  # review spreadsheets
-EXCEL_CORPUS_DIR = DATA_DIR / "excel" / "corpus"  # corpus exports
+EXCEL_DIR = DATA_DIR / "excel"  # dated full-DB snapshots: YYYY-MM-DD_hub_db.xlsx
 
 DOCS_DIR = ROOT / "docs"
 LINKEDIN_DIR = ROOT / "linkedin"   # generated LinkedIn post drafts

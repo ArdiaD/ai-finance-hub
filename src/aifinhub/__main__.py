@@ -24,11 +24,9 @@ def main(argv=None) -> int:
                     help="skip downloading candidate PDFs into the inbox")
     sub.add_parser("review", help="curate the pending inbox (interactive CLI)")
 
-    rx = sub.add_parser("review-export", help="write papers to an Excel file for yes/no review")
-    rx.add_argument("--out", default=None,
-                    help="output .xlsx path (default data/excel/review/review_<date>.xlsx)")
-    rx.add_argument("--all", action="store_true",
-                    help="export the WHOLE database (decision pre-filled) to add/remove any paper")
+    rx = sub.add_parser("review-export",
+                        help="write a dated full-DB snapshot (data/excel/<date>_hub_db.xlsx)")
+    rx.add_argument("--out", default=None, help="output .xlsx path")
     ri = sub.add_parser("review-import", help="read yes/no/feature decisions from Excel")
     ri.add_argument("path", help="the reviewed .xlsx file")
 
@@ -76,11 +74,6 @@ def main(argv=None) -> int:
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
 
-    ex = sub.add_parser("export-xlsx", help="export the corpus to a rich Excel file")
-    ex.add_argument("--status", default="approved",
-                    choices=["approved", "pending", "rejected", "all"])
-    ex.add_argument("--out", default=None, help="output .xlsx path")
-
     sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
@@ -106,7 +99,7 @@ def main(argv=None) -> int:
         run_review()
     elif args.cmd == "review-export":
         from .review_xlsx import export_review
-        export_review(path=args.out, all_papers=args.all)
+        export_review(path=args.out)
     elif args.cmd == "review-import":
         from .review_xlsx import import_review
         import_review(args.path)
@@ -116,6 +109,8 @@ def main(argv=None) -> int:
     elif args.cmd == "import-pdfs":
         from .ingest_pdf import import_pdfs
         import_pdfs(args.folder, status=args.status)
+        from .review_xlsx import export_review  # snapshot the DB after adding
+        export_review()
     elif args.cmd == "link-pdf":
         from .pdfs import link_pdf
         link_pdf(args.fingerprint, args.path)
@@ -141,9 +136,6 @@ def main(argv=None) -> int:
     elif args.cmd == "polish":
         from .polish import polish
         polish()
-    elif args.cmd == "export-xlsx":
-        from .corpus_xlsx import export_corpus
-        export_corpus(status=args.status, path=args.out)
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()

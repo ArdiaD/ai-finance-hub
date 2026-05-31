@@ -36,7 +36,7 @@ The whole cycle is **two commands around a human review step**:
 ```bash
 # 1. Discover + enhance + produce the dated review sheet
 python -m aifinhub weekly
-#    → data/excel/review/review_<DATE>.xlsx
+#    → data/excel/<DATE>_hub_db.xlsx   (a dated full-DB snapshot)
 
 #    ── HUMAN STEP ────────────────────────────────────────────────
 #    Open the .xlsx (synced via Dropbox) and fill the `decision`
@@ -45,7 +45,7 @@ python -m aifinhub weekly
 #    ──────────────────────────────────────────────────────────────
 
 # 2. Apply decisions, rebuild the site, and draft the LinkedIn post
-python -m aifinhub publish data/excel/review/review_<DATE>.xlsx
+python -m aifinhub publish data/excel/<DATE>_hub_db.xlsx
 
 # 3. Push docs/ (GitHub Desktop) to publish, then post linkedin/linkedin_<DATE>.md
 ```
@@ -63,17 +63,22 @@ Each underlying command can still be run on its own (see **Commands**).
 To add papers you already have as PDFs, drop them in `data/pdfs/incoming/`
 and run `python -m aifinhub import-pdfs` (see **Commands** below).
 
-**Editing the hub directly.** Every paper's PDF lives in one folder
-(`data/pdfs/library/`); whether it appears on the hub is just a database flag.
-To add or remove papers by hand, export the whole database to Excel, edit the
-`decision` column (`yes` = in, `no` = out), and re-import:
+**The database snapshot.** `review-export` writes a dated **full-database
+snapshot** — `data/excel/<DATE>_hub_db.xlsx` — every paper with an editable
+`decision` column pre-filled from its current state (`yes` = in the hub,
+`feature` = in + highlighted, `no` = out, blank = new & undecided). It's both the
+review surface and the weekly archival record. To add or remove any paper by
+hand, edit its `decision` cell and re-import:
 
 ```bash
-python -m aifinhub review-export --all       # → data/excel/review/database_<date>.xlsx
-#   ... flip decision cells: yes / no / feature ...
-python -m aifinhub review-import data/excel/review/database_<date>.xlsx
+python -m aifinhub review-export             # → data/excel/<date>_hub_db.xlsx
+#   ... flip decision cells (filter the column for blanks to find new papers) ...
+python -m aifinhub review-import data/excel/<date>_hub_db.xlsx
 python -m aifinhub build-site
 ```
+
+A fresh snapshot is also written automatically after each `weekly` run and each
+`import-pdfs`, so `data/excel/` becomes a week-by-week history of the database.
 
 ---
 
@@ -110,7 +115,7 @@ the keys substantially improve metadata quality.
 | **`publish <xlsx>`** | **Apply decisions → build-site → LinkedIn draft** |
 | `fetch` | Discover new papers from all sources; download candidate PDFs; tag themes |
 | `polish` | Run all metadata-cleanup passes (enrich → backfill-urls → relabel-sources → fix-dates) |
-| `review-export [--all]` | Write pending papers (or `--all` the whole DB) to an Excel review sheet |
+| `review-export` | Write a dated full-DB snapshot (`data/excel/<date>_hub_db.xlsx`) |
 | `review-import <xlsx>` | Apply the yes/no/feature decisions (flips each paper's in-hub flag) |
 | `build-site` | Export approved papers to `docs/papers.json` and regenerate the site |
 | `draft-post [--since 7d]` | Generate a LinkedIn post draft in `linkedin/` |
@@ -124,7 +129,6 @@ the keys substantially improve metadata quality.
 | `reject <fingerprint>` | Mark a paper out of the hub (its PDF stays in the library) |
 | `link-pdf <fingerprint> <path>` | Attach a manually downloaded PDF to a paper |
 | `fetch-pdfs` | Retry downloading candidate PDFs |
-| `export-xlsx [--status]` | Export the corpus to a rich Excel file |
 | `stats` | Show pipeline counts |
 
 ---
@@ -137,10 +141,8 @@ data/                     all working data (gitignored; backed up via Dropbox)
     incoming/             PDFs you drop here to import
     library/              EVERY paper's PDF (name1_name2_name3_year.pdf) — whether
                           a paper is in the hub is a DB flag, not which folder
-  excel/
-    review/               review_<date>.xlsx (weekly) ·
-                          database_<date>.xlsx (whole DB, from --all)
-    corpus/               read-only corpus exports (export-xlsx)
+  excel/                  dated full-DB snapshots: <date>_hub_db.xlsx
+                          (review surface + weekly archival record)
   logs/                   weekly run logs
   hub.db                  the SQLite database (source of truth)
 docs/                     the published GitHub Pages site (committed)

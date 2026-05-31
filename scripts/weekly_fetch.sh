@@ -22,7 +22,7 @@ python -m aifinhub review-export | tee -a "$LOG"
 
 PENDING=$(python -m aifinhub stats | grep -o "'pending': [0-9]*" | grep -o "[0-9]*" || echo "?")
 
-REVIEW_XLSX="data/excel/review/review_$(date +%F).xlsx"
+REVIEW_XLSX="data/excel/$(date +%F)_hub_db.xlsx"
 
 # macOS desktop notification (no-op elsewhere).
 if command -v osascript >/dev/null 2>&1; then

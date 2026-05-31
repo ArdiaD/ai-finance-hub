@@ -12,6 +12,7 @@ no = reject, blank = leave pending (re-appears in the next export).
 
 from __future__ import annotations
 
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -22,64 +23,59 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 from rich.console import Console
 
-from .config import DB_PATH, EXCEL_REVIEW_DIR
+from .config import DB_PATH, EXCEL_DIR
 from .db import DB
 
 console = Console()
 
-REVIEW_DIR = EXCEL_REVIEW_DIR
+REVIEW_DIR = EXCEL_DIR
 DECISIONS = {"yes": ("approved", False), "feature": ("approved", True),
              "no": ("rejected", None)}
 
 # (header, attribute, width, wrap)
 COLUMNS = [
-    ("decision", None, 12, False),
-    ("title", "title", 55, True),
-    ("themes", "_themes", 26, True),
-    ("authors", "_authors", 30, True),
+    ("decision", None, 12, False),     # editable flag: yes / no / feature (blank = new)
+    ("title", "title", 50, True),
+    ("authors", "_authors", 28, True),
+    ("year", "_year", 7, False),
+    ("themes", "_themes", 24, True),
     ("venue", "venue", 22, True),
-    ("source", "source", 14, False),
-    ("published", "published", 12, False),
-    ("score", "score", 8, False),
-    ("why", "relevance_note", 28, True),
+    ("source", "source", 12, False),
+    ("url", "url", 38, False),
+    ("local_pdf", "_local_pdf", 26, True),
+    ("score", "score", 7, False),
     ("abstract", "abstract", 80, True),
-    ("url", "url", 40, False),
-    ("pdf_url", "pdf_url", 30, False),
     ("fingerprint", "fingerprint", 18, False),  # key — do not edit
 ]
 
 
 def _decision_for(paper) -> str:
-    """Pre-fill the decision cell from a paper's current status (for --all)."""
+    """Pre-fill the decision cell from a paper's current status."""
     if paper.status == "approved":
         return "feature" if paper.featured else "yes"
     if paper.status == "rejected":
         return "no"
-    return ""  # pending → undecided
+    return ""  # pending → undecided (new papers to triage)
 
 
-def export_review(path: Optional[str] = None, all_papers: bool = False) -> Path:
+def export_review(path: Optional[str] = None) -> Path:
+    """Write a dated full-database snapshot: YYYY-MM-DD_hub_db.xlsx.
+
+    Every paper, with the editable `decision` column pre-filled from its current
+    state (yes / feature / no; blank = new & undecided). This is both the review
+    surface and the weekly archival record of the database.
+    """
     db = DB(DB_PATH)
-    if all_papers:
-        rows = db.query(order="published DESC, score DESC")  # whole database
-        prefill = True
-    else:
-        rows = db.query(status="pending", order="score DESC")  # weekly: new only
-        prefill = False
+    rows = db.query(order="published DESC, score DESC")
     if not rows:
         console.print("[yellow]No papers to export.[/yellow]")
 
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
-    if path:
-        out = Path(path)
-    elif all_papers:
-        out = REVIEW_DIR / f"database_{datetime.now():%Y-%m-%d}.xlsx"
-    else:
-        out = REVIEW_DIR / f"review_{datetime.now():%Y-%m-%d}.xlsx"
+    out = Path(path) if path else REVIEW_DIR / f"{datetime.now():%Y-%m-%d}_hub_db.xlsx"
 
     wb = Workbook()
     ws = wb.active
-    ws.title = "review"
+    ws.title = "hub_db"
 
     # Header row
     header_fill = PatternFill("solid", fgColor="1F4E78")
@@ -95,16 +91,14 @@ def export_review(path: Optional[str] = None, all_papers: bool = False) -> Path:
     for r, p in enumerate(rows, start=2):
         values = {
             "title": p.title, "_themes": ", ".join(p.themes),
-            "_authors": ", ".join(p.authors), "venue": p.venue,
-            "source": p.source, "published": p.published, "score": p.score,
-            "relevance_note": p.relevance_note, "abstract": p.abstract,
-            "url": p.url, "pdf_url": p.pdf_url, "fingerprint": p.fingerprint,
+            "_authors": ", ".join(p.authors),
+            "_year": (p.published or "")[:4], "venue": p.venue,
+            "source": p.source, "score": p.score, "abstract": p.abstract,
+            "url": p.url, "fingerprint": p.fingerprint,
+            "_local_pdf": os.path.basename(p.pdf_path) if p.pdf_path else "",
         }
         for c, (_head, attr, _w, wrap) in enumerate(COLUMNS, 1):
-            if attr is None:  # the decision column
-                val = _decision_for(p) if prefill else ""
-            else:
-                val = values.get(attr, "")
+            val = _decision_for(p) if attr is None else values.get(attr, "")
             cell = ws.cell(row=r, column=c, value=val)
             cell.alignment = Alignment(wrap_text=wrap, vertical="top")
 
@@ -120,11 +114,10 @@ def export_review(path: Optional[str] = None, all_papers: bool = False) -> Path:
     ws.auto_filter.ref = f"A1:{get_column_letter(len(COLUMNS))}{max(last, 1)}"
     wb.save(out)
 
-    what = "all" if all_papers else "pending"
     console.print(
-        f"[green]Exported {len(rows)} {what} papers → {out}[/green]\n"
-        "Open it (it's on Dropbox), edit the [bold]decision[/bold] column "
-        "(yes = in hub · feature = in + highlight · no = out), save, then:\n"
+        f"[green]Wrote DB snapshot ({len(rows)} papers) → {out}[/green]\n"
+        "Edit the [bold]decision[/bold] column (yes = in hub · feature = in + "
+        "highlight · no = out; blank rows are new), save, then:\n"
         f"  [bold]python -m aifinhub review-import '{out}'[/bold]"
     )
     return out
@@ -133,7 +126,8 @@ def export_review(path: Optional[str] = None, all_papers: bool = False) -> Path:
 def import_review(path: str) -> dict:
     db = DB(DB_PATH)
     wb = load_workbook(path, read_only=True)
-    ws = wb["review"] if "review" in wb.sheetnames else wb.active
+    ws = wb["hub_db"] if "hub_db" in wb.sheetnames else (
+        wb["review"] if "review" in wb.sheetnames else wb.active)
 
     rows = ws.iter_rows(values_only=True)
     header = [str(h).strip().lower() if h else "" for h in next(rows)]
