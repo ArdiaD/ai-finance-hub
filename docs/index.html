@@ -60,7 +60,10 @@
   <select id="src"><option value="">All sources</option></select>
   <select id="yfrom"><option value="">From</option></select>
   <select id="yto"><option value="">To</option></select>
-  <label class="famechk" title="Show only FAME-relevant papers"><input type="checkbox" id="fameonly"> FAME</label>
+  <select id="sort">
+    <option value="date">Newest first</option>
+    <option value="fame">Most FAME-relevant</option>
+  </select>
 </div>
 <main id="list"></main>
 <footer>
@@ -95,19 +98,20 @@ function toggleAbs(btn){
 }
 function render(){
   const q=el('q').value.toLowerCase(), src=el('src').value,
-        theme=el('theme').value,
-        yfrom=el('yfrom').value, yto=el('yto').value, fameonly=el('fameonly').checked;
+        theme=el('theme').value, sort=el('sort').value,
+        yfrom=el('yfrom').value, yto=el('yto').value;
   let rows=PAPERS.filter(p=>{
     if(src && p.source!==src) return false;
     if(theme && !(p.themes||[]).includes(theme)) return false;
-    if(fameonly && !(p.fame_score>=FAME)) return false;
     const y=(p.published||'').slice(0,4);
     if(yfrom && (!y || y<yfrom)) return false;
     if(yto && (!y || y>yto)) return false;
     if(!q) return true;
     return (p.title+' '+(p.authors||[]).join(' ')+' '+p.abstract).toLowerCase().includes(q);
   });
-  rows.sort((a,b)=>(b.published||'').localeCompare(a.published||''));  // newest first
+  rows.sort((a,b)=> sort==='fame'
+    ? ((b.fame_score||0)-(a.fame_score||0))||(b.published||'').localeCompare(a.published||'')
+    : (b.published||'').localeCompare(a.published||''));
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }
@@ -120,8 +124,7 @@ fetch('papers.json?v=8d6bd52c').then(r=>r.json()).then(d=>{
   const years=[...new Set(PAPERS.map(p=>(p.published||'').slice(0,4)).filter(Boolean))].sort().reverse();
   const yopts=years.map(y=>'<option>'+y+'</option>').join('');
   el('yfrom').innerHTML+=yopts; el('yto').innerHTML+=yopts;
-  ['q','src','theme','yfrom','yto'].forEach(id=>el(id).addEventListener('input',render));
-  el('fameonly').addEventListener('change',render);
+  ['q','src','theme','yfrom','yto','sort'].forEach(id=>el(id).addEventListener('input',render));
   render();
 });
 </script>
