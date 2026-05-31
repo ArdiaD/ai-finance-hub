@@ -130,7 +130,7 @@ function render(){{
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }}
-fetch('papers.json').then(r=>r.json()).then(d=>{{
+fetch('papers.json?v={version}').then(r=>r.json()).then(d=>{{
   PAPERS=d.papers||[];
   const srcs=[...new Set(PAPERS.map(p=>p.source))].sort();
   el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
@@ -149,11 +149,11 @@ fetch('papers.json').then(r=>r.json()).then(d=>{{
 """
 
 
-def render_index(cfg: dict, docs_dir: Path) -> None:
+def render_index(cfg: dict, docs_dir: Path, version: str = "1") -> None:
     from .fame import FAME_THRESHOLD
     hub = cfg["hub"]
     html = INDEX_HTML.format(
         title=hub["title"], subtitle=hub["subtitle"], curator=hub["curator"],
-        fame_threshold=FAME_THRESHOLD,
+        fame_threshold=FAME_THRESHOLD, version=version,
     )
     (docs_dir / "index.html").write_text(html)

@@ -37,8 +37,11 @@ def build_site() -> None:
             for p in approved
         ],
     }
-    (DOCS_DIR / "papers.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False))
-    render_index(cfg, DOCS_DIR)
+    import hashlib
+    body = json.dumps(payload, indent=2, ensure_ascii=False)
+    (DOCS_DIR / "papers.json").write_text(body)
+    version = hashlib.sha1(body.encode()).hexdigest()[:8]  # cache-buster
+    render_index(cfg, DOCS_DIR, version=version)
 
     console.print(
         f"[green]Wrote {len(approved)} papers → docs/papers.json[/green]\n"
