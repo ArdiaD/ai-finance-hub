@@ -25,6 +25,9 @@ Curated by **David Ardia** (HEC Montréal).
 3. **Review** them in a dated Excel file — a human marks `yes` / `no` / `feature`.
 4. **Publish** the accepted papers to the public hub.
 
+Every paper is also scored for **FAME relevance** (embedding similarity to a
+research-project summary — see [FAME relevance scoring](#fame-relevance-scoring)).
+
 The database (`data/hub.db`) is the source of truth; every paper's PDF lives in
 one folder (`data/pdfs/library/`) and a status flag decides whether it appears on
 the hub. The public artifact is `docs/papers.json`, which drives the static
@@ -129,6 +132,7 @@ the keys substantially improve metadata quality.
 | `relabel-sources` | Set the real source/venue (arXiv/SSRN/journal) from each URL |
 | `fix-dates` | Set authoritative publication dates (arXiv id / Crossref) |
 | `retag` | Re-apply the theme taxonomy to all papers |
+| `fame-score [--rescore]` | Score each paper's similarity to the FAME project (see below) |
 | `reject <fingerprint>` | Mark a paper out of the hub (its PDF stays in the library) |
 | `link-pdf <fingerprint> <path>` | Attach a manually downloaded PDF to a paper |
 | `fetch-pdfs` | Retry downloading candidate PDFs |
@@ -174,6 +178,55 @@ Everything tunable lives in [`config.yaml`](config.yaml):
 - **Themes** — a `theme → keywords` map; papers are auto-tagged with all matching
   themes (shown as filter chips on the site and a column in the review Excel).
   Edit it, then run `python -m aifinhub retag`.
+
+---
+
+## The hub website
+
+The static site (`docs/`) loads `papers.json` and runs entirely client-side
+(no server). Visitors get, over the curated corpus:
+
+- full-text **search** (title · authors · abstract);
+- filters by **theme**, **source**, and a **year range** (from / to);
+- **sort** by *newest first* or *most FAME-relevant*;
+- each card shows the venue, year (month precision), **theme chips**, an
+  expandable abstract, and — where relevant — a **`FAME · NN%`** badge.
+
+`papers.json` is fetched with a content-hash cache-buster so the site always
+shows the latest data after a rebuild.
+
+---
+
+## FAME relevance scoring
+
+The hub doubles as a live literature map for the **FAME** research project
+(*Financial Artificial Machine Intelligence* — Dauphine–PSL × HEC Montréal, on
+Generative AI / LLMs in investing & trading). `fame-score` rates how close each
+paper is to that project, surfaced as the **`FAME · NN%`** badge on the site, a
+*most FAME-relevant* sort option, and a `fame_score` column in the Excel snapshot.
+
+It is a pure **embedding-similarity** measure (no LLM judgment), computed locally
+and offline:
+
+1. The project summary in **`fame/FAME.md`** is embedded with a local
+   `sentence-transformers` model (`all-MiniLM-L6-v2`, free, no API key).
+2. Each paper's **title + abstract** is embedded the same way.
+3. Their **cosine similarity** — rescaled onto 0–100% so same-domain papers
+   spread out — is the FAME score.
+
+Core GenAI-in-finance papers land near 100%; tangential work near 0%. Re-run
+after editing the summary or adding papers (the badge threshold is
+`FAME_THRESHOLD` in `src/aifinhub/fame.py`):
+
+```bash
+pip install -e ".[fame]"            # one-time: installs sentence-transformers
+python -m aifinhub fame-score       # scores only new/unscored papers
+python -m aifinhub fame-score --rescore   # re-scores everything (after editing FAME.md)
+python -m aifinhub build-site
+```
+
+*(`fame/` is private and gitignored — it holds the project summary, not committed
+to the public repo.)*
 
 ---
 
