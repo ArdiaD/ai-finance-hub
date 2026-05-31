@@ -57,7 +57,8 @@ def _llm_extract(text: str, model: str, client) -> Optional[dict]:
         return None
 
 
-def enrich(limit: Optional[int] = None, model: str = DEFAULT_MODEL) -> dict:
+def enrich(limit: Optional[int] = None, model: str = DEFAULT_MODEL,
+           status: str = "all") -> dict:
     if not env("ANTHROPIC_API_KEY"):
         raise SystemExit("ANTHROPIC_API_KEY not set (add it to .env).")
     try:
@@ -69,7 +70,8 @@ def enrich(limit: Optional[int] = None, model: str = DEFAULT_MODEL) -> dict:
     db = DB(DB_PATH)
     client = anthropic.Anthropic(api_key=env("ANTHROPIC_API_KEY"))
 
-    targets = [p for p in db.query() if _needs_enrichment(p)]
+    rows = db.query(status=None if status == "all" else status)
+    targets = [p for p in rows if _needs_enrichment(p)]
     if limit:
         targets = targets[:limit]
     console.print(f"Enriching [bold]{len(targets)}[/bold] thin papers with {model}\n")

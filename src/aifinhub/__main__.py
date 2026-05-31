@@ -12,6 +12,13 @@ def main(argv=None) -> int:
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
+    # ── High-level weekly workflow ──
+    sub.add_parser("weekly",
+                   help="fetch → polish → review-export (produces the dated review Excel)")
+    pub = sub.add_parser("publish",
+                         help="review-import → build-site → draft-post (then push + post)")
+    pub.add_argument("xlsx", help="the reviewed .xlsx file")
+
     ft = sub.add_parser("fetch", help="discover new papers from all sources")
     ft.add_argument("--no-pdfs", action="store_true",
                     help="skip downloading candidate PDFs into the inbox")
@@ -83,7 +90,13 @@ def main(argv=None) -> int:
 
     args = parser.parse_args(argv)
 
-    if args.cmd == "fetch":
+    if args.cmd == "weekly":
+        from .workflows import weekly
+        weekly()
+    elif args.cmd == "publish":
+        from .workflows import publish
+        publish(args.xlsx)
+    elif args.cmd == "fetch":
         from .fetch import run_fetch
         run_fetch(download_pdfs=not args.no_pdfs)
     elif args.cmd == "review":

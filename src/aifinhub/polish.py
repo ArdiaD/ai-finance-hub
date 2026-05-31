@@ -19,24 +19,24 @@ from .config import env
 console = Console()
 
 
-def polish() -> None:
+def polish(status: str = "all") -> None:
     console.rule("[bold]1/4  enrich[/bold]")
     if env("ANTHROPIC_API_KEY"):
         from .enrich import enrich, DEFAULT_MODEL
-        enrich(model=DEFAULT_MODEL)
+        enrich(model=DEFAULT_MODEL, status=status)
     else:
         console.print("[yellow]skipped — set ANTHROPIC_API_KEY in .env to enable[/yellow]")
 
     from .backfill import backfill_urls, relabel_sources, fix_dates
 
     console.rule("[bold]2/4  backfill-urls[/bold]")
-    backfill_urls()
+    backfill_urls(status=status)
 
     console.rule("[bold]3/4  relabel-sources[/bold]")
-    relabel_sources()
+    relabel_sources(status=status)
 
     console.rule("[bold]4/4  fix-dates[/bold]")
-    fix_dates()
+    fix_dates(status=status)
 
     console.print("\n[bold green]Polish complete.[/bold green] "
                   "Next: [bold]python -m aifinhub build-site[/bold]")

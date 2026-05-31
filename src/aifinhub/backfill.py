@@ -176,10 +176,10 @@ def _date_from_crossref(doi: str) -> Optional[str]:
     return None
 
 
-def fix_dates() -> dict:
+def fix_dates(status: str = "all") -> dict:
     """Replace guessed dates with authoritative ones (arXiv id / Crossref)."""
     db = DB(DB_PATH)
-    papers = [p for p in db.query() if p.url]
+    papers = [p for p in db.query(status=None if status == "all" else status) if p.url]
     stats = {"fixed": 0, "unchanged": 0, "no_source": 0}
     for p in papers:
         new = None
@@ -289,14 +289,15 @@ def _origin(url: str):
     return None
 
 
-def relabel_sources() -> dict:
+def relabel_sources(status: str = "all") -> dict:
     """Replace 'manual' source with the real origin (arXiv/SSRN/journal) by URL.
 
     Imported papers all carry source='manual' (how they entered); this rewrites
     that to where the paper actually lives, so cards/filters read correctly.
     """
     db = DB(DB_PATH)
-    manual = [p for p in db.query() if p.source == "manual"]
+    manual = [p for p in db.query(status=None if status == "all" else status)
+              if p.source == "manual"]
     counts: dict[str, int] = {}
     for p in manual:
         o = _origin(p.url)
@@ -315,9 +316,10 @@ def relabel_sources() -> dict:
     return counts
 
 
-def backfill_urls(limit: Optional[int] = None) -> dict:
+def backfill_urls(limit: Optional[int] = None, status: str = "all") -> dict:
     db = DB(DB_PATH)
-    targets = [p for p in db.query() if not p.url]
+    targets = [p for p in db.query(status=None if status == "all" else status)
+               if not p.url]
     if limit:
         targets = targets[:limit]
     console.print(f"Backfilling URLs for [bold]{len(targets)}[/bold] papers "

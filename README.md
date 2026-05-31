@@ -31,15 +31,11 @@ The database (`data/hub.db`) is the source of truth. The public artifact is
 
 ## The weekly workflow
 
+The whole cycle is **two commands around a human review step**:
+
 ```bash
-# 1. Discover — scan sources, download candidate PDFs, tag themes & relevance
-python -m aifinhub fetch
-
-# 2. Enhance — fill in metadata: LLM extraction, links, sources, dates
-python -m aifinhub polish
-
-# 3. Export the review sheet (date-stamped for team tracking)
-python -m aifinhub review-export
+# 1. Discover + enhance + produce the dated review sheet
+python -m aifinhub weekly
 #    → data/excel/review/review_<DATE>.xlsx
 
 #    ── HUMAN STEP ────────────────────────────────────────────────
@@ -48,19 +44,21 @@ python -m aifinhub review-export
 #    (feature = accept AND highlight in the LinkedIn post)
 #    ──────────────────────────────────────────────────────────────
 
-# 4. Import the decisions
-python -m aifinhub review-import data/excel/review/review_<DATE>.xlsx
-#    ACCEPTED → PDF moved to data/pdfs/library/   (kept in the hub)
-#    REJECTED → PDF moved to data/pdfs/rejected/  (archived, not deleted)
+# 2. Apply decisions, rebuild the site, and draft the LinkedIn post
+python -m aifinhub publish data/excel/review/review_<DATE>.xlsx
 
-# 5. Rebuild the site, then push to publish
-python -m aifinhub build-site
-git add docs && git commit -m "weekly update" && git push   # or GitHub Desktop
-
-# 6. (Optional) Draft a LinkedIn post for the week's papers
-python -m aifinhub draft-post --since 7d
-#    → linkedin/linkedin_<DATE>.md  (review and post manually)
+# 3. Push docs/ (GitHub Desktop) to publish, then post linkedin/linkedin_<DATE>.md
 ```
+
+What the two commands expand to:
+
+| `weekly` | `publish` |
+|---|---|
+| `fetch` — scan sources, download candidate PDFs, tag themes & relevance | `review-import` — apply yes/no/feature; sort PDFs into `library/` / `rejected/` |
+| `polish` — enhance the new candidates' metadata (links, sources, dates) | `build-site` — regenerate `docs/papers.json` + the site |
+| `review-export` — write the dated review spreadsheet | `draft-post` — write the LinkedIn draft to `linkedin/` |
+
+Each underlying command can still be run on its own (see **Commands**).
 
 To add papers you already have as PDFs, drop them in `data/pdfs/human_incoming/`
 and run `python -m aifinhub import-pdfs` (see **Commands** below).
@@ -96,6 +94,8 @@ the keys substantially improve metadata quality.
 
 | Command | What it does |
 |---|---|
+| **`weekly`** | **The weekly run: fetch → polish → review-export (the dated Excel)** |
+| **`publish <xlsx>`** | **Apply decisions → build-site → LinkedIn draft** |
 | `fetch` | Discover new papers from all sources; download candidate PDFs; tag themes |
 | `polish` | Run all metadata-cleanup passes (enrich → backfill-urls → relabel-sources → fix-dates) |
 | `review-export` | Write pending papers to `data/excel/review/review_<date>.xlsx` |
