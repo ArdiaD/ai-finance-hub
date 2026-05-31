@@ -302,6 +302,9 @@ def relabel_sources(status: str = "all") -> dict:
     for p in manual:
         o = _origin(p.url)
         if not o:
+            # No resolvable URL → neutral 'other' rather than the 'manual' marker.
+            db.update_fields(p.fingerprint, source="other")
+            counts["other"] = counts.get("other", 0) + 1
             continue
         src, ven = o
         fields = {"source": src}

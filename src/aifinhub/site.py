@@ -61,6 +61,8 @@ INDEX_HTML = """<!doctype html>
   <input id="q" placeholder="Search title, author, abstract…">
   <select id="theme"><option value="">All themes</option></select>
   <select id="src"><option value="">All sources</option></select>
+  <select id="yfrom"><option value="">From year</option></select>
+  <select id="yto"><option value="">To year</option></select>
   <select id="sort">
     <option value="date">Newest first</option>
     <option value="featured">Featured first</option>
@@ -97,10 +99,14 @@ function toggleAbs(btn){{
 }}
 function render(){{
   const q=el('q').value.toLowerCase(), src=el('src').value,
-        theme=el('theme').value, sort=el('sort').value;
+        theme=el('theme').value, sort=el('sort').value,
+        yfrom=el('yfrom').value, yto=el('yto').value;
   let rows=PAPERS.filter(p=>{{
     if(src && p.source!==src) return false;
     if(theme && !(p.themes||[]).includes(theme)) return false;
+    const y=(p.published||'').slice(0,4);
+    if(yfrom && (!y || y<yfrom)) return false;
+    if(yto && (!y || y>yto)) return false;
     if(!q) return true;
     return (p.title+' '+(p.authors||[]).join(' ')+' '+p.abstract).toLowerCase().includes(q);
   }});
@@ -116,7 +122,10 @@ fetch('papers.json').then(r=>r.json()).then(d=>{{
   el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
   const themes=[...new Set(PAPERS.flatMap(p=>p.themes||[]))].sort();
   if(themes.length) el('theme').innerHTML+='<option>'+themes.join('</option><option>')+'</option>';
-  ['q','src','theme','sort'].forEach(id=>el(id).addEventListener('input',render));
+  const years=[...new Set(PAPERS.map(p=>(p.published||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  const yopts=years.map(y=>'<option>'+y+'</option>').join('');
+  el('yfrom').innerHTML+=yopts; el('yto').innerHTML+=yopts;
+  ['q','src','theme','yfrom','yto','sort'].forEach(id=>el(id).addEventListener('input',render));
   render();
 }});
 </script>
