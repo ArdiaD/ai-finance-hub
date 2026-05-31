@@ -1,11 +1,12 @@
 """Source plugins. Each exposes `fetch(source_cfg, fetch_cfg) -> list[Paper]`."""
 
-from . import arxiv, repec, ssrn, journals, scholar
+from . import arxiv, repec, ssrn, journals, scholar, openalex
 
 REGISTRY = {
     "arxiv": arxiv.fetch,
     "repec": repec.fetch,
     "ssrn": ssrn.fetch,
     "journals": journals.fetch,
+    "openalex": openalex.fetch,
     "scholar": scholar.fetch,
 }

@@ -19,7 +19,8 @@ Curated by **David Ardia** (HEC Montréal).
  sources    enhance     dated Excel        decision          set in/out flag   GitHub Pages
 ```
 
-1. **Discover** candidate papers from arXiv, RePEc, SSRN, and journal feeds.
+1. **Discover** candidate papers from arXiv, RePEc, SSRN, and a curated set of
+   finance & ML/AI journals (via OpenAlex).
 2. **Enhance** their metadata (titles, authors, abstracts, links, dates, themes).
 3. **Review** them in a dated Excel file — a human marks `yes` / `no` / `feature`.
 4. **Publish** the accepted papers to the public hub.
@@ -164,7 +165,10 @@ original publisher/arXiv/SSRN page.
 
 Everything tunable lives in [`config.yaml`](config.yaml):
 
-- **Sources** — arXiv categories, RePEc NEP reports, SSRN queries, journal feeds.
+- **Sources** — arXiv categories, RePEc NEP reports, SSRN queries, and the
+  **OpenAlex venue source**: a curated list of finance/quant journals (searched
+  for AI terms) and ML/AI journals (searched for finance terms). Add or remove
+  venues under `sources.openalex` — each is an OpenAlex source id (`S…`).
 - **Relevance** — `ai_terms` × `finance_terms` (a paper must match ≥1 of each),
   `min_score`, and optional LLM re-ranking (`use_llm`).
 - **Themes** — a `theme → keywords` map; papers are auto-tagged with all matching
