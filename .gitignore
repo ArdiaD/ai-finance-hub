@@ -5,9 +5,9 @@ __pycache__/
 .env
 linkedin/
 
-# All working data — the database, PDF archive (incoming/candidates/library),
-# and Excel files — lives under data/ and is never committed. The published
-# corpus lives in docs/papers.json, which IS committed.
+# All working data — the database, PDF archive (incoming/library), and Excel
+# files — lives under data/ and is never committed. The published corpus lives
+# in docs/papers.json, which IS committed.
 data/
 
 # Local scratch / OS junk — never publish
