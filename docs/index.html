@@ -10,15 +10,17 @@
   * { box-sizing:border-box; }
   body { margin:0; font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",
           Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
-  header { padding:32px 20px 16px; max-width:980px; margin:0 auto; }
+  header { padding:32px 20px 16px; max-width:1180px; margin:0 auto; }
   h1 { margin:0 0 4px; font-size:28px; }
   .sub { color:var(--muted); margin:0; }
-  .controls { max-width:980px; margin:16px auto; padding:0 20px;
-               display:flex; gap:10px; flex-wrap:wrap; }
+  .controls { max-width:1180px; margin:16px auto; padding:0 20px;
+               display:flex; gap:8px; flex-wrap:nowrap; align-items:center; }
   input,select { background:var(--card); color:var(--fg); border:1px solid #2a2e38;
-                  border-radius:8px; padding:10px 12px; font-size:15px; }
-  input { flex:1; min-width:220px; }
-  main { max-width:980px; margin:0 auto; padding:0 20px 60px; }
+                  border-radius:8px; padding:8px 10px; font-size:14px; }
+  input { flex:1; min-width:120px; }
+  select { flex:0 0 auto; }
+  main { max-width:1180px; margin:0 auto; padding:0 20px 60px; }
+  @media (max-width:760px) { .controls { flex-wrap:wrap; } }
   .card { background:var(--card); border:1px solid #242833; border-radius:12px;
            padding:18px 20px; margin:12px 0; }
   .card.feat { border-color:var(--feat); }
@@ -31,8 +33,10 @@
   .badge.feat { background:#3a3015; color:var(--feat); }
   .badge.theme { background:#15301f; color:#5fd39a; cursor:pointer; }
   .badge.fame { background:#2d1b3d; color:#cf9bff; font-weight:600; }
-  .famechk { color:var(--muted); font-size:14px; display:flex; align-items:center;
-              gap:6px; padding:0 6px; }
+  .famechk { color:#cf9bff; font-size:14px; display:flex; align-items:center;
+              gap:5px; padding:0 8px; white-space:nowrap; flex:0 0 auto;
+              border:1px solid #3a2a4d; border-radius:8px; background:#1d1526;
+              cursor:pointer; height:36px; }
   .abs { color:#c7ccd6; font-size:14px; white-space:pre-line;
           display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;
           overflow:hidden; }
@@ -54,14 +58,14 @@
   <input id="q" placeholder="Search title, author, abstract…">
   <select id="theme"><option value="">All themes</option></select>
   <select id="src"><option value="">All sources</option></select>
-  <select id="yfrom"><option value="">From year</option></select>
-  <select id="yto"><option value="">To year</option></select>
+  <select id="yfrom"><option value="">From</option></select>
+  <select id="yto"><option value="">To</option></select>
   <select id="sort">
-    <option value="date">Newest first</option>
-    <option value="featured">Featured first</option>
-    <option value="fame">FAME relevance</option>
+    <option value="date">Newest</option>
+    <option value="featured">Featured</option>
+    <option value="fame">FAME score</option>
   </select>
-  <label class="famechk"><input type="checkbox" id="fameonly"> FAME only</label>
+  <label class="famechk" title="Show only FAME-relevant papers"><input type="checkbox" id="fameonly"> FAME</label>
 </div>
 <main id="list"></main>
 <footer>
