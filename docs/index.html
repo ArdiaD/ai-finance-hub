@@ -77,7 +77,7 @@ function card(p){
   const badge=p.featured?'<span class="badge feat">★ featured</span>':'';
   const cats=(p.categories||[]).slice(0,4).map(c=>`<span class="badge">${esc(c)}</span>`).join('');
   const themes=(p.themes||[]).map(t=>`<span class="badge theme" onclick="pickTheme('${esc(t)}')">${esc(t)}</span>`).join('');
-  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Relevance to the FAME project">FAME · ${p.fame_score}</span>`:'';
+  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Relevance to the FAME project">FAME · ${p.fame_score*10}%</span>`:'';
   const authors=(p.authors||[]).slice(0,8).join(', ');
   const abs=esc(p.abstract||'');
   const long=(p.abstract||'').length>320;
