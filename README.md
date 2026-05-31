@@ -16,16 +16,18 @@ Curated by **David Ardia** (HEC Montréal).
 
 ```
   fetch ──▶ polish ──▶ review-export ──▶ [human: yes/no] ──▶ review-import ──▶ build-site ──▶ push
- sources    enhance     dated Excel        decision          sort PDFs         GitHub Pages
+ sources    enhance     dated Excel        decision          set in/out flag   GitHub Pages
 ```
 
 1. **Discover** candidate papers from arXiv, RePEc, SSRN, and journal feeds.
 2. **Enhance** their metadata (titles, authors, abstracts, links, dates, themes).
 3. **Review** them in a dated Excel file — a human marks `yes` / `no` / `feature`.
-4. **Publish** the accepted papers to the public hub; archive the rest.
+4. **Publish** the accepted papers to the public hub.
 
-The database (`data/hub.db`) is the source of truth. The public artifact is
-`docs/papers.json`, which drives the static site — no build server required.
+The database (`data/hub.db`) is the source of truth; every paper's PDF lives in
+one folder (`data/pdfs/library/`) and a status flag decides whether it appears on
+the hub. The public artifact is `docs/papers.json`, which drives the static
+site — no build server required.
 
 ---
 
