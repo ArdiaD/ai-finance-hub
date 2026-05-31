@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS papers (
     published     TEXT,
     score         REAL DEFAULT 0,
     relevance_note TEXT DEFAULT '',
+    fame_score    INTEGER,
+    fame_note     TEXT DEFAULT '',
     status        TEXT DEFAULT 'pending',
     featured      INTEGER DEFAULT 0,
     fetched_at    TEXT
@@ -50,7 +52,8 @@ class DB:
     def _migrate(self) -> None:
         """Add columns introduced after a DB was first created."""
         existing = {r["name"] for r in self.conn.execute("PRAGMA table_info(papers)")}
-        for col, decl in [("pdf_path", "TEXT"), ("themes", "TEXT")]:
+        for col, decl in [("pdf_path", "TEXT"), ("themes", "TEXT"),
+                          ("fame_score", "INTEGER"), ("fame_note", "TEXT")]:
             if col not in existing:
                 self.conn.execute(f"ALTER TABLE papers ADD COLUMN {col} {decl}")
 
@@ -70,13 +73,13 @@ class DB:
             """INSERT INTO papers
                (fingerprint, title, authors, abstract, url, pdf_url, pdf_path,
                 source, venue, categories, themes, published, score, relevance_note,
-                status, featured, fetched_at)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                fame_score, fame_note, status, featured, fetched_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 p.fingerprint, p.title, json.dumps(p.authors), p.abstract, p.url,
                 p.pdf_url, p.pdf_path, p.source, p.venue, json.dumps(p.categories),
                 json.dumps(p.themes), p.published, p.score, p.relevance_note,
-                p.status, int(p.featured), p.fetched_at,
+                p.fame_score, p.fame_note, p.status, int(p.featured), p.fetched_at,
             ),
         )
         self.conn.commit()
@@ -113,6 +116,7 @@ class DB:
             categories=json.loads(r["categories"] or "[]"),
             themes=json.loads(r["themes"] or "[]"), venue=r["venue"],
             score=r["score"], relevance_note=r["relevance_note"] or "",
+            fame_score=r["fame_score"], fame_note=r["fame_note"] or "",
             status=r["status"], featured=bool(r["featured"]),
             fetched_at=r["fetched_at"], fingerprint=r["fingerprint"],
         )

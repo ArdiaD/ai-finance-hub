@@ -32,6 +32,8 @@ class Paper:
     # Pipeline metadata (filled in by the pipeline, not the source)
     score: float = 0.0
     relevance_note: str = ""
+    fame_score: Optional[int] = None   # 0-10 relevance to the FAME project
+    fame_note: str = ""
     status: str = "pending"        # pending | approved | rejected
     featured: bool = False         # highlighted in the LinkedIn post
     fetched_at: Optional[str] = None

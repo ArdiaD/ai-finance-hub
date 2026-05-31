@@ -74,6 +74,11 @@ def main(argv=None) -> int:
     rj = sub.add_parser("reject", help="reject papers by fingerprint + delete their PDFs")
     rj.add_argument("fingerprints", nargs="+", help="one or more paper fingerprints")
 
+    fm = sub.add_parser("fame-score",
+                        help="LLM-score each paper's relevance to the FAME project (0-10)")
+    fm.add_argument("--rescore", action="store_true", help="re-score papers already scored")
+    fm.add_argument("--limit", type=int, default=None)
+
     sub.add_parser("retag", help="re-apply the theme taxonomy to all papers")
     sub.add_parser("build-site", help="export approved papers + regenerate site")
 
@@ -136,6 +141,9 @@ def main(argv=None) -> int:
     elif args.cmd == "polish":
         from .polish import polish
         polish()
+    elif args.cmd == "fame-score":
+        from .fame import score_fame
+        score_fame(limit=args.limit, rescore=args.rescore)
     elif args.cmd == "retag":
         from .themes import retag_all
         retag_all()

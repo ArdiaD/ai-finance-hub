@@ -40,6 +40,9 @@ INDEX_HTML = """<!doctype html>
             border-radius:6px; padding:1px 8px; font-size:12px; margin-right:6px; }}
   .badge.feat {{ background:#3a3015; color:var(--feat); }}
   .badge.theme {{ background:#15301f; color:#5fd39a; cursor:pointer; }}
+  .badge.fame {{ background:#2d1b3d; color:#cf9bff; font-weight:600; }}
+  .famechk {{ color:var(--muted); font-size:14px; display:flex; align-items:center;
+              gap:6px; padding:0 6px; }}
   .abs {{ color:#c7ccd6; font-size:14px; white-space:pre-line;
           display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;
           overflow:hidden; }}
@@ -66,7 +69,9 @@ INDEX_HTML = """<!doctype html>
   <select id="sort">
     <option value="date">Newest first</option>
     <option value="featured">Featured first</option>
+    <option value="fame">FAME relevance</option>
   </select>
+  <label class="famechk"><input type="checkbox" id="fameonly"> FAME only</label>
 </div>
 <main id="list"></main>
 <footer>
@@ -74,6 +79,7 @@ INDEX_HTML = """<!doctype html>
 </footer>
 <script>
 let PAPERS=[];
+const FAME={fame_threshold};
 const el=id=>document.getElementById(id);
 function esc(s){{return (s||'').replace(/[&<>]/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;'}}[c]));}}
 function card(p){{
@@ -81,6 +87,7 @@ function card(p){{
   const badge=p.featured?'<span class="badge feat">★ featured</span>':'';
   const cats=(p.categories||[]).slice(0,4).map(c=>`<span class="badge">${{esc(c)}}</span>`).join('');
   const themes=(p.themes||[]).map(t=>`<span class="badge theme" onclick="pickTheme('${{esc(t)}}')">${{esc(t)}}</span>`).join('');
+  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Relevance to the FAME project">FAME · ${{p.fame_score}}</span>`:'';
   const authors=(p.authors||[]).slice(0,8).join(', ');
   const abs=esc(p.abstract||'');
   const long=(p.abstract||'').length>320;
@@ -88,7 +95,7 @@ function card(p){{
   return `<div class="card${{feat}}">
     <h2><a href="${{esc(p.url)}}" target="_blank" rel="noopener">${{esc(p.title)}}</a></h2>
     <div class="meta">${{badge}}${{esc(authors)}} · <b>${{esc(p.venue||p.source)}}</b> · ${{esc((p.published||'').slice(0,7))}}</div>
-    <div class="meta">${{themes}}${{cats}}</div>
+    <div class="meta">${{fame}}${{themes}}${{cats}}</div>
     <div class="abs">${{abs}}</div>${{more}}
   </div>`;
 }}
@@ -100,10 +107,11 @@ function toggleAbs(btn){{
 function render(){{
   const q=el('q').value.toLowerCase(), src=el('src').value,
         theme=el('theme').value, sort=el('sort').value,
-        yfrom=el('yfrom').value, yto=el('yto').value;
+        yfrom=el('yfrom').value, yto=el('yto').value, fameonly=el('fameonly').checked;
   let rows=PAPERS.filter(p=>{{
     if(src && p.source!==src) return false;
     if(theme && !(p.themes||[]).includes(theme)) return false;
+    if(fameonly && !(p.fame_score>=FAME)) return false;
     const y=(p.published||'').slice(0,4);
     if(yfrom && (!y || y<yfrom)) return false;
     if(yto && (!y || y>yto)) return false;
@@ -112,6 +120,8 @@ function render(){{
   }});
   rows.sort((a,b)=> sort==='featured'
     ? (b.featured-a.featured)||(b.published||'').localeCompare(a.published||'')
+    : sort==='fame'
+    ? ((b.fame_score||0)-(a.fame_score||0))||(b.published||'').localeCompare(a.published||'')
     : (b.published||'').localeCompare(a.published||''));
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
@@ -126,6 +136,7 @@ fetch('papers.json').then(r=>r.json()).then(d=>{{
   const yopts=years.map(y=>'<option>'+y+'</option>').join('');
   el('yfrom').innerHTML+=yopts; el('yto').innerHTML+=yopts;
   ['q','src','theme','yfrom','yto','sort'].forEach(id=>el(id).addEventListener('input',render));
+  el('fameonly').addEventListener('change',render);
   render();
 }});
 </script>
@@ -135,8 +146,10 @@ fetch('papers.json').then(r=>r.json()).then(d=>{{
 
 
 def render_index(cfg: dict, docs_dir: Path) -> None:
+    from .fame import FAME_THRESHOLD
     hub = cfg["hub"]
     html = INDEX_HTML.format(
-        title=hub["title"], subtitle=hub["subtitle"], curator=hub["curator"]
+        title=hub["title"], subtitle=hub["subtitle"], curator=hub["curator"],
+        fame_threshold=FAME_THRESHOLD,
     )
     (docs_dir / "index.html").write_text(html)

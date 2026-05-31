@@ -25,6 +25,7 @@ from rich.console import Console
 
 from .config import DB_PATH, EXCEL_DIR
 from .db import DB
+from .fame import FAME_THRESHOLD
 
 console = Console()
 
@@ -39,6 +40,9 @@ COLUMNS = [
     ("authors", "_authors", 28, True),
     ("year", "_year", 7, False),
     ("themes", "_themes", 24, True),
+    ("fame", "_fame", 6, False),         # yes/no: relevant to the FAME project
+    ("fame_score", "fame_score", 6, False),
+    ("fame_why", "fame_note", 28, True),
     ("venue", "venue", 22, True),
     ("source", "source", 12, False),
     ("url", "url", 38, False),
@@ -94,6 +98,8 @@ def export_review(path: Optional[str] = None) -> Path:
             "source": p.source, "score": p.score, "abstract": p.abstract,
             "url": p.url, "fingerprint": p.fingerprint,
             "_local_pdf": os.path.basename(p.pdf_path) if p.pdf_path else "",
+            "fame_score": p.fame_score, "fame_note": p.fame_note,
+            "_fame": "yes" if (p.fame_score or 0) >= FAME_THRESHOLD else "",
         }
         for c, (_head, attr, _w, wrap) in enumerate(COLUMNS, 1):
             val = _decision_for(p) if attr is None else values.get(attr, "")
