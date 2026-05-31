@@ -24,7 +24,7 @@ from rich.console import Console
 
 from .config import DB_PATH, EXCEL_REVIEW_DIR
 from .db import DB
-from .pdfs import promote_to_library, discard_inbox
+from .pdfs import promote_to_library, move_to_rejected
 
 console = Console()
 
@@ -57,7 +57,7 @@ def export_review(path: Optional[str] = None) -> Path:
         console.print("[yellow]No pending papers to export.[/yellow]")
 
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
-    out = Path(path) if path else REVIEW_DIR / f"inbox_{datetime.now():%Y-%m-%d}.xlsx"
+    out = Path(path) if path else REVIEW_DIR / f"review_{datetime.now():%Y-%m-%d}.xlsx"
 
     wb = Workbook()
     ws = wb.active
@@ -140,14 +140,14 @@ def import_review(path: str) -> dict:
             continue
         status, featured = DECISIONS[decision]
         db.set_status(fp, status, featured=featured)
-        # PDF lifecycle: keep → promote inbox→library; reject → discard from inbox.
+        # PDF lifecycle: keep → promote candidates→library; reject → move to rejected/.
         if status == "approved":
             moved = promote_to_library(db.get(fp))
             if moved:
                 db.update_fields(fp, pdf_path=str(moved))
         else:
-            discard_inbox(fp)
-            db.update_fields(fp, pdf_path=None)
+            moved = move_to_rejected(db.get(fp))
+            db.update_fields(fp, pdf_path=str(moved) if moved else None)
         if decision == "feature":
             stats["featured"] += 1
         elif decision == "yes":

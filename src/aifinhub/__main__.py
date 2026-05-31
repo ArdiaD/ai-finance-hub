@@ -18,7 +18,8 @@ def main(argv=None) -> int:
     sub.add_parser("review", help="curate the pending inbox (interactive CLI)")
 
     rx = sub.add_parser("review-export", help="write pending papers to an Excel file")
-    rx.add_argument("--out", default=None, help="output .xlsx path (default review/inbox_<date>.xlsx)")
+    rx.add_argument("--out", default=None,
+                    help="output .xlsx path (default data/excel/review/review_<date>.xlsx)")
     ri = sub.add_parser("review-import", help="read yes/no/feature decisions from Excel")
     ri.add_argument("path", help="the reviewed .xlsx file")
 

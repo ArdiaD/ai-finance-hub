@@ -21,16 +21,17 @@ from typing import Optional
 
 from rich.console import Console
 
-from .config import DB_PATH, CLAUDE_INCOMING_DIR, PDF_LIBRARY_DIR
+from .config import DB_PATH, CLAUDE_INCOMING_DIR, PDF_LIBRARY_DIR, PDF_REJECTED_DIR
 from .db import DB
 from .models import Paper
 from .sources.base import http_get
 
 console = Console()
 
-# Auto-fetched candidate PDFs (awaiting review) and the curated library.
+# Auto-fetched candidate PDFs (awaiting review), the curated library, and rejects.
 PDF_INBOX = CLAUDE_INCOMING_DIR
 PDF_LIBRARY = PDF_LIBRARY_DIR
+PDF_REJECTED = PDF_REJECTED_DIR
 
 
 def inbox_path(fp: str) -> Path:
@@ -164,19 +165,26 @@ def promote_to_library(paper: Paper, fallback_stem: Optional[str] = None) -> Opt
     return dest
 
 
-def discard_inbox(fingerprint: str) -> None:
-    inbox_path(fingerprint).unlink(missing_ok=True)
-
-
-def remove_pdf(paper: Paper) -> None:
-    """Delete a paper's archived PDF wherever it lives (library or inbox)."""
-    if paper.pdf_path:
-        Path(paper.pdf_path).unlink(missing_ok=True)
-    inbox_path(paper.fingerprint).unlink(missing_ok=True)
+def move_to_rejected(paper: Paper) -> Optional[Path]:
+    """Move a rejected paper's PDF to the rejected/ folder (kept, not deleted)."""
+    # pdf_path covers library files (human-named); candidates are fingerprint-named.
+    src = None
+    if paper.pdf_path and Path(paper.pdf_path).exists():
+        src = Path(paper.pdf_path)
+    elif inbox_path(paper.fingerprint).exists():
+        src = inbox_path(paper.fingerprint)
+    if not src:
+        return None
+    PDF_REJECTED.mkdir(parents=True, exist_ok=True)
+    dest = PDF_REJECTED / src.name
+    if dest.exists() and src.resolve() != dest.resolve():
+        dest = PDF_REJECTED / f"{src.stem}_{paper.fingerprint[:6]}{src.suffix}"
+    shutil.move(str(src), str(dest))
+    return dest
 
 
 def reject_papers(fingerprints: list[str]) -> int:
-    """Mark papers rejected and delete their archived PDFs."""
+    """Mark papers rejected and move their PDFs to the rejected/ folder."""
     db = DB(DB_PATH)
     n = 0
     for fp in fingerprints:
@@ -184,9 +192,9 @@ def reject_papers(fingerprints: list[str]) -> int:
         if not paper:
             console.print(f"[yellow]no paper {fp}[/yellow]")
             continue
-        remove_pdf(paper)
+        moved = move_to_rejected(paper)
         db.set_status(fp, "rejected")
-        db.update_fields(fp, pdf_path=None)
+        db.update_fields(fp, pdf_path=str(moved) if moved else None)
         console.print(f"[red]rejected[/red] {paper.title[:60]}")
         n += 1
     return n

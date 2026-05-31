@@ -36,9 +36,9 @@ pip install -r requirements.txt
 cp .env.example .env          # add optional API keys (SerpAPI, Anthropic)
 
 python -m aifinhub fetch                      # discover new papers
-python -m aifinhub review-export              # pending → data/excel/review/inbox_<date>.xlsx
+python -m aifinhub review-export              # pending → data/excel/review/review_<date>.xlsx
 #   ... open the .xlsx, fill the decision column (yes/no/feature), save ...
-python -m aifinhub review-import data/excel/review/inbox_2026-05-30.xlsx
+python -m aifinhub review-import data/excel/review/review_2026-05-31.xlsx
 python -m aifinhub build-site                 # regenerate docs/ for GitHub Pages
 python -m aifinhub draft-post --since 7d      # write a LinkedIn draft
 ```
@@ -50,11 +50,13 @@ data/                     all working data (gitignored; Dropbox-backed)
   pdfs/
     human_incoming/       PDFs you drop here to import
     claude_incoming/      PDFs the pipeline auto-fetches, awaiting review
-    library/              curated PDFs kept in the hub (name1_name2_name3_year.pdf)
+    library/              ACCEPTED PDFs kept in the hub (name1_name2_name3_year.pdf)
+    rejected/             REJECTED papers' PDFs (kept here, not deleted)
   excel/
-    review/               weekly review spreadsheets (decide keep/drop)
+    review/               weekly review spreadsheets: review_<date>.xlsx
     corpus/               corpus snapshot exports (export-xlsx)
   hub.db                  the SQLite database
+  logs/                   weekly run logs
 docs/                     the published GitHub Pages site (committed)
 src/aifinhub/             the pipeline code
 ```

@@ -17,6 +17,7 @@ DB_PATH = DATA_DIR / "hub.db"
 HUMAN_INCOMING_DIR = DATA_DIR / "pdfs" / "human_incoming"   # PDFs you drop to import
 CLAUDE_INCOMING_DIR = DATA_DIR / "pdfs" / "claude_incoming"  # auto-fetched, awaiting review
 PDF_LIBRARY_DIR = DATA_DIR / "pdfs" / "library"  # curated/kept PDFs
+PDF_REJECTED_DIR = DATA_DIR / "pdfs" / "rejected"  # rejected papers (kept, not deleted)
 EXCEL_REVIEW_DIR = DATA_DIR / "excel" / "review"  # review spreadsheets
 EXCEL_CORPUS_DIR = DATA_DIR / "excel" / "corpus"  # corpus exports
 
