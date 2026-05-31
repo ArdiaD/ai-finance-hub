@@ -26,6 +26,7 @@ from rich.console import Console
 from .config import DB_PATH, EXCEL_DIR
 from .db import DB
 from .fame import FAME_THRESHOLD
+from .models import canon_venue
 
 console = Console()
 
@@ -93,7 +94,7 @@ def export_review(path: Optional[str] = None) -> Path:
         values = {
             "title": p.title, "_themes": ", ".join(p.themes),
             "_authors": ", ".join(p.authors),
-            "_year": (p.published or "")[:4], "venue": p.venue,
+            "_year": (p.published or "")[:4], "venue": canon_venue(p.venue),
             "source": p.source, "score": p.score, "abstract": p.abstract,
             "url": p.url, "fingerprint": p.fingerprint,
             "_local_pdf": os.path.basename(p.pdf_path) if p.pdf_path else "",

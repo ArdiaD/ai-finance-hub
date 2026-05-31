@@ -13,6 +13,18 @@ def _norm_title(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
 
 
+def canon_venue(venue: Optional[str]) -> Optional[str]:
+    """Collapse venue-name variants to the simplest consistent form."""
+    if not venue:
+        return venue
+    low = venue.lower()
+    if "ssrn" in low or "social science research network" in low:
+        return "SSRN"
+    if "arxiv" in low:
+        return "arXiv"
+    return venue
+
+
 @dataclass
 class Paper:
     """A single research paper, normalized across all sources."""

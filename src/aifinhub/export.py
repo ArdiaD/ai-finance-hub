@@ -9,6 +9,7 @@ from rich.console import Console
 
 from .config import load_config, DB_PATH, DOCS_DIR
 from .db import DB
+from .models import canon_venue
 from .site import render_index
 
 console = Console()
@@ -28,7 +29,7 @@ def build_site() -> None:
             {
                 "title": p.title, "authors": p.authors, "abstract": p.abstract,
                 "url": p.url, "pdf_url": p.pdf_url, "source": p.source,
-                "venue": p.venue, "categories": p.categories,
+                "venue": canon_venue(p.venue), "categories": p.categories,
                 "themes": p.themes,
                 "fame_score": p.fame_score,
                 "published": p.published, "featured": p.featured,

@@ -13,7 +13,7 @@ from __future__ import annotations
 import html
 
 from ..config import env
-from ..models import Paper
+from ..models import Paper, canon_venue
 from .base import http_get, cutoff_date
 
 API = "https://api.openalex.org/works"
@@ -54,7 +54,7 @@ def _query(ids, search, fetch_cfg) -> list[Paper]:
             authors=[a["author"]["display_name"] for a in w.get("authorships", [])
                      if a.get("author")],
             abstract=html.unescape(_abstract(w.get("abstract_inverted_index"))),
-            url=url, source="journal", venue=src.get("display_name"),
+            url=url, source="journal", venue=canon_venue(src.get("display_name")),
             published=w.get("publication_date"),
         ))
     return papers
