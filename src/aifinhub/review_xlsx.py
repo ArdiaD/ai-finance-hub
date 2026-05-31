@@ -41,8 +41,7 @@ COLUMNS = [
     ("year", "_year", 7, False),
     ("themes", "_themes", 24, True),
     ("fame", "_fame", 6, False),         # yes/no: relevant to the FAME project
-    ("fame_score", "fame_score", 6, False),
-    ("fame_why", "fame_note", 28, True),
+    ("fame_score", "fame_score", 9, False),  # % similarity to the FAME summary
     ("venue", "venue", 22, True),
     ("source", "source", 12, False),
     ("url", "url", 38, False),

@@ -70,11 +70,6 @@ INDEX_HTML = """<!doctype html>
   <select id="src"><option value="">All sources</option></select>
   <select id="yfrom"><option value="">From</option></select>
   <select id="yto"><option value="">To</option></select>
-  <select id="sort">
-    <option value="date">Newest</option>
-    <option value="featured">Featured</option>
-    <option value="fame">FAME score</option>
-  </select>
   <label class="famechk" title="Show only FAME-relevant papers"><input type="checkbox" id="fameonly"> FAME</label>
 </div>
 <main id="list"></main>
@@ -91,7 +86,7 @@ function card(p){{
   const badge=p.featured?'<span class="badge feat">★ featured</span>':'';
   const cats=(p.categories||[]).slice(0,4).map(c=>`<span class="badge">${{esc(c)}}</span>`).join('');
   const themes=(p.themes||[]).map(t=>`<span class="badge theme" onclick="pickTheme('${{esc(t)}}')">${{esc(t)}}</span>`).join('');
-  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Relevance to the FAME project">FAME · ${{p.fame_score*10}}%</span>`:'';
+  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Similarity to the FAME project summary">FAME · ${{p.fame_score}}%</span>`:'';
   const authors=(p.authors||[]).slice(0,8).join(', ');
   const abs=esc(p.abstract||'');
   const long=(p.abstract||'').length>320;
@@ -110,7 +105,7 @@ function toggleAbs(btn){{
 }}
 function render(){{
   const q=el('q').value.toLowerCase(), src=el('src').value,
-        theme=el('theme').value, sort=el('sort').value,
+        theme=el('theme').value,
         yfrom=el('yfrom').value, yto=el('yto').value, fameonly=el('fameonly').checked;
   let rows=PAPERS.filter(p=>{{
     if(src && p.source!==src) return false;
@@ -122,11 +117,7 @@ function render(){{
     if(!q) return true;
     return (p.title+' '+(p.authors||[]).join(' ')+' '+p.abstract).toLowerCase().includes(q);
   }});
-  rows.sort((a,b)=> sort==='featured'
-    ? (b.featured-a.featured)||(b.published||'').localeCompare(a.published||'')
-    : sort==='fame'
-    ? ((b.fame_score||0)-(a.fame_score||0))||(b.published||'').localeCompare(a.published||'')
-    : (b.published||'').localeCompare(a.published||''));
+  rows.sort((a,b)=>(b.published||'').localeCompare(a.published||''));  // newest first
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }}
@@ -139,7 +130,7 @@ fetch('papers.json?v={version}').then(r=>r.json()).then(d=>{{
   const years=[...new Set(PAPERS.map(p=>(p.published||'').slice(0,4)).filter(Boolean))].sort().reverse();
   const yopts=years.map(y=>'<option>'+y+'</option>').join('');
   el('yfrom').innerHTML+=yopts; el('yto').innerHTML+=yopts;
-  ['q','src','theme','yfrom','yto','sort'].forEach(id=>el(id).addEventListener('input',render));
+  ['q','src','theme','yfrom','yto'].forEach(id=>el(id).addEventListener('input',render));
   el('fameonly').addEventListener('change',render);
   render();
 }});

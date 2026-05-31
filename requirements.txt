@@ -12,3 +12,4 @@ pypdf>=4.0
 #   google-search-results : SerpAPI Google Scholar source (set SERPAPI_KEY)
 #   scholarly   : free Google Scholar fallback (rate-limited)
 anthropic>=0.40
+sentence-transformers>=2.2

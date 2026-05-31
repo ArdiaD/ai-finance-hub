@@ -28,7 +28,7 @@
         "Portfolio & Allocation",
         "Factor Investing"
       ],
-      "fame_score": 7,
+      "fame_score": 71,
       "published": "2026-06-01",
       "featured": false,
       "fingerprint": "e5a3997f0b7e8e54"
@@ -50,7 +50,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 9,
+      "fame_score": 86,
       "published": "2026-05-12",
       "featured": false,
       "fingerprint": "87a08f0ddb90934d"
@@ -96,7 +96,7 @@
         "Reinforcement Learning",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 78,
       "published": "2026-04-01",
       "featured": false,
       "fingerprint": "b629895c835a208a"
@@ -117,7 +117,7 @@
         "LLMs & Generative AI",
         "Portfolio & Allocation"
       ],
-      "fame_score": 9,
+      "fame_score": 60,
       "published": "2026-04-01",
       "featured": false,
       "fingerprint": "e64294bb0c3c6e33"
@@ -140,7 +140,7 @@
         "NLP & Sentiment",
         "Macro & Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 70,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "55b020688e998c0d"
@@ -166,7 +166,7 @@
         "Return Forecasting",
         "Derivatives & Options"
       ],
-      "fame_score": 7,
+      "fame_score": 27,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "8d1390ec2b7d9d39"
@@ -191,7 +191,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 6,
+      "fame_score": 39,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "6ead7bf4aa96e4b4"
@@ -213,7 +213,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 60,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "f38fbfd5b848ba78"
@@ -237,7 +237,7 @@
         "Cryptocurrency",
         "Macro & Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 51,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "8de3ca0f8b3763f1"
@@ -261,7 +261,7 @@
         "Return Forecasting",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 44,
       "published": "2026-03-01",
       "featured": false,
       "fingerprint": "521ebbe4a3627ae3"
@@ -293,7 +293,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 16,
       "published": "2026-02-01",
       "featured": false,
       "fingerprint": "8a43dd2ddd57ad1e"
@@ -322,7 +322,7 @@
         "LLMs & Generative AI",
         "Deep Learning"
       ],
-      "fame_score": 9,
+      "fame_score": 32,
       "published": "2026-02-01",
       "featured": false,
       "fingerprint": "27132da8ae8f2911"
@@ -347,7 +347,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 62,
       "published": "2026-02-01",
       "featured": false,
       "fingerprint": "cd6e1d2c76c9d4c7"
@@ -370,7 +370,7 @@
         "Deep Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 41,
       "published": "2026-02-01",
       "featured": false,
       "fingerprint": "d6398bebea225146"
@@ -393,7 +393,7 @@
         "Portfolio & Allocation",
         "Derivatives & Options"
       ],
-      "fame_score": 7,
+      "fame_score": 54,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "31d4c952bb872930"
@@ -417,7 +417,7 @@
         "NLP & Sentiment",
         "Trading & Execution"
       ],
-      "fame_score": 8,
+      "fame_score": 40,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "a5731920f9d79b2d"
@@ -442,7 +442,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 7,
+      "fame_score": 19,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "fb67443ed42ff5d7"
@@ -465,7 +465,7 @@
         "Portfolio & Allocation",
         "Factor Investing"
       ],
-      "fame_score": 9,
+      "fame_score": 34,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "6f1057d33eb82402"
@@ -488,7 +488,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 25,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "f67804ee8cffb1da"
@@ -514,7 +514,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 61,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "1b58c5f92e559574"
@@ -538,7 +538,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 6,
+      "fame_score": 37,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "3e57d405ee2d4407"
@@ -560,7 +560,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 27,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "8f9a09a4669da694"
@@ -587,7 +587,7 @@
         "LLMs & Generative AI",
         "Reinforcement Learning"
       ],
-      "fame_score": 7,
+      "fame_score": 14,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "ab1d8de89cfc20ba"
@@ -605,7 +605,7 @@
         "LLMs & Generative AI",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 60,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "685796e1c05bdca3"
@@ -629,7 +629,7 @@
         "NLP & Sentiment",
         "Macro & Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 50,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "fa31d17f3f0e8b2d"
@@ -650,7 +650,7 @@
         "LLMs & Generative AI",
         "Factor Investing"
       ],
-      "fame_score": 8,
+      "fame_score": 63,
       "published": "2026-01-01",
       "featured": false,
       "fingerprint": "866d581b520c505c"
@@ -675,7 +675,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 69,
       "published": "2025-12-11",
       "featured": false,
       "fingerprint": "d152cbae92238a88"
@@ -696,7 +696,7 @@
         "Reinforcement Learning",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 72,
       "published": "2025-12-01",
       "featured": false,
       "fingerprint": "fb17f2afd87017b8"
@@ -722,7 +722,7 @@
         "Trading & Execution",
         "Cryptocurrency"
       ],
-      "fame_score": 7,
+      "fame_score": 37,
       "published": "2025-12-01",
       "featured": false,
       "fingerprint": "6a07d55c544bdb82"
@@ -752,7 +752,7 @@
         "NLP & Sentiment",
         "Factor Investing"
       ],
-      "fame_score": 9,
+      "fame_score": 47,
       "published": "2025-12-01",
       "featured": false,
       "fingerprint": "c8cca3126465c691"
@@ -776,7 +776,7 @@
         "Volatility & Risk",
         "Derivatives & Options"
       ],
-      "fame_score": 6,
+      "fame_score": 32,
       "published": "2025-12-01",
       "featured": false,
       "fingerprint": "f02a1e84f9312ea9"
@@ -796,7 +796,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 7,
+      "fame_score": 100,
       "published": "2025-11-06",
       "featured": false,
       "fingerprint": "88f03eea6e866d85"
@@ -821,7 +821,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 51,
       "published": "2025-11-01",
       "featured": false,
       "fingerprint": "0207e46794b2397e"
@@ -846,7 +846,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 8,
+      "fame_score": 36,
       "published": "2025-10-01",
       "featured": false,
       "fingerprint": "f0007abad152144d"
@@ -867,7 +867,7 @@
         "LLMs & Generative AI",
         "Deep Learning"
       ],
-      "fame_score": 8,
+      "fame_score": 45,
       "published": "2025-10-01",
       "featured": false,
       "fingerprint": "5083f8d235341843"
@@ -891,7 +891,7 @@
         "Reinforcement Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 44,
       "published": "2025-10-01",
       "featured": false,
       "fingerprint": "2e1e0d3c5c7f04ae"
@@ -917,7 +917,7 @@
         "Reinforcement Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 9,
+      "fame_score": 55,
       "published": "2025-10-01",
       "featured": false,
       "fingerprint": "5967affcaebc4f21"
@@ -950,7 +950,7 @@
         "Derivatives & Options",
         "Macro & Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 41,
       "published": "2025-09-01",
       "featured": false,
       "fingerprint": "69c3348b06ec4610"
@@ -972,7 +972,7 @@
         "NLP & Sentiment",
         "Portfolio & Allocation"
       ],
-      "fame_score": 8,
+      "fame_score": 62,
       "published": "2025-08-14",
       "featured": false,
       "fingerprint": "f04248535596a98c"
@@ -998,7 +998,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 83,
       "published": "2025-08-01",
       "featured": false,
       "fingerprint": "9bf6ae4bf6b11fe0"
@@ -1022,7 +1022,7 @@
         "Trading & Execution",
         "Derivatives & Options"
       ],
-      "fame_score": 8,
+      "fame_score": 41,
       "published": "2025-08-01",
       "featured": false,
       "fingerprint": "f977b27063d3721b"
@@ -1046,7 +1046,7 @@
         "LLMs & Generative AI",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 88,
       "published": "2025-07-17",
       "featured": false,
       "fingerprint": "5816761ee26a33cb"
@@ -1072,7 +1072,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 8,
+      "fame_score": 74,
       "published": "2025-07-01",
       "featured": false,
       "fingerprint": "bd54c78fafd14fc8"
@@ -1096,7 +1096,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 88,
       "published": "2025-07-01",
       "featured": false,
       "fingerprint": "edd12ea594405545"
@@ -1118,7 +1118,7 @@
         "LLMs & Generative AI",
         "Portfolio & Allocation"
       ],
-      "fame_score": 8,
+      "fame_score": 62,
       "published": "2025-06-27",
       "featured": false,
       "fingerprint": "5d42320719e20310"
@@ -1140,7 +1140,7 @@
         "NLP & Sentiment",
         "Portfolio & Allocation"
       ],
-      "fame_score": 8,
+      "fame_score": 56,
       "published": "2025-04-20",
       "featured": false,
       "fingerprint": "d64dc6421f14e2ea"
@@ -1170,7 +1170,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 65,
       "published": "2025-03-17",
       "featured": false,
       "fingerprint": "405fb8576711ef52"
@@ -1194,7 +1194,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 9,
+      "fame_score": 67,
       "published": "2025-02-01",
       "featured": false,
       "fingerprint": "441497e2336ead11"
@@ -1218,7 +1218,7 @@
         "NLP & Sentiment",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 94,
       "published": "2025-02-01",
       "featured": false,
       "fingerprint": "efe5dd1f15d6932b"
@@ -1242,7 +1242,7 @@
         "LLMs & Generative AI",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 59,
       "published": "2025-02-01",
       "featured": false,
       "fingerprint": "9c5e1e1677c4af01"
@@ -1269,7 +1269,7 @@
         "Deep Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 6,
+      "fame_score": 31,
       "published": "2025-01-31",
       "featured": false,
       "fingerprint": "cb4a9e83d6d87a3c"
@@ -1295,7 +1295,7 @@
         "Factor Investing",
         "Trading & Execution"
       ],
-      "fame_score": 8,
+      "fame_score": 56,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "d8e4bbc1ec0e6442"
@@ -1318,7 +1318,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 77,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "68257f8f8d310086"
@@ -1343,7 +1343,7 @@
         "Return Forecasting",
         "Derivatives & Options"
       ],
-      "fame_score": 6,
+      "fame_score": 37,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "929c5180d07b4dea"
@@ -1371,7 +1371,7 @@
         "Volatility & Risk",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 65,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "f00f3cfa47fd3807"
@@ -1393,7 +1393,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 66,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "9aa7d9816410e92f"
@@ -1416,7 +1416,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 9,
+      "fame_score": 50,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "235edbff623c964c"
@@ -1438,7 +1438,7 @@
         "Volatility & Risk",
         "Trading & Execution"
       ],
-      "fame_score": 7,
+      "fame_score": 83,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "b66a603e2c8ca91a"
@@ -1461,7 +1461,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 24,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "ca1c969e5a99fb88"
@@ -1486,7 +1486,7 @@
         "Volatility & Risk",
         "Derivatives & Options"
       ],
-      "fame_score": 9,
+      "fame_score": 27,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "d8851b2e079c4e11"
@@ -1508,7 +1508,7 @@
         "LLMs & Generative AI",
         "Cryptocurrency"
       ],
-      "fame_score": 6,
+      "fame_score": 31,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "fe89ccc4daff9573"
@@ -1529,7 +1529,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 8,
+      "fame_score": 65,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "616c8310ad6d0e1a"
@@ -1552,7 +1552,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 7,
+      "fame_score": 30,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "23ce5000c1e5743f"
@@ -1573,7 +1573,7 @@
         "Deep Learning",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 36,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "1e7ca86d89ab80b8"
@@ -1598,7 +1598,7 @@
         "Trading & Execution",
         "Cryptocurrency"
       ],
-      "fame_score": 7,
+      "fame_score": 43,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "3692614b9d25e0b0"
@@ -1620,7 +1620,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 8,
+      "fame_score": 52,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "a6345c6a5d28c688"
@@ -1643,7 +1643,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 81,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "81117116c09a0bc3"
@@ -1664,7 +1664,7 @@
         "LLMs & Generative AI",
         "Portfolio & Allocation"
       ],
-      "fame_score": 7,
+      "fame_score": 51,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "9acf64142fe98c82"
@@ -1688,7 +1688,7 @@
         "Portfolio & Allocation",
         "Factor Investing"
       ],
-      "fame_score": 9,
+      "fame_score": 84,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "c795adada5e98458"
@@ -1711,7 +1711,7 @@
         "LLMs & Generative AI",
         "Factor Investing"
       ],
-      "fame_score": 8,
+      "fame_score": 66,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "710c6a59f3a3c6b1"
@@ -1734,7 +1734,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 49,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "8cd6e99de93b54de"
@@ -1758,7 +1758,7 @@
         "Return Forecasting",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 20,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "d42118e6cbbeb231"
@@ -1779,7 +1779,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 7,
+      "fame_score": 34,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "a08468d818b5cf7e"
@@ -1805,7 +1805,7 @@
         "Reinforcement Learning",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 81,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "28921bcd867b5592"
@@ -1827,7 +1827,7 @@
         "Factor Investing",
         "Return Forecasting"
       ],
-      "fame_score": 9,
+      "fame_score": 97,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "b973ce0711e18c95"
@@ -1850,7 +1850,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 44,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "b008fee5d3cfbd18"
@@ -1875,7 +1875,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 99,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "aa39a6df3ef12b1f"
@@ -1899,7 +1899,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 7,
+      "fame_score": 52,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "2613436369cbffb0"
@@ -1921,7 +1921,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 54,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "2fcc76a2dd59ee4a"
@@ -1946,7 +1946,7 @@
         "Trading & Execution",
         "Derivatives & Options"
       ],
-      "fame_score": 8,
+      "fame_score": 71,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "6ac02532b230eb8e"
@@ -1972,7 +1972,7 @@
         "LLMs & Generative AI",
         "Reinforcement Learning"
       ],
-      "fame_score": 2,
+      "fame_score": 68,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "f827e82e3d54a064"
@@ -1997,7 +1997,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 74,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "2372c8a721648473"
@@ -2018,7 +2018,7 @@
         "LLMs & Generative AI",
         "Portfolio & Allocation"
       ],
-      "fame_score": 8,
+      "fame_score": 89,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "308c6aa6cd9cfbc7"
@@ -2043,7 +2043,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 34,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "c931e2ba255cf732"
@@ -2065,7 +2065,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 36,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "92eb3cd450bf7f06"
@@ -2085,7 +2085,7 @@
         "LLMs & Generative AI",
         "Trading & Execution"
       ],
-      "fame_score": 6,
+      "fame_score": 79,
       "published": "2025-01-01",
       "featured": false,
       "fingerprint": "482af8db3a288bc9"
@@ -2106,7 +2106,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 6,
+      "fame_score": 68,
       "published": "2024-12-20",
       "featured": false,
       "fingerprint": "9e74d53a624b1a68"
@@ -2125,7 +2125,7 @@
       "venue": "The Journal of Finance and Data Science",
       "categories": [],
       "themes": [],
-      "fame_score": null,
+      "fame_score": 98,
       "published": "2024-12-01",
       "featured": false,
       "fingerprint": "14a5e23c7ecaeef1"
@@ -2149,7 +2149,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 79,
       "published": "2024-12-01",
       "featured": false,
       "fingerprint": "7a74e551e45032fe"
@@ -2173,7 +2173,7 @@
         "LLMs & Generative AI",
         "Trading & Execution"
       ],
-      "fame_score": 6,
+      "fame_score": 44,
       "published": "2024-12-01",
       "featured": false,
       "fingerprint": "da36be45e168cd00"
@@ -2198,7 +2198,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 41,
       "published": "2024-12-01",
       "featured": false,
       "fingerprint": "242bdb6beb83064b"
@@ -2226,7 +2226,7 @@
         "Volatility & Risk",
         "Derivatives & Options"
       ],
-      "fame_score": 9,
+      "fame_score": 90,
       "published": "2024-11-30",
       "featured": false,
       "fingerprint": "c0c3d96feb3f2edb"
@@ -2250,7 +2250,7 @@
         "NLP & Sentiment",
         "Factor Investing"
       ],
-      "fame_score": 8,
+      "fame_score": 81,
       "published": "2024-11-01",
       "featured": false,
       "fingerprint": "7247fec5ac63914e"
@@ -2275,7 +2275,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 8,
+      "fame_score": 63,
       "published": "2024-11-01",
       "featured": false,
       "fingerprint": "d459359c21d85205"
@@ -2297,7 +2297,7 @@
         "NLP & Sentiment",
         "Portfolio & Allocation"
       ],
-      "fame_score": 8,
+      "fame_score": 55,
       "published": "2024-11-01",
       "featured": false,
       "fingerprint": "ff5e4f0d517a0016"
@@ -2319,7 +2319,7 @@
         "Portfolio & Allocation",
         "Trading & Execution"
       ],
-      "fame_score": 7,
+      "fame_score": 31,
       "published": "2024-11-01",
       "featured": false,
       "fingerprint": "3304af5e0badc945"
@@ -2343,7 +2343,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 9,
+      "fame_score": 100,
       "published": "2024-09-20",
       "featured": false,
       "fingerprint": "c89e9f71fa2df268"
@@ -2370,7 +2370,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 80,
       "published": "2024-09-01",
       "featured": false,
       "fingerprint": "916cf35d24b99394"
@@ -2397,7 +2397,7 @@
         "NLP & Sentiment",
         "Cryptocurrency"
       ],
-      "fame_score": 6,
+      "fame_score": 46,
       "published": "2024-09-01",
       "featured": false,
       "fingerprint": "99aecc838af941e7"
@@ -2419,7 +2419,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 8,
+      "fame_score": 76,
       "published": "2024-08-01",
       "featured": false,
       "fingerprint": "e4d06f69271fb33f"
@@ -2447,7 +2447,7 @@
         "Trading & Execution",
         "Cryptocurrency"
       ],
-      "fame_score": 7,
+      "fame_score": 34,
       "published": "2024-07-01",
       "featured": false,
       "fingerprint": "8e59ba1a47c20ba9"
@@ -2480,7 +2480,7 @@
         "Factor Investing",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 70,
       "published": "2024-07-01",
       "featured": false,
       "fingerprint": "439e096b4799cb88"
@@ -2508,7 +2508,7 @@
         "Volatility & Risk",
         "Derivatives & Options"
       ],
-      "fame_score": 9,
+      "fame_score": 65,
       "published": "2024-06-01",
       "featured": false,
       "fingerprint": "d88c097e9990fcd6"
@@ -2534,7 +2534,7 @@
         "Deep Learning",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 35,
       "published": "2024-04-01",
       "featured": false,
       "fingerprint": "98e9e62716cdb076"
@@ -2560,7 +2560,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 40,
       "published": "2024-02-01",
       "featured": false,
       "fingerprint": "85036fe19b81aa78"
@@ -2582,7 +2582,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 8,
+      "fame_score": 69,
       "published": "2024-02-01",
       "featured": false,
       "fingerprint": "5fde36e90a58bbc2"
@@ -2606,7 +2606,7 @@
         "NLP & Sentiment",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 99,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "a94f4f2b91160556"
@@ -2631,7 +2631,7 @@
         "Factor Investing",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 91,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "853bbe519b3ba4a1"
@@ -2655,7 +2655,7 @@
         "Portfolio & Allocation",
         "Factor Investing"
       ],
-      "fame_score": 8,
+      "fame_score": 62,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "3c733bbf67665f8c"
@@ -2680,7 +2680,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 8,
+      "fame_score": 58,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "f9fbb1f434873e75"
@@ -2702,7 +2702,7 @@
         "NLP & Sentiment",
         "Portfolio & Allocation"
       ],
-      "fame_score": 9,
+      "fame_score": 71,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "3d1758f96e99c12e"
@@ -2722,7 +2722,7 @@
       "themes": [
         "Factor Investing"
       ],
-      "fame_score": 7,
+      "fame_score": 9,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "46d4235262a59eb8"
@@ -2746,7 +2746,7 @@
         "NLP & Sentiment",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 39,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "497cd89d73d06d20"
@@ -2770,7 +2770,7 @@
         "Portfolio & Allocation",
         "Return Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 36,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "8e65c6fea53da397"
@@ -2790,7 +2790,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 65,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "5c390193f24e2c66"
@@ -2813,7 +2813,7 @@
         "Return Forecasting",
         "Volatility & Risk"
       ],
-      "fame_score": 6,
+      "fame_score": 11,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "db66b7541364dd5f"
@@ -2834,7 +2834,7 @@
       "themes": [
         "Return Forecasting"
       ],
-      "fame_score": 6,
+      "fame_score": 46,
       "published": "2024-01-01",
       "featured": false,
       "fingerprint": "dd8d2e03f88c4450"
@@ -2863,7 +2863,7 @@
         "Factor Investing",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 62,
       "published": "2023-11-01",
       "featured": false,
       "fingerprint": "14ab5601c46bef1c"
@@ -2885,7 +2885,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 49,
       "published": "2023-10-01",
       "featured": false,
       "fingerprint": "dfbf6fb64c5d3fee"
@@ -2910,7 +2910,7 @@
         "Volatility & Risk",
         "Trading & Execution"
       ],
-      "fame_score": 8,
+      "fame_score": 60,
       "published": "2023-09-01",
       "featured": false,
       "fingerprint": "1ad9525a0886c9db"
@@ -2930,7 +2930,7 @@
       "themes": [
         "LLMs & Generative AI"
       ],
-      "fame_score": 7,
+      "fame_score": 52,
       "published": "2023-09-01",
       "featured": false,
       "fingerprint": "979332a89b41ec96"
@@ -2952,7 +2952,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 78,
       "published": "2023-09-01",
       "featured": false,
       "fingerprint": "1d0286637ed636f8"
@@ -2977,7 +2977,7 @@
         "Deep Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 8,
+      "fame_score": 52,
       "published": "2023-08-01",
       "featured": false,
       "fingerprint": "8b3ca1c88ff9efef"
@@ -3000,7 +3000,7 @@
         "Deep Learning",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 47,
       "published": "2023-05-01",
       "featured": false,
       "fingerprint": "80898d1a310f95b5"
@@ -3030,7 +3030,7 @@
         "Volatility & Risk",
         "Cryptocurrency"
       ],
-      "fame_score": 8,
+      "fame_score": 47,
       "published": "2023-03-01",
       "featured": false,
       "fingerprint": "ce5e000c9725142b"
@@ -3051,7 +3051,7 @@
         "Portfolio & Allocation",
         "Factor Investing"
       ],
-      "fame_score": 2,
+      "fame_score": 6,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "d573cd09a4626626"
@@ -3072,7 +3072,7 @@
       "themes": [
         "Reinforcement Learning"
       ],
-      "fame_score": 8,
+      "fame_score": 46,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "4f1c7daa3fe0686e"
@@ -3095,7 +3095,7 @@
         "Return Forecasting",
         "Trading & Execution"
       ],
-      "fame_score": 8,
+      "fame_score": 26,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "5b5a2cd588847e05"
@@ -3117,7 +3117,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 8,
+      "fame_score": 67,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "74c108d30daa242f"
@@ -3140,7 +3140,7 @@
         "Return Forecasting",
         "Derivatives & Options"
       ],
-      "fame_score": 9,
+      "fame_score": 70,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "4fcc2027315a4f91"
@@ -3162,7 +3162,7 @@
         "NLP & Sentiment",
         "Return Forecasting"
       ],
-      "fame_score": 9,
+      "fame_score": 52,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "b34637133de8637d"
@@ -3185,7 +3185,7 @@
         "Portfolio & Allocation",
         "Volatility & Risk"
       ],
-      "fame_score": 7,
+      "fame_score": 72,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "efcc62817bf892bd"
@@ -3207,7 +3207,7 @@
         "LLMs & Generative AI",
         "NLP & Sentiment"
       ],
-      "fame_score": 7,
+      "fame_score": 50,
       "published": "2023-01-01",
       "featured": false,
       "fingerprint": "2710b4f7db431a27"
@@ -3230,7 +3230,7 @@
         "Return Forecasting",
         "Macro & Forecasting"
       ],
-      "fame_score": 8,
+      "fame_score": 69,
       "published": "2021-01-01",
       "featured": false,
       "fingerprint": "5d49f5adb89fa823"
@@ -3254,7 +3254,7 @@
         "Volatility & Risk",
         "Derivatives & Options"
       ],
-      "fame_score": 6,
+      "fame_score": 36,
       "published": "2017-01-01",
       "featured": false,
       "fingerprint": "b5f32469f1729e4e"
@@ -3276,7 +3276,7 @@
         "LLMs & Generative AI",
         "Factor Investing"
       ],
-      "fame_score": 7,
+      "fame_score": 33,
       "published": null,
       "featured": false,
       "fingerprint": "ecfdca55e24cc101"
