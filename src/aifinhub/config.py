@@ -14,10 +14,8 @@ CONFIG_PATH = ROOT / "config.yaml"
 # All working data lives under data/ (gitignored); code/config/docs stay at root.
 DATA_DIR = ROOT / "data"
 DB_PATH = DATA_DIR / "hub.db"
-HUMAN_INCOMING_DIR = DATA_DIR / "pdfs" / "human_incoming"   # PDFs you drop to import
-CLAUDE_INCOMING_DIR = DATA_DIR / "pdfs" / "claude_incoming"  # auto-fetched, awaiting review
-PDF_LIBRARY_DIR = DATA_DIR / "pdfs" / "library"  # curated/kept PDFs
-PDF_REJECTED_DIR = DATA_DIR / "pdfs" / "rejected"  # rejected papers (kept, not deleted)
+INCOMING_DIR = DATA_DIR / "pdfs" / "incoming"   # PDFs you drop here to import
+PDF_LIBRARY_DIR = DATA_DIR / "pdfs" / "library"  # EVERY paper's PDF (status flags in/out of hub)
 EXCEL_REVIEW_DIR = DATA_DIR / "excel" / "review"  # review spreadsheets
 EXCEL_CORPUS_DIR = DATA_DIR / "excel" / "corpus"  # corpus exports
 

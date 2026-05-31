@@ -1,14 +1,11 @@
-"""Local PDF archive with a two-stage lifecycle (all local-only, never published).
+"""Local PDF archive — one folder holds EVERY paper (local-only, never published).
 
-  data/pdfs/claude_incoming/<fp>.pdf       temporary — auto-fetched candidates,
-                                           downloaded at fetch, read during review.
-  data/pdfs/library/<surnames>_<year>.pdf  permanent — every KEPT paper (your
-                                           existing backlog plus each week's
-                                           approved), named name1_name2_name3_year.pdf.
+  data/pdfs/library/<surnames>_<year>.pdf
 
-On approval a PDF is promoted inbox → library (and renamed to the library
-convention); on rejection it's discarded from the inbox. The public site links to
-the original pdf_url; these copies are a private archive on Dropbox.
+Every fetched or imported paper's PDF lives here, named name1_name2_name3_year.pdf.
+Whether a paper appears on the public hub is a database flag (status), NOT which
+folder its PDF sits in — so accepting/rejecting a paper never moves files. The
+public site links to the original pdf_url; these copies are a private archive.
 """
 
 from __future__ import annotations
@@ -21,27 +18,14 @@ from typing import Optional
 
 from rich.console import Console
 
-from .config import DB_PATH, CLAUDE_INCOMING_DIR, PDF_LIBRARY_DIR, PDF_REJECTED_DIR
+from .config import DB_PATH, PDF_LIBRARY_DIR
 from .db import DB
 from .models import Paper
 from .sources.base import http_get
 
 console = Console()
 
-# Auto-fetched candidate PDFs (awaiting review), the curated library, and rejects.
-PDF_INBOX = CLAUDE_INCOMING_DIR
 PDF_LIBRARY = PDF_LIBRARY_DIR
-PDF_REJECTED = PDF_REJECTED_DIR
-
-
-def inbox_path(fp: str) -> Path:
-    return PDF_INBOX / f"{fp}.pdf"
-
-
-def current_path(fp: str) -> Optional[Path]:
-    """An inbox copy if present (library files use human names, see pdf_path)."""
-    p = inbox_path(fp)
-    return p if p.exists() else None
 
 
 # ---- library naming: name1_name2_name3_year.pdf --------------------------
@@ -63,8 +47,8 @@ def _sanitize_stem(stem: str) -> str:
 def library_basename(paper: Paper, fallback_stem: Optional[str] = None) -> str:
     """name1_name2_name3_year from up to 3 author surnames + year.
 
-    Falls back to the original PDF filename (already roughly in that format) when
-    no authors were resolved, then to the fingerprint.
+    Falls back to the original PDF filename when no authors were resolved, then
+    to the fingerprint.
     """
     surs = [s for s in (_surname(a) for a in paper.authors[:3]) if s]
     year = ""
@@ -93,10 +77,7 @@ def unique_library_path(paper: Paper, fallback_stem: Optional[str] = None) -> Pa
 
 
 # ---- download ------------------------------------------------------------
-def download_one(pdf_url: str, fingerprint: str, dest_dir: Path = PDF_INBOX) -> Optional[Path]:
-    dest = dest_dir / f"{fingerprint}.pdf"
-    if dest.exists():
-        return dest
+def _download(pdf_url: str, dest: Path) -> Optional[Path]:
     try:
         r = http_get(pdf_url)
         if "pdf" not in r.headers.get("Content-Type", "").lower() and \
@@ -110,17 +91,17 @@ def download_one(pdf_url: str, fingerprint: str, dest_dir: Path = PDF_INBOX) -> 
 
 
 def download_for(papers, db: DB, quiet: bool = False) -> dict:
-    """Download missing PDFs for the given papers into the inbox."""
-    PDF_INBOX.mkdir(parents=True, exist_ok=True)
+    """Download missing PDFs for the given papers into the library."""
+    PDF_LIBRARY.mkdir(parents=True, exist_ok=True)
     stats = {"downloaded": 0, "have": 0, "failed": 0, "no_url": 0}
     for p in papers:
-        if (p.pdf_path and Path(p.pdf_path).exists()) or current_path(p.fingerprint):
+        if p.pdf_path and Path(p.pdf_path).exists():
             stats["have"] += 1
             continue
         if not p.pdf_url:
             stats["no_url"] += 1
             continue
-        dest = download_one(p.pdf_url, p.fingerprint)
+        dest = _download(p.pdf_url, unique_library_path(p))
         if dest:
             db.update_fields(p.fingerprint, pdf_path=str(dest))
             stats["downloaded"] += 1
@@ -134,57 +115,21 @@ def download_for(papers, db: DB, quiet: bool = False) -> dict:
 
 
 def download_pdfs(status: str = "pending") -> dict:
-    """CLI entry: (re)download PDFs for papers in a status into the inbox."""
+    """CLI entry: (re)download PDFs for papers in a status into the library."""
     db = DB(DB_PATH)
     papers = db.query(status=None if status == "all" else status)
     stats = download_for(papers, db)
     console.print(
         f"\n[bold]PDFs:[/bold] downloaded={stats['downloaded']} "
         f"already-have={stats['have']} failed={stats['failed']} "
-        f"no-url={stats['no_url']}\nInbox: {PDF_INBOX}"
+        f"no-url={stats['no_url']}\nLibrary: {PDF_LIBRARY}"
     )
     return stats
 
 
-# ---- lifecycle transitions ----------------------------------------------
-def promote_to_library(paper: Paper, fallback_stem: Optional[str] = None) -> Optional[Path]:
-    """Move a kept paper's PDF into the library under the naming convention."""
-    if paper.pdf_path:
-        cur = Path(paper.pdf_path)
-        if cur.exists() and cur.parent == PDF_LIBRARY:
-            return cur  # already filed
-    src = None
-    if paper.pdf_path and Path(paper.pdf_path).exists():
-        src = Path(paper.pdf_path)
-    elif inbox_path(paper.fingerprint).exists():
-        src = inbox_path(paper.fingerprint)
-    if not src:
-        return None
-    dest = unique_library_path(paper, fallback_stem)
-    shutil.move(str(src), str(dest))
-    return dest
-
-
-def move_to_rejected(paper: Paper) -> Optional[Path]:
-    """Move a rejected paper's PDF to the rejected/ folder (kept, not deleted)."""
-    # pdf_path covers library files (human-named); candidates are fingerprint-named.
-    src = None
-    if paper.pdf_path and Path(paper.pdf_path).exists():
-        src = Path(paper.pdf_path)
-    elif inbox_path(paper.fingerprint).exists():
-        src = inbox_path(paper.fingerprint)
-    if not src:
-        return None
-    PDF_REJECTED.mkdir(parents=True, exist_ok=True)
-    dest = PDF_REJECTED / src.name
-    if dest.exists() and src.resolve() != dest.resolve():
-        dest = PDF_REJECTED / f"{src.stem}_{paper.fingerprint[:6]}{src.suffix}"
-    shutil.move(str(src), str(dest))
-    return dest
-
-
+# ---- status changes (no file moves — the PDF stays in the library) -------
 def reject_papers(fingerprints: list[str]) -> int:
-    """Mark papers rejected and move their PDFs to the rejected/ folder."""
+    """Mark papers rejected. The PDF stays in the library; only the flag changes."""
     db = DB(DB_PATH)
     n = 0
     for fp in fingerprints:
@@ -192,9 +137,7 @@ def reject_papers(fingerprints: list[str]) -> int:
         if not paper:
             console.print(f"[yellow]no paper {fp}[/yellow]")
             continue
-        moved = move_to_rejected(paper)
         db.set_status(fp, "rejected")
-        db.update_fields(fp, pdf_path=str(moved) if moved else None)
         console.print(f"[red]rejected[/red] {paper.title[:60]}")
         n += 1
     return n
@@ -202,11 +145,7 @@ def reject_papers(fingerprints: list[str]) -> int:
 
 # ---- manual attach -------------------------------------------------------
 def link_pdf(fingerprint: str, src_path: str) -> None:
-    """Attach a manually downloaded PDF (e.g. a paywalled one) to a paper.
-
-    Files it into the library (named by convention) if the paper is already
-    approved, else into the inbox.
-    """
+    """Attach a manually downloaded PDF (e.g. a paywalled one) to a paper."""
     db = DB(DB_PATH)
     paper = db.get(fingerprint)
     if not paper:
@@ -214,11 +153,7 @@ def link_pdf(fingerprint: str, src_path: str) -> None:
     src = Path(src_path).expanduser()
     if not src.exists():
         raise SystemExit(f"File not found: {src}")
-    if paper.status == "approved":
-        dest = unique_library_path(paper, fallback_stem=src.stem)
-    else:
-        dest = inbox_path(fingerprint)
-        dest.parent.mkdir(parents=True, exist_ok=True)
+    dest = unique_library_path(paper, fallback_stem=src.stem)
     shutil.copy2(src, dest)
     db.update_fields(fingerprint, pdf_path=str(dest))
-    console.print(f"[green]Attached[/green] {src.name} → {dest.parent.name}/{dest.name}")
+    console.print(f"[green]Attached[/green] {src.name} → library/{dest.name}")

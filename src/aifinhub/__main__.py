@@ -24,21 +24,23 @@ def main(argv=None) -> int:
                     help="skip downloading candidate PDFs into the inbox")
     sub.add_parser("review", help="curate the pending inbox (interactive CLI)")
 
-    rx = sub.add_parser("review-export", help="write pending papers to an Excel file")
+    rx = sub.add_parser("review-export", help="write papers to an Excel file for yes/no review")
     rx.add_argument("--out", default=None,
                     help="output .xlsx path (default data/excel/review/review_<date>.xlsx)")
+    rx.add_argument("--all", action="store_true",
+                    help="export the WHOLE database (decision pre-filled) to add/remove any paper")
     ri = sub.add_parser("review-import", help="read yes/no/feature decisions from Excel")
     ri.add_argument("path", help="the reviewed .xlsx file")
 
     fp = sub.add_parser("fetch-pdfs",
-                        help="(re)download candidate PDFs into data/pdfs/claude_incoming/")
+                        help="(re)download candidate PDFs into data/pdfs/library/")
     fp.add_argument("--status", default="pending",
                     choices=["approved", "pending", "all"],
                     help="which papers to download PDFs for (default pending)")
 
     ip = sub.add_parser("import-pdfs", help="import a folder of existing PDFs")
-    ip.add_argument("folder", nargs="?", default="data/pdfs/human_incoming",
-                    help="folder with PDFs (default data/pdfs/human_incoming, recursive)")
+    ip.add_argument("folder", nargs="?", default="data/pdfs/incoming",
+                    help="folder with PDFs (default data/pdfs/incoming, recursive)")
     ip.add_argument("--status", default="pending", choices=["pending", "approved"],
                     help="pending → inbox + Excel review (default); "
                          "approved → straight into the permanent library")
@@ -104,7 +106,7 @@ def main(argv=None) -> int:
         run_review()
     elif args.cmd == "review-export":
         from .review_xlsx import export_review
-        export_review(args.out)
+        export_review(path=args.out, all_papers=args.all)
     elif args.cmd == "review-import":
         from .review_xlsx import import_review
         import_review(args.path)

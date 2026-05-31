@@ -24,7 +24,6 @@ from rich.console import Console
 
 from .config import DB_PATH, EXCEL_REVIEW_DIR
 from .db import DB
-from .pdfs import promote_to_library, move_to_rejected
 
 console = Console()
 
@@ -50,14 +49,33 @@ COLUMNS = [
 ]
 
 
-def export_review(path: Optional[str] = None) -> Path:
+def _decision_for(paper) -> str:
+    """Pre-fill the decision cell from a paper's current status (for --all)."""
+    if paper.status == "approved":
+        return "feature" if paper.featured else "yes"
+    if paper.status == "rejected":
+        return "no"
+    return ""  # pending → undecided
+
+
+def export_review(path: Optional[str] = None, all_papers: bool = False) -> Path:
     db = DB(DB_PATH)
-    pending = db.query(status="pending", order="score DESC")
-    if not pending:
-        console.print("[yellow]No pending papers to export.[/yellow]")
+    if all_papers:
+        rows = db.query(order="published DESC, score DESC")  # whole database
+        prefill = True
+    else:
+        rows = db.query(status="pending", order="score DESC")  # weekly: new only
+        prefill = False
+    if not rows:
+        console.print("[yellow]No papers to export.[/yellow]")
 
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
-    out = Path(path) if path else REVIEW_DIR / f"review_{datetime.now():%Y-%m-%d}.xlsx"
+    if path:
+        out = Path(path)
+    elif all_papers:
+        out = REVIEW_DIR / f"database_{datetime.now():%Y-%m-%d}.xlsx"
+    else:
+        out = REVIEW_DIR / f"review_{datetime.now():%Y-%m-%d}.xlsx"
 
     wb = Workbook()
     ws = wb.active
@@ -74,7 +92,7 @@ def export_review(path: Optional[str] = None) -> Path:
         ws.column_dimensions[get_column_letter(c)].width = COLUMNS[c - 1][2]
 
     # Data rows
-    for r, p in enumerate(pending, start=2):
+    for r, p in enumerate(rows, start=2):
         values = {
             "title": p.title, "_themes": ", ".join(p.themes),
             "_authors": ", ".join(p.authors), "venue": p.venue,
@@ -83,29 +101,30 @@ def export_review(path: Optional[str] = None) -> Path:
             "url": p.url, "pdf_url": p.pdf_url, "fingerprint": p.fingerprint,
         }
         for c, (_head, attr, _w, wrap) in enumerate(COLUMNS, 1):
-            val = "" if attr is None else values.get(attr, "")
-            cell = ws.cell(row=r, column=c, value=val)
-            if wrap:
-                cell.alignment = Alignment(wrap_text=True, vertical="top")
+            if attr is None:  # the decision column
+                val = _decision_for(p) if prefill else ""
             else:
-                cell.alignment = Alignment(vertical="top")
+                val = values.get(attr, "")
+            cell = ws.cell(row=r, column=c, value=val)
+            cell.alignment = Alignment(wrap_text=wrap, vertical="top")
 
     # yes/no/feature dropdown on the decision column for all data rows
     dv = DataValidation(type="list", formula1='"yes,no,feature"', allow_blank=True)
     dv.error = "Pick yes, no, or feature"
     dv.prompt = "yes = include · feature = include + highlight on LinkedIn · no = reject"
     ws.add_data_validation(dv)
-    last = len(pending) + 1
+    last = len(rows) + 1
     dv.add(f"A2:A{max(last, 2)}")
 
     ws.freeze_panes = "A2"
     ws.auto_filter.ref = f"A1:{get_column_letter(len(COLUMNS))}{max(last, 1)}"
     wb.save(out)
 
+    what = "all" if all_papers else "pending"
     console.print(
-        f"[green]Exported {len(pending)} pending papers → {out}[/green]\n"
-        "Open it (it's on Dropbox), fill the [bold]decision[/bold] column "
-        "(yes/no/feature), save, then:\n"
+        f"[green]Exported {len(rows)} {what} papers → {out}[/green]\n"
+        "Open it (it's on Dropbox), edit the [bold]decision[/bold] column "
+        "(yes = in hub · feature = in + highlight · no = out), save, then:\n"
         f"  [bold]python -m aifinhub review-import '{out}'[/bold]"
     )
     return out
@@ -139,15 +158,8 @@ def import_review(path: str) -> dict:
             stats["missing"] += 1
             continue
         status, featured = DECISIONS[decision]
+        # The PDF stays in the library; accepting/rejecting only flips the flag.
         db.set_status(fp, status, featured=featured)
-        # PDF lifecycle: keep → promote candidates→library; reject → move to rejected/.
-        if status == "approved":
-            moved = promote_to_library(db.get(fp))
-            if moved:
-                db.update_fields(fp, pdf_path=str(moved))
-        else:
-            moved = move_to_rejected(db.get(fp))
-            db.update_fields(fp, pdf_path=str(moved) if moved else None)
         if decision == "feature":
             stats["featured"] += 1
         elif decision == "yes":

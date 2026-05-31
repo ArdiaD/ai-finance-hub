@@ -75,16 +75,16 @@ def run_fetch(download_pdfs: bool = True) -> dict:
     for s, n in stats["by_source"].items():
         console.print(f"  {s}: {n}")
 
-    # Download this run's keepers' PDFs into the temporary inbox folder so they
-    # can be read during review.
+    # Download this run's keepers' PDFs into the library so they can be read
+    # during review (status stays pending until accepted).
     if download_pdfs and new_papers:
-        from .pdfs import download_for, PDF_INBOX
+        from .pdfs import download_for, PDF_LIBRARY
         console.print("\n[cyan]→ downloading candidate PDFs…[/cyan]")
         ps = download_for(new_papers, db)
         stats["pdfs"] = ps
         console.print(
             f"  PDFs: downloaded={ps['downloaded']} failed={ps['failed']} "
-            f"no-url={ps['no_url']} → {PDF_INBOX}"
+            f"no-url={ps['no_url']} → {PDF_LIBRARY}"
         )
 
     console.print(f"\nPending for review: [bold]{db.counts().get('pending', 0)}[/bold]")

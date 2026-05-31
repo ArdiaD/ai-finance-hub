@@ -54,14 +54,26 @@ What the two commands expand to:
 
 | `weekly` | `publish` |
 |---|---|
-| `fetch` — scan sources, download candidate PDFs, tag themes & relevance | `review-import` — apply yes/no/feature; sort PDFs into `library/` / `rejected/` |
+| `fetch` — scan sources, download candidate PDFs, tag themes & relevance | `review-import` — apply yes/no/feature (flips each paper's in-hub flag) |
 | `polish` — enhance the new candidates' metadata (links, sources, dates) | `build-site` — regenerate `docs/papers.json` + the site |
 | `review-export` — write the dated review spreadsheet | `draft-post` — write the LinkedIn draft to `linkedin/` |
 
 Each underlying command can still be run on its own (see **Commands**).
 
-To add papers you already have as PDFs, drop them in `data/pdfs/human_incoming/`
+To add papers you already have as PDFs, drop them in `data/pdfs/incoming/`
 and run `python -m aifinhub import-pdfs` (see **Commands** below).
+
+**Editing the hub directly.** Every paper's PDF lives in one folder
+(`data/pdfs/library/`); whether it appears on the hub is just a database flag.
+To add or remove papers by hand, export the whole database to Excel, edit the
+`decision` column (`yes` = in, `no` = out), and re-import:
+
+```bash
+python -m aifinhub review-export --all       # → data/excel/review/database_<date>.xlsx
+#   ... flip decision cells: yes / no / feature ...
+python -m aifinhub review-import data/excel/review/database_<date>.xlsx
+python -m aifinhub build-site
+```
 
 ---
 
@@ -98,18 +110,18 @@ the keys substantially improve metadata quality.
 | **`publish <xlsx>`** | **Apply decisions → build-site → LinkedIn draft** |
 | `fetch` | Discover new papers from all sources; download candidate PDFs; tag themes |
 | `polish` | Run all metadata-cleanup passes (enrich → backfill-urls → relabel-sources → fix-dates) |
-| `review-export` | Write pending papers to `data/excel/review/review_<date>.xlsx` |
-| `review-import <xlsx>` | Apply the yes/no/feature decisions; sort PDFs into library/rejected |
+| `review-export [--all]` | Write pending papers (or `--all` the whole DB) to an Excel review sheet |
+| `review-import <xlsx>` | Apply the yes/no/feature decisions (flips each paper's in-hub flag) |
 | `build-site` | Export approved papers to `docs/papers.json` and regenerate the site |
 | `draft-post [--since 7d]` | Generate a LinkedIn post draft in `linkedin/` |
-| `import-pdfs [folder]` | Import existing PDFs (default `data/pdfs/human_incoming/`) |
+| `import-pdfs [folder]` | Import existing PDFs (default `data/pdfs/incoming/`) |
 | `enrich` | LLM-extract title/authors/abstract for PDFs lacking an embedded id |
 | `backfill-urls` | Find DOI/URL/venue by title (Crossref + arXiv + Semantic Scholar) |
 | `refresh-urls` | Re-resolve links by source preference (default SSRN > arXiv > journal) |
 | `relabel-sources` | Set the real source/venue (arXiv/SSRN/journal) from each URL |
 | `fix-dates` | Set authoritative publication dates (arXiv id / Crossref) |
 | `retag` | Re-apply the theme taxonomy to all papers |
-| `reject <fingerprint>` | Reject a paper and move its PDF to `data/pdfs/rejected/` |
+| `reject <fingerprint>` | Mark a paper out of the hub (its PDF stays in the library) |
 | `link-pdf <fingerprint> <path>` | Attach a manually downloaded PDF to a paper |
 | `fetch-pdfs` | Retry downloading candidate PDFs |
 | `export-xlsx [--status]` | Export the corpus to a rich Excel file |
@@ -122,13 +134,13 @@ the keys substantially improve metadata quality.
 ```
 data/                     all working data (gitignored; backed up via Dropbox)
   pdfs/
-    human_incoming/       PDFs you drop here to import
-    claude_incoming/      PDFs the pipeline auto-fetches, awaiting review
-    library/              ACCEPTED PDFs (name1_name2_name3_year.pdf)
-    rejected/             REJECTED papers' PDFs (archived, not deleted)
+    incoming/             PDFs you drop here to import
+    library/              EVERY paper's PDF (name1_name2_name3_year.pdf) — whether
+                          a paper is in the hub is a DB flag, not which folder
   excel/
-    review/               weekly review spreadsheets: review_<date>.xlsx
-    corpus/               corpus snapshot exports
+    review/               review_<date>.xlsx (weekly) ·
+                          database_<date>.xlsx (whole DB, from --all)
+    corpus/               read-only corpus exports (export-xlsx)
   logs/                   weekly run logs
   hub.db                  the SQLite database (source of truth)
 docs/                     the published GitHub Pages site (committed)

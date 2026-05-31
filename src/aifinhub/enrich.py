@@ -111,7 +111,7 @@ def enrich(limit: Optional[int] = None, model: str = DEFAULT_MODEL,
         stats["enriched"] += 1
 
         # Rename the library file now that we have authors.
-        if p.status == "approved" and p.pdf_path:
+        if p.pdf_path and Path(p.pdf_path).parent == PDF_LIBRARY:
             old = Path(p.pdf_path)
             new = unique_library_path(updated, fallback_stem=old.stem)
             if old.resolve() != new.resolve():
