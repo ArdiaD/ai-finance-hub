@@ -66,13 +66,13 @@ and run `python -m aifinhub import-pdfs` (see **Commands** below).
 **The database snapshot.** `review-export` writes a dated **full-database
 snapshot** — `data/excel/<DATE>_hub_db.xlsx` — every paper with an editable
 `decision` column pre-filled from its current state (`yes` = in the hub,
-`feature` = in + highlighted, `no` = out, blank = new & undecided). It's both the
-review surface and the weekly archival record. To add or remove any paper by
-hand, edit its `decision` cell and re-import:
+`feature` = in + highlighted, `no` = not on the hub). It's both the review
+surface and the weekly archival record. To add or remove any paper by hand, edit
+its `decision` cell and re-import:
 
 ```bash
 python -m aifinhub review-export             # → data/excel/<date>_hub_db.xlsx
-#   ... flip decision cells (filter the column for blanks to find new papers) ...
+#   ... flip decision cells: yes (add) / no (remove) / feature (highlight) ...
 python -m aifinhub review-import data/excel/<date>_hub_db.xlsx
 python -m aifinhub build-site
 ```

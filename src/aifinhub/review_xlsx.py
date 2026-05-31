@@ -34,7 +34,7 @@ DECISIONS = {"yes": ("approved", False), "feature": ("approved", True),
 
 # (header, attribute, width, wrap)
 COLUMNS = [
-    ("decision", None, 12, False),     # editable flag: yes / no / feature (blank = new)
+    ("decision", None, 12, False),     # editable flag: yes / feature = on hub, no = off
     ("title", "title", 50, True),
     ("authors", "_authors", 28, True),
     ("year", "_year", 7, False),
@@ -50,20 +50,18 @@ COLUMNS = [
 
 
 def _decision_for(paper) -> str:
-    """Pre-fill the decision cell from a paper's current status."""
+    """Pre-fill the decision cell: yes/feature = on the hub, no = not on the hub."""
     if paper.status == "approved":
         return "feature" if paper.featured else "yes"
-    if paper.status == "rejected":
-        return "no"
-    return ""  # pending → undecided (new papers to triage)
+    return "no"  # pending or rejected → not on the hub
 
 
 def export_review(path: Optional[str] = None) -> Path:
     """Write a dated full-database snapshot: YYYY-MM-DD_hub_db.xlsx.
 
     Every paper, with the editable `decision` column pre-filled from its current
-    state (yes / feature / no; blank = new & undecided). This is both the review
-    surface and the weekly archival record of the database.
+    state: yes / feature = on the hub, no = not on the hub. This is both the
+    review surface and the weekly archival record of the database.
     """
     db = DB(DB_PATH)
     rows = db.query(order="published DESC, score DESC")
@@ -117,7 +115,7 @@ def export_review(path: Optional[str] = None) -> Path:
     console.print(
         f"[green]Wrote DB snapshot ({len(rows)} papers) → {out}[/green]\n"
         "Edit the [bold]decision[/bold] column (yes = in hub · feature = in + "
-        "highlight · no = out; blank rows are new), save, then:\n"
+        "highlight · no = not on hub), save, then:\n"
         f"  [bold]python -m aifinhub review-import '{out}'[/bold]"
     )
     return out
