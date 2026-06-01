@@ -97,6 +97,9 @@ const TEAM = [
   bio:"Machine learning & network analysis.", photo:"fabrice-rossi.jpg", link:""},
  {group:"Paris Dauphine – PSL", name:"Tristan Cazenave", title:"Professor · LAMSADE",
   bio:"Monte Carlo search & deep reinforcement learning.", photo:"tristan-cazenave.jpg", link:""},
+ {group:"Paris Dauphine – PSL", name:"Demian Vitse", title:"",
+  bio:"Bridging AI and quantitative research in financial markets.", photo:"demian-vitse.jpeg",
+  link:"https://www.linkedin.com/in/demian-vitse"},
  {group:"HEC Montréal", name:"David Ardia", title:"Professor · Partner lead",
   bio:"Financial econometrics & NLP sentiment analysis.", photo:"david-ardia.jpg", link:""},
  {group:"HEC Montréal", name:"Laurent Charlin", title:"Associate Professor · Mila",
@@ -113,7 +116,7 @@ function card(m,i){
   return `<div class="member">
     <div class="avatar" style="background:${col}">${initials(m.name)}
       ${m.photo?`<img src="team/${esc(m.photo)}" alt="" onerror="this.remove()">`:''}</div>
-    <div><div class="nm">${nm}</div><div class="ti">${esc(m.title)}</div>
+    <div><div class="nm">${nm}</div>${m.title?`<div class="ti">${esc(m.title)}</div>`:''}
       <div class="bio">${esc(m.bio)}</div></div>
   </div>`;
 }
