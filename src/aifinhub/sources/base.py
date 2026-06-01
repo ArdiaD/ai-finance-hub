@@ -7,7 +7,7 @@ from typing import Optional
 
 import requests
 
-UA = "ai-finance-hub/0.1 (+https://github.com/ArdiaD/ai-finance-hub)"
+UA = "fame-ai-hub/0.1 (+https://github.com/ArdiaD/fame)"
 TIMEOUT = 30
 
 

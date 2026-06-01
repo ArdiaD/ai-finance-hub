@@ -1,6 +1,6 @@
 # AI & Finance Paper Hub
 
-**Live site → https://ardiad.github.io/ai-finance-hub/**
+**Live site → https://fame-ai.org** · paper hub at **https://fame-ai.org/hub/**
 
 A curated, weekly-updated collection of research at the intersection of
 **artificial intelligence** and **finance** — with a focus on **trading and
