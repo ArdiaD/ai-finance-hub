@@ -61,6 +61,7 @@ INDEX_HTML = """<!doctype html>
 </head>
 <body>
 <header>
+  <p style="margin:0 0 10px"><a href="/" style="color:var(--accent);text-decoration:none;font-size:14px">← FAME project</a></p>
   <h1>{title}</h1>
   <p class="sub">{subtitle}</p>
 </header>

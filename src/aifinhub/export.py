@@ -20,7 +20,8 @@ def build_site() -> None:
     db = DB(DB_PATH)
     approved = db.query(status="approved", order="published DESC, fetched_at DESC")
 
-    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    hub_dir = DOCS_DIR / "hub"      # the paper hub lives under /hub/ (root = FAME landing)
+    hub_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "count": len(approved),
@@ -40,11 +41,11 @@ def build_site() -> None:
     }
     import hashlib
     body = json.dumps(payload, indent=2, ensure_ascii=False)
-    (DOCS_DIR / "papers.json").write_text(body)
+    (hub_dir / "papers.json").write_text(body)
     version = hashlib.sha1(body.encode()).hexdigest()[:8]  # cache-buster
-    render_index(cfg, DOCS_DIR, version=version)
+    render_index(cfg, hub_dir, version=version)
 
     console.print(
-        f"[green]Wrote {len(approved)} papers → docs/papers.json[/green]\n"
+        f"[green]Wrote {len(approved)} papers → docs/hub/papers.json[/green]\n"
         "Commit & push docs/ to publish on GitHub Pages."
     )

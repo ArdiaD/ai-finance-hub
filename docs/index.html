@@ -3,130 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI & Finance Paper Hub</title>
+<title>FAME — Financial Artificial Machine Intelligence</title>
+<meta name="description" content="FAME — a research project on Generative AI and Large Language Models for finance, investing and market supervision. Paris Dauphine – PSL × HEC Montréal.">
 <style>
-  :root { --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
-           --accent:#5b9dff; --feat:#f6c453; }
-  * { box-sizing:border-box; }
-  body { margin:0; font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",
-          Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
-  header { padding:32px 20px 16px; max-width:1180px; margin:0 auto; }
-  h1 { margin:0 0 4px; font-size:28px; }
-  .sub { color:var(--muted); margin:0; }
-  .controls { max-width:1180px; margin:16px auto; padding:0 20px;
-               display:flex; gap:8px; flex-wrap:nowrap; align-items:center; }
-  input,select { background:var(--card); color:var(--fg); border:1px solid #2a2e38;
-                  border-radius:8px; padding:8px 10px; font-size:14px; }
-  input { flex:1; min-width:120px; }
-  select { flex:0 0 auto; }
-  main { max-width:1180px; margin:0 auto; padding:0 20px 60px; }
-  @media (max-width:760px) { .controls { flex-wrap:wrap; } }
-  .card { background:var(--card); border:1px solid #242833; border-radius:12px;
-           padding:18px 20px; margin:12px 0; }
-  .card.feat { border-color:var(--feat); }
-  .card h2 { margin:0 0 6px; font-size:18px; }
-  .card h2 a { color:var(--fg); text-decoration:none; }
-  .card h2 a:hover { color:var(--accent); }
-  .meta { color:var(--muted); font-size:13px; margin-bottom:8px; }
-  .badge { display:inline-block; background:#222631; color:var(--accent);
-            border-radius:6px; padding:1px 8px; font-size:12px; margin-right:6px; }
-  .badge.feat { background:#3a3015; color:var(--feat); }
-  .badge.theme { background:#15301f; color:#5fd39a; cursor:pointer; }
-  .badge.fame { background:#2d1b3d; color:#cf9bff; font-weight:600; }
-  .famechk { color:#cf9bff; font-size:14px; display:flex; align-items:center;
-              gap:5px; padding:0 8px; white-space:nowrap; flex:0 0 auto;
-              border:1px solid #3a2a4d; border-radius:8px; background:#1d1526;
-              cursor:pointer; height:36px; }
-  .abs { color:#c7ccd6; font-size:14px; white-space:pre-line;
-          display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;
-          overflow:hidden; }
-  .abs.open { display:block; -webkit-line-clamp:unset; }
-  .more { background:none; border:none; color:var(--accent); cursor:pointer;
-           font-size:13px; padding:4px 0; }
-  .more:hover { text-decoration:underline; }
-  .links a { color:var(--accent); text-decoration:none; margin-right:14px;
-              font-size:14px; }
-  footer { text-align:center; color:var(--muted); padding:30px; font-size:13px; }
+  :root{ --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
+         --accent:#5b9dff; --accent2:#cf9bff; --line:#242833; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",
+        Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
+  a{ color:var(--accent); }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 22px; }
+
+  /* hero */
+  header{ padding:70px 0 30px; text-align:center; }
+  .logo{ font-size:60px; font-weight:800; letter-spacing:2px;
+         background:linear-gradient(90deg,#5b9dff,#cf9bff); -webkit-background-clip:text;
+         background-clip:text; color:transparent; margin:0; }
+  .full{ color:var(--muted); font-size:18px; margin:6px 0 0; letter-spacing:.5px; }
+  .lead{ font-size:19px; max-width:720px; margin:26px auto 0; }
+  .partners{ color:var(--muted); margin-top:14px; font-size:15px; }
+  .cta{ display:inline-block; margin-top:28px; background:var(--accent); color:#0b0d12;
+        font-weight:700; text-decoration:none; padding:12px 22px; border-radius:10px; }
+  .cta:hover{ filter:brightness(1.08); }
+
+  /* sections */
+  section{ padding:42px 0; border-top:1px solid var(--line); }
+  h2{ font-size:22px; margin:0 0 22px; }
+  .focus{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .focus div{ background:var(--card); border:1px solid var(--line); border-radius:12px;
+              padding:18px 18px; }
+  .focus h3{ margin:0 0 6px; font-size:16px; color:var(--accent2); }
+  .focus p{ margin:0; color:var(--muted); font-size:14px; }
+
+  /* team */
+  .grouph{ color:var(--muted); font-size:14px; text-transform:uppercase;
+           letter-spacing:1px; margin:24px 0 14px; }
+  .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .member{ display:flex; gap:14px; background:var(--card); border:1px solid var(--line);
+           border-radius:12px; padding:14px 16px; align-items:center; }
+  .avatar{ position:relative; width:54px; height:54px; min-width:54px; border-radius:50%;
+           overflow:hidden; display:flex; align-items:center; justify-content:center;
+           color:#fff; font-weight:700; font-size:18px; }
+  .avatar img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .member .nm{ font-weight:600; }
+  .member .ti{ color:var(--muted); font-size:13px; }
+  .member .bio{ font-size:13.5px; color:#c7ccd6; margin-top:3px; }
+  .member a.lnk{ font-size:13px; text-decoration:none; }
+
+  footer{ text-align:center; color:var(--muted); padding:40px 0 60px; font-size:14px;
+          border-top:1px solid var(--line); }
+  @media(max-width:680px){ .focus,.team{ grid-template-columns:1fr; } .logo{ font-size:46px; } }
 </style>
 </head>
 <body>
-<header>
-  <h1>AI & Finance Paper Hub</h1>
-  <p class="sub">Curated research on AI for trading & investment</p>
+<header class="wrap">
+  <h1 class="logo">FAME</h1>
+  <p class="full">Financial Artificial Machine Intelligence</p>
+  <p class="lead">FAME advances the use of <b>Generative AI and Large Language
+  Models</b> in financial analysis, portfolio management, and market supervision —
+  bridging quantitative finance, econometrics, and state-of-the-art AI.</p>
+  <p class="partners">A joint research project of <b>Paris Dauphine – PSL</b> and
+  <b>HEC Montréal</b>.</p>
+  <a class="cta" href="hub/">Explore the Paper Hub →</a>
 </header>
-<div class="controls">
-  <input id="q" placeholder="Search title, author, abstract…">
-  <select id="theme"><option value="">All themes</option></select>
-  <select id="src"><option value="">All sources</option></select>
-  <select id="yfrom"><option value="">From</option></select>
-  <select id="yto"><option value="">To</option></select>
-  <select id="sort">
-    <option value="date">Newest first</option>
-    <option value="fame">Most FAME-relevant</option>
-  </select>
-</div>
-<main id="list"></main>
-<footer>
-  <span id="count"></span> · Curated by David Ardia
-</footer>
+
+<section class="wrap">
+  <h2>Research focus</h2>
+  <div class="focus">
+    <div><h3>AI &amp; investor behavior</h3><p>How Generative AI changes how
+      investors process information and make decisions.</p></div>
+    <div><h3>AI &amp; price formation</h3><p>How AI-driven demand reshapes asset
+      prices and market efficiency.</p></div>
+    <div><h3>Risks &amp; supervision</h3><p>Adversarial manipulation of AI
+      strategies and real-time tools for regulators.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Team</h2>
+  <div id="team"></div>
+</section>
+
+<footer>FAME · Paris Dauphine – PSL × HEC Montréal · <a href="hub/">Paper Hub</a></footer>
+
 <script>
-let PAPERS=[];
-const FAME=50;
-const el=id=>document.getElementById(id);
-function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-function card(p){
-  const feat=p.featured?' feat':'';
-  const badge=p.featured?'<span class="badge feat">★ featured</span>':'';
-  const cats=(p.categories||[]).slice(0,4).map(c=>`<span class="badge">${esc(c)}</span>`).join('');
-  const themes=(p.themes||[]).map(t=>`<span class="badge theme" onclick="pickTheme('${esc(t)}')">${esc(t)}</span>`).join('');
-  const fame=(p.fame_score>=FAME)?`<span class="badge fame" title="Similarity to the FAME project summary">FAME · ${p.fame_score}%</span>`:'';
-  const authors=(p.authors||[]).slice(0,8).join(', ');
-  const abs=esc(p.abstract||'');
-  const long=(p.abstract||'').length>320;
-  const more=long?`<button class="more" onclick="toggleAbs(this)">Show more ▾</button>`:'';
-  return `<div class="card${feat}">
-    <h2><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></h2>
-    <div class="meta">${badge}${esc(authors)} · <b>${esc(p.venue||p.source)}</b> · ${esc((p.published||'').slice(0,7))}</div>
-    <div class="meta">${fame}${themes}${cats}</div>
-    <div class="abs">${abs}</div>${more}
+// ── Edit this list to add a photo (drop the file in docs/team/) or a link. ──
+const TEAM = [
+ {group:"Paris Dauphine – PSL", name:"Serge Darolles", title:"Professor · Coordinator",
+  bio:"Quantitative finance & financial econometrics.", photo:"serge-darolles.jpg", link:""},
+ {group:"Paris Dauphine – PSL", name:"Fabrice Riva", title:"Professor",
+  bio:"Empirical asset pricing, ETFs & market microstructure.", photo:"fabrice-riva.jpg", link:""},
+ {group:"Paris Dauphine – PSL", name:"Fabrice Rossi", title:"Professor",
+  bio:"Machine learning & network analysis.", photo:"fabrice-rossi.jpg", link:""},
+ {group:"Paris Dauphine – PSL", name:"Tristan Cazenave", title:"Professor · LAMSADE",
+  bio:"Monte Carlo search & deep reinforcement learning.", photo:"tristan-cazenave.jpg", link:""},
+ {group:"HEC Montréal", name:"David Ardia", title:"Professor · Partner lead",
+  bio:"Financial econometrics & NLP sentiment analysis.", photo:"david-ardia.jpg", link:""},
+ {group:"HEC Montréal", name:"Laurent Charlin", title:"Associate Professor · Mila",
+  bio:"Deep learning & recommender systems.", photo:"laurent-charlin.jpg", link:""},
+ {group:"HEC Montréal", name:"Eva Portelance", title:"Assistant Professor · Mila",
+  bio:"Computational linguistics & LLM evaluation.", photo:"eva-portelance.jpg", link:""},
+];
+const COLORS=["#5b9dff","#cf9bff","#5fd39a","#f6c453","#f78f8f","#6fd1e6","#b59cff"];
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const initials=n=>n.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+function card(m,i){
+  const col=COLORS[i%COLORS.length];
+  const nm = m.link ? `<a class="lnk" href="${esc(m.link)}" target="_blank" rel="noopener">${esc(m.name)} ↗</a>` : esc(m.name);
+  return `<div class="member">
+    <div class="avatar" style="background:${col}">${initials(m.name)}
+      ${m.photo?`<img src="team/${esc(m.photo)}" alt="" onerror="this.remove()">`:''}</div>
+    <div><div class="nm">${nm}</div><div class="ti">${esc(m.title)}</div>
+      <div class="bio">${esc(m.bio)}</div></div>
   </div>`;
 }
-function pickTheme(t){ el('theme').value=t; render(); window.scrollTo(0,0); }
-function toggleAbs(btn){
-  const open=btn.previousElementSibling.classList.toggle('open');
-  btn.textContent=open?'Show less ▴':'Show more ▾';
-}
-function render(){
-  const q=el('q').value.toLowerCase(), src=el('src').value,
-        theme=el('theme').value, sort=el('sort').value,
-        yfrom=el('yfrom').value, yto=el('yto').value;
-  let rows=PAPERS.filter(p=>{
-    if(src && p.source!==src) return false;
-    if(theme && !(p.themes||[]).includes(theme)) return false;
-    const y=(p.published||'').slice(0,4);
-    if(yfrom && (!y || y<yfrom)) return false;
-    if(yto && (!y || y>yto)) return false;
-    if(!q) return true;
-    return (p.title+' '+(p.authors||[]).join(' ')+' '+p.abstract).toLowerCase().includes(q);
-  });
-  rows.sort((a,b)=> sort==='fame'
-    ? ((b.fame_score||0)-(a.fame_score||0))||(b.published||'').localeCompare(a.published||'')
-    : (b.published||'').localeCompare(a.published||''));
-  el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
-  el('count').textContent=rows.length+' papers';
-}
-fetch('papers.json?v=1248e024').then(r=>r.json()).then(d=>{
-  PAPERS=d.papers||[];
-  const srcs=[...new Set(PAPERS.map(p=>p.source))].sort();
-  el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
-  const themes=[...new Set(PAPERS.flatMap(p=>p.themes||[]))].sort();
-  if(themes.length) el('theme').innerHTML+='<option>'+themes.join('</option><option>')+'</option>';
-  const years=[...new Set(PAPERS.map(p=>(p.published||'').slice(0,4)).filter(Boolean))].sort().reverse();
-  const yopts=years.map(y=>'<option>'+y+'</option>').join('');
-  el('yfrom').innerHTML+=yopts; el('yto').innerHTML+=yopts;
-  ['q','src','theme','yfrom','yto','sort'].forEach(id=>el(id).addEventListener('input',render));
-  render();
-});
+const groups=[...new Set(TEAM.map(m=>m.group))];
+document.getElementById('team').innerHTML = groups.map(g=>{
+  const members=TEAM.filter(m=>m.group===g);
+  return `<div class="grouph">${esc(g)}</div><div class="team">`+
+    members.map((m)=>card(m,TEAM.indexOf(m))).join('')+`</div>`;
+}).join('');
 </script>
 </body>
 </html>
