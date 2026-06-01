@@ -1,12 +1,23 @@
-# AI & Finance Paper Hub
+# FAME — project site & AI-Finance Paper Hub
 
-**Live site → https://fame-ai.org** · paper hub at **https://fame-ai.org/hub/**
+This repository powers the **FAME** project website and its research paper hub,
+both published from `docs/` via GitHub Pages:
 
-A curated, weekly-updated collection of research at the intersection of
-**artificial intelligence** and **finance** — with a focus on **trading and
-investment**. New papers are discovered automatically from public repositories,
-reviewed by a human, and published to a searchable, filterable web hub. A
-LinkedIn post draft is generated for the week's highlights.
+- **Landing page → https://fame-ai.org** — what FAME is, its research focus, and
+  the team.
+- **Paper Hub → https://fame-ai.org/hub/** — a curated, weekly-updated collection
+  of research at the intersection of **artificial intelligence** and **finance**,
+  with a focus on **trading and investment**.
+
+**FAME** (*Financial Artificial Machine Intelligence*) is a joint research project
+of **Paris Dauphine – PSL** and **HEC Montréal** on Generative AI and Large
+Language Models for investing, trading, and market supervision. The hub doubles as
+a live literature map for the project, with each paper scored for
+[FAME relevance](#fame-relevance-scoring).
+
+New papers are discovered automatically from public repositories, reviewed by a
+human, and published to the searchable, filterable hub; a LinkedIn post draft is
+generated for the week's highlights.
 
 Curated by **David Ardia** (HEC Montréal).
 
@@ -30,8 +41,8 @@ research-project summary — see [FAME relevance scoring](#fame-relevance-scorin
 
 The database (`data/hub.db`) is the source of truth; every paper's PDF lives in
 one folder (`data/pdfs/library/`) and a status flag decides whether it appears on
-the hub. The public artifact is `docs/papers.json`, which drives the static
-site — no build server required.
+the hub. The public artifact is `docs/hub/papers.json`, which drives the static
+hub — no build server required.
 
 ---
 
@@ -61,7 +72,7 @@ What the two commands expand to:
 | `weekly` | `publish` |
 |---|---|
 | `fetch` — scan sources, download candidate PDFs, tag themes & relevance | `review-import` — apply yes/no/feature (flips each paper's in-hub flag) |
-| `polish` — enhance the new candidates' metadata (links, sources, dates) | `build-site` — regenerate `docs/papers.json` + the site |
+| `polish` — enhance the new candidates' metadata (links, sources, dates) | `build-site` — regenerate `docs/hub/papers.json` + the hub page |
 | `review-export` — write the dated review spreadsheet | `draft-post` — write the LinkedIn draft to `linkedin/` |
 
 Each underlying command can still be run on its own (see **Commands**).
@@ -123,7 +134,7 @@ the keys substantially improve metadata quality.
 | `polish` | Run all metadata-cleanup passes (enrich → backfill-urls → relabel-sources → fix-dates) |
 | `review-export` | Write a dated full-DB snapshot (`data/excel/<date>_hub_db.xlsx`) |
 | `review-import <xlsx>` | Apply the yes/no/feature decisions (flips each paper's in-hub flag) |
-| `build-site` | Export approved papers to `docs/papers.json` and regenerate the site |
+| `build-site` | Export approved papers to `docs/hub/papers.json` and regenerate the hub |
 | `draft-post [--since 7d]` | Generate a LinkedIn post draft in `linkedin/` |
 | `import-pdfs [folder]` | Import existing PDFs (default `data/pdfs/incoming/`) |
 | `enrich` | LLM-extract title/authors/abstract for PDFs lacking an embedded id |
@@ -153,8 +164,12 @@ data/                     all working data (gitignored; backed up via Dropbox)
   logs/                   weekly run logs
   hub.db                  the SQLite database (source of truth)
 docs/                     the published GitHub Pages site (committed)
-  index.html              searchable / filterable front-end
-  papers.json             the public corpus
+  index.html              FAME landing page (project + team)
+  team/                   public team photos (resized JPEGs)
+  CNAME                   custom domain (fame-ai.org)
+  hub/
+    index.html            the paper hub front-end (search / filter / sort)
+    papers.json           the public corpus that drives the hub
 config.yaml               sources, relevance keywords, theme taxonomy
 src/aifinhub/             the pipeline code
 scripts/weekly_fetch.sh   convenience script for the weekly discovery run
@@ -181,10 +196,21 @@ Everything tunable lives in [`config.yaml`](config.yaml):
 
 ---
 
-## The hub website
+## The website
 
-The static site (`docs/`) loads `papers.json` and runs entirely client-side
-(no server). Visitors get, over the curated corpus:
+Everything in `docs/` is served statically by GitHub Pages (no build server) at
+the custom domain in `docs/CNAME` (`fame-ai.org`). It has two parts:
+
+**1. The FAME landing page** — `docs/index.html`. A hand-authored page presenting
+the project (hero, research focus) and the **team**. Team members live in an
+editable `TEAM` array near the bottom of that file: each entry is
+`{group, name, title, bio, photo, link}`. To add someone, drop a photo in
+`docs/team/` and add an entry — a missing photo gracefully falls back to a
+coloured initials avatar. (Photos are resized JPEGs, ~40–55 KB each.)
+
+**2. The paper hub** — `docs/hub/index.html`, linked from the landing page's
+*Explore the Paper Hub →* button. It loads `hub/papers.json` and runs entirely
+client-side. Over the curated corpus, visitors get:
 
 - full-text **search** (title · authors · abstract);
 - filters by **theme**, **source**, and a **year range** (from / to);
@@ -192,7 +218,7 @@ The static site (`docs/`) loads `papers.json` and runs entirely client-side
 - each card shows the venue, year (month precision), **theme chips**, an
   expandable abstract, and — where relevant — a **`FAME · NN%`** badge.
 
-`papers.json` is fetched with a content-hash cache-buster so the site always
+`papers.json` is fetched with a content-hash cache-buster so the hub always
 shows the latest data after a rebuild.
 
 ---
