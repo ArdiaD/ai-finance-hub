@@ -7,7 +7,7 @@ hub:
   subtitle: "Curated research on AI for trading & investment"
   # Used in the site footer / LinkedIn post. Edit to your handle/site.
   curator: "David Ardia"
-  site_url: "https://ardiad.github.io/ai-finance-hub"
+  site_url: "https://fame-ai.org"
 
 # How far back each source looks on a normal weekly run.
 fetch:

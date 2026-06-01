@@ -115,7 +115,7 @@ function render(){
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }
-fetch('papers.json?v=8457c05e').then(r=>r.json()).then(d=>{
+fetch('papers.json?v=1248e024').then(r=>r.json()).then(d=>{
   PAPERS=d.papers||[];
   const srcs=[...new Set(PAPERS.map(p=>p.source))].sort();
   el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
