@@ -21,3 +21,6 @@ fame/
 
 # Source team profiles (docx with emails) — private; public photos live in docs/team/
 /team/
+
+# Source background image — only the optimized docs/hero-bg.jpg is published
+/background/

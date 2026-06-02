@@ -64,8 +64,14 @@
   .links a.btn:hover{ filter:brightness(1.08); }
 
   /* hero */
-  .hero{ padding:64px 0 56px; }
-  .hero .wrap{ display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:center; }
+  .hero{ position:relative; overflow:hidden; padding:104px 0 112px; }
+  .hero::before{ content:""; position:absolute; inset:0; z-index:0;
+                 background:url("hero-bg.jpg") center right / cover no-repeat; }
+  .hero::after{ content:""; position:absolute; inset:0; z-index:1;
+                background:linear-gradient(90deg,#ffffff 20%,rgba(255,255,255,.72) 46%,
+                          rgba(255,255,255,.15) 74%,rgba(255,255,255,0) 100%); }
+  .hero .wrap{ position:relative; z-index:2; }
+  .htext{ max-width:600px; }
   .eyebrow{ color:var(--accent); font-weight:700; font-size:13px; letter-spacing:1.5px;
             text-transform:uppercase; margin:0 0 14px; }
   .hero h1{ font-size:46px; line-height:1.1; font-weight:800; margin:0 0 18px; letter-spacing:-.5px; }
@@ -76,7 +82,6 @@
   .cta.primary:hover{ filter:brightness(1.08); text-decoration:none; }
   .cta.ghost{ background:#eef2fb; color:var(--accent); }
   .cta.ghost:hover{ background:#e4ebfa; text-decoration:none; }
-  .hero-art{ width:100%; height:auto; }
 
   /* bands / sections */
   .band{ padding:64px 0; }
@@ -128,8 +133,9 @@
   .fbot{ color:var(--muted); font-size:13px; text-align:center; margin-top:40px; }
 
   @media(max-width:860px){
-    .hero .wrap{ grid-template-columns:1fr; }
-    .hero-art{ max-width:420px; margin:6px auto 0; order:-1; }
+    .hero{ padding:72px 0 80px; }
+    .hero::after{ background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.62)); }
+    .htext{ max-width:none; }
     .focus{ grid-template-columns:1fr; }
     .fgrid{ grid-template-columns:1fr 1fr; }
   }
@@ -155,7 +161,7 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div>
+    <div class="htext">
       <p class="eyebrow">Paris Dauphine – PSL × HEC Montréal</p>
       <h1>Financial Artificial<br><span class="grad">Machine Intelligence</span></h1>
       <p class="lead">FAME advances the use of <b>Generative AI and Large Language
@@ -166,30 +172,6 @@
         <a class="cta ghost" href="#team">Meet the team</a>
       </div>
     </div>
-    <svg class="hero-art" viewBox="0 0 480 380" role="img" aria-label="Abstract AI and finance illustration">
-      <defs>
-        <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#5b9dff"/><stop offset="1" stop-color="#cf9bff"/>
-        </linearGradient>
-      </defs>
-      <rect x="34" y="40" width="412" height="300" rx="22" fill="url(#g)" opacity=".07"/>
-      <g fill="url(#g)" opacity=".22">
-        <rect x="78"  y="232" width="34" height="74"  rx="6"/>
-        <rect x="132" y="196" width="34" height="110" rx="6"/>
-        <rect x="186" y="214" width="34" height="92"  rx="6"/>
-        <rect x="240" y="158" width="34" height="148" rx="6"/>
-        <rect x="294" y="186" width="34" height="120" rx="6"/>
-        <rect x="348" y="120" width="34" height="186" rx="6"/>
-      </g>
-      <polyline points="95,214 149,176 203,192 257,132 311,162 365,96"
-                fill="none" stroke="url(#g)" stroke-width="5"
-                stroke-linecap="round" stroke-linejoin="round"/>
-      <g fill="#fff" stroke="url(#g)" stroke-width="4">
-        <circle cx="95"  cy="214" r="8"/><circle cx="149" cy="176" r="8"/>
-        <circle cx="203" cy="192" r="8"/><circle cx="257" cy="132" r="8"/>
-        <circle cx="311" cy="162" r="8"/><circle cx="365" cy="96"  r="8"/>
-      </g>
-    </svg>
   </div>
 </header>
 
