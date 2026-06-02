@@ -33,7 +33,14 @@
   .nav .links a { color:var(--fg); font-size:14.5px; font-weight:500;
                    margin-left:24px; text-decoration:none; }
   .nav .links a:hover { color:var(--accent); }
-  header { max-width:1100px; margin:0 auto; padding:34px 24px 6px; }
+  .hubhead { position:relative; overflow:hidden; }
+  .hubhead::before { content:""; position:absolute; inset:0; z-index:0;
+     background:url("../hero-bg.jpg") center right / cover no-repeat; }
+  .hubhead::after { content:""; position:absolute; inset:0; z-index:1;
+     background:linear-gradient(180deg,transparent 48%,var(--bg) 100%),
+                linear-gradient(90deg,var(--bg) 12%,rgba(10,14,28,.72) 44%,
+                  rgba(10,14,28,.28) 78%,rgba(10,14,28,0) 100%); }
+  header { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:64px 24px 44px; }
   h1 { margin:0 0 6px; font-size:30px; font-weight:800; letter-spacing:-.3px; }
   .sub { color:var(--muted); margin:0; font-size:16px; }
   .controls { max-width:1100px; margin:18px auto; padding:0 24px;
@@ -82,10 +89,12 @@
     </div>
   </div>
 </nav>
-<header>
-  <h1>AI & Finance Paper Hub</h1>
-  <p class="sub">Curated research on AI for trading & investment</p>
-</header>
+<div class="hubhead">
+  <header>
+    <h1>AI & Finance Paper Hub</h1>
+    <p class="sub">Curated research on AI for trading & investment</p>
+  </header>
+</div>
 <div class="controls">
   <input id="q" placeholder="Search title, author, abstract…">
   <select id="theme"><option value="">All themes</option></select>
