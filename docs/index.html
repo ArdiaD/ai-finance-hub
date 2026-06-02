@@ -37,9 +37,9 @@
 </script>
 <style>
   :root{
-    --bg:#ffffff; --bg2:#f5f7fb; --fg:#13171f; --muted:#5b6573;
+    --bg:#e7ebf3; --bg2:#dde3ee; --fg:#12161e; --muted:#566072;
     --accent:#2f6df6; --g1:#5b9dff; --g2:#cf9bff;
-    --card:#ffffff; --line:#e7eaf1; --shadow:0 1px 2px rgba(16,24,40,.05);
+    --card:#ffffff; --line:#d3dae7; --shadow:0 1px 2px rgba(16,24,40,.06);
   }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
@@ -68,8 +68,8 @@
   .hero::before{ content:""; position:absolute; inset:0; z-index:0;
                  background:url("hero-bg.jpg") center right / cover no-repeat; }
   .hero::after{ content:""; position:absolute; inset:0; z-index:1;
-                background:linear-gradient(90deg,#ffffff 20%,rgba(255,255,255,.72) 46%,
-                          rgba(255,255,255,.15) 74%,rgba(255,255,255,0) 100%); }
+                background:linear-gradient(90deg,var(--bg) 20%,rgba(231,235,243,.72) 46%,
+                          rgba(231,235,243,.15) 74%,rgba(231,235,243,0) 100%); }
   .hero .wrap{ position:relative; z-index:2; }
   .htext{ max-width:600px; }
   .eyebrow{ color:var(--accent); font-weight:700; font-size:13px; letter-spacing:1.5px;
@@ -134,7 +134,7 @@
 
   @media(max-width:860px){
     .hero{ padding:72px 0 80px; }
-    .hero::after{ background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.62)); }
+    .hero::after{ background:linear-gradient(180deg,rgba(231,235,243,.9),rgba(231,235,243,.62)); }
     .htext{ max-width:none; }
     .focus{ grid-template-columns:1fr; }
     .fgrid{ grid-template-columns:1fr 1fr; }
