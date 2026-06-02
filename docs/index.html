@@ -36,84 +36,222 @@
 }
 </script>
 <style>
-  :root{ --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
-         --accent:#5b9dff; --accent2:#cf9bff; --line:#242833; }
+  :root{
+    --bg:#ffffff; --bg2:#f5f7fb; --fg:#13171f; --muted:#5b6573;
+    --accent:#2f6df6; --g1:#5b9dff; --g2:#cf9bff;
+    --card:#ffffff; --line:#e7eaf1; --shadow:0 1px 2px rgba(16,24,40,.05);
+  }
   *{ box-sizing:border-box; }
-  body{ margin:0; font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",
-        Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
-  a{ color:var(--accent); }
-  .wrap{ max-width:980px; margin:0 auto; padding:0 22px; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; color:var(--fg); background:var(--bg);
+        font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing:antialiased; }
+  a{ color:var(--accent); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .grad{ background:linear-gradient(90deg,var(--g1),var(--g2));
+         -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* nav */
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.82);
+        backdrop-filter:saturate(180%) blur(12px); box-shadow:0 1px 14px rgba(16,24,40,.05); }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .brand{ font-weight:800; font-size:22px; letter-spacing:1px; }
+  .links{ display:flex; gap:26px; }
+  .links a{ color:var(--fg); font-size:14.5px; font-weight:500; }
+  .links a:hover{ color:var(--accent); text-decoration:none; }
+  .links a.btn{ background:var(--accent); color:#fff; padding:8px 16px; border-radius:9px; }
+  .links a.btn:hover{ filter:brightness(1.08); }
 
   /* hero */
-  header{ padding:70px 0 30px; text-align:center; }
-  .logo{ font-size:60px; font-weight:800; letter-spacing:2px;
-         background:linear-gradient(90deg,#5b9dff,#cf9bff); -webkit-background-clip:text;
-         background-clip:text; color:transparent; margin:0; }
-  .full{ color:var(--muted); font-size:18px; margin:6px 0 0; letter-spacing:.5px; }
-  .lead{ font-size:19px; max-width:720px; margin:26px auto 0; }
-  .partners{ color:var(--muted); margin-top:14px; font-size:15px; }
-  .cta{ display:inline-block; margin-top:28px; background:var(--accent); color:#0b0d12;
-        font-weight:700; text-decoration:none; padding:12px 22px; border-radius:10px; }
-  .cta:hover{ filter:brightness(1.08); }
+  .hero{ padding:64px 0 56px; }
+  .hero .wrap{ display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:center; }
+  .eyebrow{ color:var(--accent); font-weight:700; font-size:13px; letter-spacing:1.5px;
+            text-transform:uppercase; margin:0 0 14px; }
+  .hero h1{ font-size:46px; line-height:1.1; font-weight:800; margin:0 0 18px; letter-spacing:-.5px; }
+  .hero p.lead{ font-size:19px; color:var(--muted); margin:0 0 28px; max-width:560px; }
+  .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .cta{ display:inline-block; font-weight:700; padding:13px 24px; border-radius:11px; }
+  .cta.primary{ background:var(--accent); color:#fff; }
+  .cta.primary:hover{ filter:brightness(1.08); text-decoration:none; }
+  .cta.ghost{ background:#eef2fb; color:var(--accent); }
+  .cta.ghost:hover{ background:#e4ebfa; text-decoration:none; }
+  .hero-art{ width:100%; height:auto; }
 
-  /* sections */
-  section{ padding:42px 0; }
-  h2{ font-size:22px; margin:0 0 22px; }
-  .focus{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .focus div{ background:var(--card); border:1px solid var(--line); border-radius:12px;
-              padding:18px 18px; }
-  .focus h3{ margin:0 0 6px; font-size:16px; color:var(--accent2); }
-  .focus p{ margin:0; color:var(--muted); font-size:14px; }
+  /* bands / sections */
+  .band{ padding:64px 0; }
+  .band.alt{ background:var(--bg2); }
+  section{ scroll-margin-top:72px; }
+  .shead{ text-align:center; max-width:680px; margin:0 auto 40px; }
+  .shead h2{ font-size:30px; font-weight:800; margin:0 0 10px; letter-spacing:-.3px; }
+  .shead p{ color:var(--muted); font-size:17px; margin:0; }
+
+  /* research focus */
+  .focus{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .fcard{ background:var(--card); border:1px solid var(--line); border-radius:16px;
+          padding:28px 24px; box-shadow:var(--shadow); transition:.16s; }
+  .fcard:hover{ transform:translateY(-3px); box-shadow:0 10px 28px rgba(16,24,40,.09); }
+  .ficon{ width:52px; height:52px; border-radius:13px; display:flex; align-items:center;
+          justify-content:center; color:#fff; margin-bottom:18px;
+          background:linear-gradient(135deg,var(--g1),var(--g2)); }
+  .ficon svg{ width:26px; height:26px; }
+  .fcard h3{ margin:0 0 8px; font-size:18px; }
+  .fcard p{ margin:0; color:var(--muted); font-size:14.5px; }
 
   /* team */
-  .grouph{ color:var(--muted); font-size:14px; text-transform:uppercase;
-           letter-spacing:1px; margin:24px 0 14px; }
-  .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .member{ display:flex; gap:14px; background:var(--card); border:1px solid var(--line);
-           border-radius:12px; padding:14px 16px; align-items:center; }
-  .avatar{ position:relative; width:54px; height:54px; min-width:54px; border-radius:50%;
+  .grouph{ color:var(--muted); font-size:13px; font-weight:700; text-transform:uppercase;
+           letter-spacing:1.2px; margin:30px 0 16px; }
+  .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .member{ display:flex; gap:15px; background:var(--card); border:1px solid var(--line);
+           border-radius:16px; padding:16px 18px; align-items:center; box-shadow:var(--shadow);
+           transition:.16s; }
+  .member:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(16,24,40,.08); }
+  .avatar{ position:relative; width:58px; height:58px; min-width:58px; border-radius:50%;
            overflow:hidden; display:flex; align-items:center; justify-content:center;
-           color:#fff; font-weight:700; font-size:18px; }
+           color:#fff; font-weight:700; font-size:19px; }
   .avatar img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .member .nm{ font-weight:600; }
-  .member .ti{ color:var(--muted); font-size:13px; }
-  .member .bio{ font-size:13.5px; color:#c7ccd6; margin-top:3px; }
-  .member a.lnk{ font-size:13px; text-decoration:none; }
+  .member .nm{ font-weight:700; font-size:15.5px; }
+  .member .nm a{ color:var(--fg); }
+  .member .nm a:hover{ color:var(--accent); }
+  .member .ti{ color:var(--accent); font-size:12.5px; font-weight:600; margin-top:1px; }
+  .member .bio{ font-size:13.5px; color:var(--muted); margin-top:5px; }
 
-  footer{ text-align:center; color:var(--muted); padding:40px 0 60px; font-size:14px; }
-  @media(max-width:680px){ .focus,.team{ grid-template-columns:1fr; } .logo{ font-size:46px; } }
+  /* footer */
+  footer{ background:var(--bg2); padding:54px 0 30px; margin-top:8px; }
+  .fgrid{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:32px; }
+  .fbrand{ font-weight:800; font-size:24px; letter-spacing:1px; margin-bottom:10px; }
+  footer p{ color:var(--muted); font-size:14px; margin:0; max-width:340px; }
+  footer h4{ font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--fg);
+             margin:0 0 12px; }
+  footer .fcol a{ display:block; color:var(--muted); font-size:14.5px; margin-bottom:9px; }
+  footer .fcol a:hover{ color:var(--accent); text-decoration:none; }
+  .fbot{ color:var(--muted); font-size:13px; text-align:center; margin-top:40px; }
+
+  @media(max-width:860px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .hero-art{ max-width:420px; margin:6px auto 0; order:-1; }
+    .focus{ grid-template-columns:1fr; }
+    .fgrid{ grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:600px){
+    .links{ gap:16px; } .links a:not(.btn){ display:none; }
+    .hero h1{ font-size:34px; } .team{ grid-template-columns:1fr; }
+    .fgrid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
-<header class="wrap">
-  <h1 class="logo">FAME</h1>
-  <p class="full">Financial Artificial Machine Intelligence</p>
-  <p class="lead">FAME advances the use of <b>Generative AI and Large Language
-  Models</b> in financial analysis, portfolio management, and market supervision —
-  bridging quantitative finance, econometrics, and state-of-the-art AI.</p>
-  <p class="partners">A joint research project of <b>Paris Dauphine – PSL</b> and
-  <b>HEC Montréal</b>.</p>
-  <a class="cta" href="hub/">Explore the Paper Hub →</a>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand grad" href="#top">FAME</a>
+    <div class="links">
+      <a href="#research">Research</a>
+      <a href="#team">Team</a>
+      <a class="btn" href="hub/">Paper Hub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Paris Dauphine – PSL × HEC Montréal</p>
+      <h1>Financial Artificial<br><span class="grad">Machine Intelligence</span></h1>
+      <p class="lead">FAME advances the use of <b>Generative AI and Large Language
+      Models</b> in financial analysis, portfolio management, and market supervision —
+      bridging quantitative finance, econometrics, and state-of-the-art AI.</p>
+      <div class="actions">
+        <a class="cta primary" href="hub/">Explore the Paper Hub →</a>
+        <a class="cta ghost" href="#team">Meet the team</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 480 380" role="img" aria-label="Abstract AI and finance illustration">
+      <defs>
+        <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#5b9dff"/><stop offset="1" stop-color="#cf9bff"/>
+        </linearGradient>
+      </defs>
+      <rect x="34" y="40" width="412" height="300" rx="22" fill="url(#g)" opacity=".07"/>
+      <g fill="url(#g)" opacity=".22">
+        <rect x="78"  y="232" width="34" height="74"  rx="6"/>
+        <rect x="132" y="196" width="34" height="110" rx="6"/>
+        <rect x="186" y="214" width="34" height="92"  rx="6"/>
+        <rect x="240" y="158" width="34" height="148" rx="6"/>
+        <rect x="294" y="186" width="34" height="120" rx="6"/>
+        <rect x="348" y="120" width="34" height="186" rx="6"/>
+      </g>
+      <polyline points="95,214 149,176 203,192 257,132 311,162 365,96"
+                fill="none" stroke="url(#g)" stroke-width="5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#fff" stroke="url(#g)" stroke-width="4">
+        <circle cx="95"  cy="214" r="8"/><circle cx="149" cy="176" r="8"/>
+        <circle cx="203" cy="192" r="8"/><circle cx="257" cy="132" r="8"/>
+        <circle cx="311" cy="162" r="8"/><circle cx="365" cy="96"  r="8"/>
+      </g>
+    </svg>
+  </div>
 </header>
 
-<section class="wrap">
-  <h2>Research focus</h2>
-  <div class="focus">
-    <div><h3>AI &amp; investor behavior</h3><p>How Generative AI changes how
-      investors process information and make decisions.</p></div>
-    <div><h3>AI &amp; price formation</h3><p>How AI-driven demand reshapes asset
-      prices and market efficiency.</p></div>
-    <div><h3>Risks &amp; supervision</h3><p>Adversarial manipulation of AI
-      strategies and real-time tools for regulators.</p></div>
+<section class="band alt" id="research">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Research focus</h2>
+      <p>How generative AI is reshaping investors, markets, and the tools that supervise them.</p>
+    </div>
+    <div class="focus">
+      <div class="fcard">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 6.2a3 3 0 0 1 0 5.6"/><path d="M18.5 19a5.5 5.5 0 0 0-3-4.9"/></svg></div>
+        <h3>AI &amp; investor behavior</h3>
+        <p>How Generative AI changes the way investors process information and make decisions.</p>
+      </div>
+      <div class="fcard">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div>
+        <h3>AI &amp; price formation</h3>
+        <p>How AI-driven demand reshapes asset prices and market efficiency.</p>
+      </div>
+      <div class="fcard">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6l7-3Z"/><path d="M9.2 12l1.9 1.9L15 10"/></svg></div>
+        <h3>Risks &amp; supervision</h3>
+        <p>Adversarial manipulation of AI strategies and real-time tools for regulators.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>Team</h2>
-  <div id="team"></div>
+<section class="band" id="team">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Team</h2>
+      <p>Researchers in quantitative finance, econometrics, and machine learning across two institutions.</p>
+    </div>
+    <div id="team-list"></div>
+  </div>
 </section>
 
-<footer>FAME · Paris Dauphine – PSL × HEC Montréal · <a href="hub/">Paper Hub</a></footer>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fbrand grad">FAME</div>
+        <p>Financial Artificial Machine Intelligence — a research project on Generative
+        AI and Large Language Models for investing, trading, and market supervision.</p>
+      </div>
+      <div class="fcol">
+        <h4>Partners</h4>
+        <a href="https://dauphine.psl.eu/" target="_blank" rel="noopener">Paris Dauphine – PSL</a>
+        <a href="https://www.hec.ca/" target="_blank" rel="noopener">HEC Montréal</a>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="hub/">Paper Hub</a>
+        <a href="#research">Research</a>
+        <a href="#team">Team</a>
+      </div>
+    </div>
+    <div class="fbot">© 2026 FAME · Paris Dauphine – PSL × HEC Montréal</div>
+  </div>
+</footer>
 
 <script>
 // ── Edit this list to add a photo (drop the file in docs/team/) or a link. ──
@@ -169,7 +307,7 @@ const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"
 const initials=n=>n.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
 function card(m,i){
   const col=COLORS[i%COLORS.length];
-  const nm = m.link ? `<a class="lnk" href="${esc(m.link)}" target="_blank" rel="noopener">${esc(m.name)} ↗</a>` : esc(m.name);
+  const nm = m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener">${esc(m.name)} ↗</a>` : esc(m.name);
   return `<div class="member">
     <div class="avatar" style="background:${col}">${initials(m.name)}
       ${m.photo?`<img src="team/${esc(m.photo)}" alt="" onerror="this.remove()">`:''}</div>
@@ -178,7 +316,7 @@ function card(m,i){
   </div>`;
 }
 const groups=[...new Set(TEAM.map(m=>m.group))];
-document.getElementById('team').innerHTML = groups.map(g=>{
+document.getElementById('team-list').innerHTML = groups.map(g=>{
   const members=TEAM.filter(m=>m.group===g);
   return `<div class="grouph">${esc(g)}</div><div class="team">`+
     members.map((m)=>card(m,TEAM.indexOf(m))).join('')+`</div>`;
