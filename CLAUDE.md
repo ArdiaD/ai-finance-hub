@@ -111,16 +111,44 @@ value). `config.yaml` holds sources, relevance terms, and the theme taxonomy.
 - `fame/` — the grant proposal + `FAME.md` (contains private/funding detail).
 - `team/` (repo root) — source `.docx` profiles that embed personal emails. Only the
   **resized JPEGs in `docs/team/`** are public.
+- `background/` — source hero images; only the optimized `docs/hero-bg.jpg` is public.
 - `_other/`, `linkedin/`.
 
 When touching anything in those folders, keep the public/private split: photos and the
 public corpus go to `docs/`; everything with personal data stays under the ignored paths.
 
-## The team page (`docs/index.html`)
+## The website (front-end)
 
-Team members live in an editable `TEAM` JS array near the bottom of the file
-(`{group, name, title, bio, photo, link}`). To add one: extract the `.docx` from `team/`
-(it's a zip — `word/document.xml` for text, `word/media/` for the photo), resize the
-photo to a ~500px JPEG in `docs/team/` (`sips -s format jpeg -s formatOptions 80 -Z 500
-in --out out.jpg`), and add an array entry. A missing/empty `photo` falls back to a
-coloured-initials avatar; an empty `title` is omitted.
+Both surfaces live in `docs/` and share one **dark theme** (navy background,
+blue→purple FAME gradient accents) plus the hero image `docs/hero-bg.jpg`.
+
+- **Landing page** `docs/index.html` — hand-authored single file (CSS + HTML + JS):
+  sticky nav, a full-bleed hero (`hero-bg.jpg` with a left-fading gradient overlay so
+  text stays legible), research-focus cards, team grid, footer. Team members live in an
+  editable **`TEAM` JS array** near the bottom (`{group, name, title, bio, photo, link}`),
+  grouped by `group` and rendered client-side; **professors (non-empty `title`) first,
+  then students alphabetically**. A missing/empty `photo` falls back to a coloured-initials
+  avatar; an empty `title` is omitted. To add someone: extract their `.docx` from `team/`
+  (it's a zip — `word/document.xml` for text, `word/media/` for the photo), and add an
+  entry with a resized photo (see *image assets* below).
+
+- **Hub page** `docs/hub/index.html` is **generated — never edit it directly.** Its
+  markup/CSS is the `INDEX_HTML` template string in **`site.py`**, rendered by
+  `render_index()` with `str.format()`. Because of `.format()`, every literal CSS/JS brace
+  is **doubled** (`{{ }}`) and only `{title}`, `{subtitle}`, `{curator}`,
+  `{fame_threshold}`, `{version}` are real placeholders — preserve this when editing.
+  Run `python -m aifinhub build-site` to regenerate. The hub mirrors the landing's nav,
+  dark theme, and header image (referenced as `../hero-bg.jpg`).
+
+- **SEO** is in both `<head>`s (canonical, Open Graph, Twitter; plus `ResearchProject`
+  JSON-LD on the landing) and at the site root: `docs/robots.txt`, `docs/sitemap.xml`,
+  and the share image `docs/og-image.png`.
+
+- **Image assets:** source images go in the gitignored `background/` (and team `.docx`
+  in gitignored `team/`); only **web-optimized copies committed under `docs/`** are
+  public. Convert/resize with macOS `sips` — hero `sips -s format jpeg -s formatOptions 82
+  -Z 1600 background/x.png --out docs/hero-bg.jpg`; team photos `-Z 500`.
+
+- **Preview:** `.claude/launch.json` defines a `fame-site` static server
+  (`.venv/bin/python3 -m http.server 8765 --directory docs`). Use the **venv** Python —
+  the system Python 3.9 fails to serve from this Dropbox path.
