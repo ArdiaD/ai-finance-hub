@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fame-ai.org/sitemap.xml

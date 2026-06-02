@@ -14,6 +14,16 @@ INDEX_HTML = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
+<meta name="description" content="A curated, searchable collection of research at the intersection of artificial intelligence and finance — part of the FAME project (Paris Dauphine – PSL x HEC Montreal).">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fame-ai.org/hub/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAME">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="A curated, searchable collection of AI-and-finance research — part of the FAME project.">
+<meta property="og:url" content="https://fame-ai.org/hub/">
+<meta property="og:image" content="https://fame-ai.org/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {{ --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
            --accent:#5b9dff; --feat:#f6c453; }}
