@@ -25,53 +25,73 @@ INDEX_HTML = """<!doctype html>
 <meta property="og:image" content="https://fame-ai.org/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>
-  :root {{ --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
-           --accent:#5b9dff; --feat:#f6c453; }}
+  :root {{ --bg:#ffffff; --bg2:#f5f7fb; --fg:#13171f; --muted:#5b6573;
+           --accent:#2f6df6; --g1:#5b9dff; --g2:#cf9bff; --card:#ffffff;
+           --line:#e7eaf1; --shadow:0 1px 2px rgba(16,24,40,.05); }}
   * {{ box-sizing:border-box; }}
-  body {{ margin:0; font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",
-          Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }}
-  header {{ padding:32px 20px 16px; max-width:1180px; margin:0 auto; }}
-  h1 {{ margin:0 0 4px; font-size:28px; }}
-  .sub {{ color:var(--muted); margin:0; }}
-  .controls {{ max-width:1180px; margin:16px auto; padding:0 20px;
+  body {{ margin:0; color:var(--fg); background:var(--bg);
+          font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+          -webkit-font-smoothing:antialiased; }}
+  a {{ color:var(--accent); }}
+  .grad {{ background:linear-gradient(90deg,var(--g1),var(--g2));
+           -webkit-background-clip:text; background-clip:text; color:transparent; }}
+  .nav {{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.82);
+          backdrop-filter:saturate(180%) blur(12px); box-shadow:0 1px 14px rgba(16,24,40,.05); }}
+  .navwrap {{ max-width:1100px; margin:0 auto; padding:0 24px; height:62px;
+              display:flex; align-items:center; justify-content:space-between; }}
+  .brand {{ font-weight:800; font-size:22px; letter-spacing:1px; text-decoration:none; }}
+  .nav .links a {{ color:var(--fg); font-size:14.5px; font-weight:500;
+                   margin-left:24px; text-decoration:none; }}
+  .nav .links a:hover {{ color:var(--accent); }}
+  header {{ max-width:1100px; margin:0 auto; padding:34px 24px 6px; }}
+  h1 {{ margin:0 0 6px; font-size:30px; font-weight:800; letter-spacing:-.3px; }}
+  .sub {{ color:var(--muted); margin:0; font-size:16px; }}
+  .controls {{ max-width:1100px; margin:18px auto; padding:0 24px;
                display:flex; gap:8px; flex-wrap:nowrap; align-items:center; }}
-  input,select {{ background:var(--card); color:var(--fg); border:1px solid #2a2e38;
-                  border-radius:8px; padding:8px 10px; font-size:14px; }}
+  input,select {{ background:#fff; color:var(--fg); border:1px solid var(--line);
+                  border-radius:9px; padding:9px 11px; font-size:14px; }}
+  input::placeholder {{ color:#9aa3b2; }}
+  input:focus,select:focus {{ outline:none; border-color:var(--accent);
+                  box-shadow:0 0 0 3px rgba(47,109,246,.12); }}
   input {{ flex:1; min-width:120px; }}
-  select {{ flex:0 0 auto; }}
-  main {{ max-width:1180px; margin:0 auto; padding:0 20px 60px; }}
-  @media (max-width:760px) {{ .controls {{ flex-wrap:wrap; }} }}
-  .card {{ background:var(--card); border:1px solid #242833; border-radius:12px;
-           padding:18px 20px; margin:12px 0; }}
-  .card.feat {{ border-color:var(--feat); }}
+  select {{ flex:0 0 auto; cursor:pointer; }}
+  main {{ max-width:1100px; margin:0 auto; padding:0 24px 60px; }}
+  @media (max-width:760px) {{ .controls {{ flex-wrap:wrap; }} .nav .links a {{ margin-left:14px; }} }}
+  .card {{ background:var(--card); border:1px solid var(--line); border-radius:14px;
+           padding:20px 22px; margin:14px 0; box-shadow:var(--shadow); transition:.15s; }}
+  .card:hover {{ box-shadow:0 8px 22px rgba(16,24,40,.07); }}
+  .card.feat {{ border-color:#e7c65a; background:#fffdf6; }}
   .card h2 {{ margin:0 0 6px; font-size:18px; }}
   .card h2 a {{ color:var(--fg); text-decoration:none; }}
   .card h2 a:hover {{ color:var(--accent); }}
   .meta {{ color:var(--muted); font-size:13px; margin-bottom:8px; }}
-  .badge {{ display:inline-block; background:#222631; color:var(--accent);
+  .badge {{ display:inline-block; background:#eef2f7; color:#5b6573;
             border-radius:6px; padding:1px 8px; font-size:12px; margin-right:6px; }}
-  .badge.feat {{ background:#3a3015; color:var(--feat); }}
-  .badge.theme {{ background:#15301f; color:#5fd39a; cursor:pointer; }}
-  .badge.fame {{ background:#2d1b3d; color:#cf9bff; font-weight:600; }}
-  .famechk {{ color:#cf9bff; font-size:14px; display:flex; align-items:center;
-              gap:5px; padding:0 8px; white-space:nowrap; flex:0 0 auto;
-              border:1px solid #3a2a4d; border-radius:8px; background:#1d1526;
-              cursor:pointer; height:36px; }}
-  .abs {{ color:#c7ccd6; font-size:14px; white-space:pre-line;
+  .badge.feat {{ background:#fbf0cf; color:#8a6d12; }}
+  .badge.theme {{ background:#e4f7ec; color:#1f9d5b; cursor:pointer; }}
+  .badge.fame {{ background:#f1e7fb; color:#7c3aed; font-weight:600; }}
+  .abs {{ color:#3b424e; font-size:14px; white-space:pre-line;
           display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical;
           overflow:hidden; }}
   .abs.open {{ display:block; -webkit-line-clamp:unset; }}
   .more {{ background:none; border:none; color:var(--accent); cursor:pointer;
            font-size:13px; padding:4px 0; }}
   .more:hover {{ text-decoration:underline; }}
-  .links a {{ color:var(--accent); text-decoration:none; margin-right:14px;
-              font-size:14px; }}
   footer {{ text-align:center; color:var(--muted); padding:30px; font-size:13px; }}
 </style>
 </head>
 <body>
+<nav class="nav">
+  <div class="navwrap">
+    <a class="brand grad" href="/">FAME</a>
+    <div class="links">
+      <a href="/">Project</a>
+      <a href="/#research">Research</a>
+      <a href="/#team">Team</a>
+    </div>
+  </div>
+</nav>
 <header>
-  <p style="margin:0 0 10px"><a href="/" style="color:var(--accent);text-decoration:none;font-size:14px">← FAME project</a></p>
   <h1>{title}</h1>
   <p class="sub">{subtitle}</p>
 </header>
