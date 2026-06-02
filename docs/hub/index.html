@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI & Finance Paper Hub</title>
+<meta name="description" content="A curated, searchable collection of research at the intersection of artificial intelligence and finance — part of the FAME project (Paris Dauphine – PSL x HEC Montreal).">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fame-ai.org/hub/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FAME">
+<meta property="og:title" content="AI & Finance Paper Hub">
+<meta property="og:description" content="A curated, searchable collection of AI-and-finance research — part of the FAME project.">
+<meta property="og:url" content="https://fame-ai.org/hub/">
+<meta property="og:image" content="https://fame-ai.org/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { --bg:#0f1115; --card:#1a1d24; --fg:#e7e9ee; --muted:#9aa3b2;
            --accent:#5b9dff; --feat:#f6c453; }
@@ -116,7 +126,7 @@ function render(){
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }
-fetch('papers.json?v=1248e024').then(r=>r.json()).then(d=>{
+fetch('papers.json?v=19144aa6').then(r=>r.json()).then(d=>{
   PAPERS=d.papers||[];
   const srcs=[...new Set(PAPERS.map(p=>p.source))].sort();
   el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
