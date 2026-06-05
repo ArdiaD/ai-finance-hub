@@ -121,6 +121,19 @@
   .member .ti{ color:var(--accent); font-size:12.5px; font-weight:600; margin-top:1px; }
   .member .bio{ font-size:13.5px; color:var(--muted); margin-top:5px; }
 
+  /* outreach / media */
+  .papers{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:6px; }
+  a.pcard,.pcard{ display:block; background:var(--card); border:1px solid var(--line);
+          border-radius:14px; padding:18px 20px; box-shadow:var(--shadow);
+          text-decoration:none; color:inherit; transition:.16s; }
+  a.pcard:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.32); }
+  .pcard h3{ margin:0 0 7px; font-size:16px; line-height:1.35; color:var(--fg); }
+  a.pcard:hover h3{ color:var(--accent); }
+  .pcard .pmeta{ color:var(--muted); font-size:12.5px; margin-bottom:9px; }
+  .pcard p{ margin:0; color:var(--muted); font-size:13.5px; }
+  .tag{ display:inline-block; background:rgba(91,157,255,.16); color:#cdddff;
+        border-radius:5px; padding:0 7px; font-size:11.5px; }
+
   /* footer */
   footer{ background:var(--bg2); padding:54px 0 30px; margin-top:8px; }
   .fgrid{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:32px; }
@@ -141,7 +154,7 @@
   }
   @media(max-width:600px){
     .links{ gap:16px; } .links a:not(.btn){ display:none; }
-    .hero h1{ font-size:34px; } .team{ grid-template-columns:1fr; }
+    .hero h1{ font-size:34px; } .team,.papers{ grid-template-columns:1fr; }
     .fgrid{ grid-template-columns:1fr; }
   }
 </style>
@@ -154,6 +167,7 @@
     <div class="links">
       <a href="#research">Research</a>
       <a href="#team">Team</a>
+      <a href="#outreach">Media</a>
       <a class="btn" href="hub/">Paper Hub</a>
     </div>
   </div>
@@ -211,6 +225,67 @@
   </div>
 </section>
 
+<section class="band alt" id="outreach">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Media &amp; outreach</h2>
+      <p>Popular-science articles and interviews from the FAME team.</p>
+    </div>
+
+    <div class="grouph">Le Monde</div>
+    <div class="papers">
+      <div class="pcard">
+        <h3>Quand l'IA vous aide à gérer votre patrimoine</h3>
+        <div class="pmeta">Interview with Serge Darolles · 10 Dec 2025 · <span class="tag">subscriber access</span></div>
+        <p>On the risks and limits of AI in retail investment advice, drawing on the FAME project's experimental work and the Nextwise game.</p>
+      </div>
+    </div>
+
+    <div class="grouph">The Conversation</div>
+    <div class="papers">
+      <a class="pcard" href="https://theconversation.com/confier-la-finance-a-lintelligence-artificielle-quels-sont-les-risques-reels-281939" target="_blank" rel="noopener">
+        <h3>Confier la finance à l'intelligence artificielle : quels sont les risques réels ? ↗</h3>
+        <div class="pmeta">Serge Darolles &amp; Fabrice Riva · 2026</div>
+        <p>A general-audience synthesis on what generative AI can and cannot do in asset management — and why independent experimental evaluation beats historical backtests.</p>
+      </a>
+    </div>
+
+    <div class="grouph">Dauphine Éclairages — special issue « AI &amp; finance »</div>
+    <div class="papers">
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/dossier/ia-la-finance-fait-les-comptes" target="_blank" rel="noopener">
+        <h3>IA : la finance fait les comptes ↗</h3>
+        <div class="pmeta">Serge Darolles · Editorial · 19 May 2026</div>
+        <p>Introduces the dossier's five contributions: AI as a stress-test of the system's fragilities that reshuffles positions among market participants.</p>
+      </a>
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/article/conseil-financier-et-ia-ce-que-la-recherche-apporte-au-debat" target="_blank" rel="noopener">
+        <h3>Conseil financier et IA : ce que la recherche apporte au débat ↗</h3>
+        <div class="pmeta">Serge Darolles · 19 May 2026</div>
+        <p>Presents the FAME research program and the Nextwise game, which confronts LLM-driven strategies with human investors in a rigorous experimental setting.</p>
+      </a>
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/article/lia-au-travail-qui-en-profite-vraiment" target="_blank" rel="noopener">
+        <h3>L'IA au travail : qui en profite vraiment ? ↗</h3>
+        <div class="pmeta">Vincent Tena, with Gilles Chemla · 19 May 2026</div>
+        <p>A theoretical model showing AI productivity gains accrue unevenly — "human with machine" consistently outperforms "machine without human."</p>
+      </a>
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/article/comment-lia-transforme-lenseignement-de-la-finance" target="_blank" rel="noopener">
+        <h3>Comment l'IA transforme l'enseignement de la finance ? ↗</h3>
+        <div class="pmeta">Fabrice Riva · 19 May 2026</div>
+        <p>How Dauphine-PSL's finance curricula integrate machine learning and programming to train professionals who can critically assess AI's limits.</p>
+      </a>
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/article/former-a-lia-en-finance-luniversite-ne-peut-pas-faire-seule" target="_blank" rel="noopener">
+        <h3>Former à l'IA en finance : l'Université ne peut pas faire seule ↗</h3>
+        <div class="pmeta">Katia Meziani · 19 May 2026</div>
+        <p>How close university–industry collaboration keeps curricula adapted to rapid AI evolution, illustrated by the ISF Master program.</p>
+      </a>
+      <a class="pcard" href="https://dauphine.psl.eu/eclairages/article/jusquou-peut-on-confier-la-finance-a-lintelligence-artificielle" target="_blank" rel="noopener">
+        <h3>Jusqu'où peut-on confier la finance à l'intelligence artificielle ? ↗</h3>
+        <div class="pmeta">Serge Darolles &amp; Fabrice Riva · 19 May 2026</div>
+        <p>A stocktake of real AI risks in finance — hallucinations, data poisoning, algorithmic monoculture, systemic risk. AI assists experienced managers; it doesn't replace them.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="fgrid">
@@ -229,6 +304,7 @@
         <a href="hub/">Paper Hub</a>
         <a href="#research">Research</a>
         <a href="#team">Team</a>
+        <a href="#outreach">Media</a>
       </div>
     </div>
     <div class="fbot">© 2026 FAME · Paris Dauphine – PSL × HEC Montréal</div>

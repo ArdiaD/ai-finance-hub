@@ -96,6 +96,7 @@ INDEX_HTML = """<!doctype html>
       <a href="/">Project</a>
       <a href="/#research">Research</a>
       <a href="/#team">Team</a>
+      <a href="/#outreach">Media</a>
     </div>
   </div>
 </nav>

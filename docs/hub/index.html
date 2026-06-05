@@ -86,6 +86,7 @@
       <a href="/">Project</a>
       <a href="/#research">Research</a>
       <a href="/#team">Team</a>
+      <a href="/#outreach">Media</a>
     </div>
   </div>
 </nav>
@@ -156,7 +157,7 @@ function render(){
   el('list').innerHTML=rows.map(card).join('')||'<p class="sub">No matches.</p>';
   el('count').textContent=rows.length+' papers';
 }
-fetch('papers.json?v=19144aa6').then(r=>r.json()).then(d=>{
+fetch('papers.json?v=dc66adf7').then(r=>r.json()).then(d=>{
   PAPERS=d.papers||[];
   const srcs=[...new Set(PAPERS.map(p=>p.source))].sort();
   el('src').innerHTML+='<option>'+srcs.join('</option><option>')+'</option>';
