@@ -124,13 +124,17 @@ blue→purple FAME gradient accents) plus the hero image `docs/hero-bg.jpg`.
 
 - **Landing page** `docs/index.html` — hand-authored single file (CSS + HTML + JS):
   sticky nav, a full-bleed hero (`hero-bg.jpg` with a left-fading gradient overlay so
-  text stays legible), research-focus cards, team grid, footer. Team members live in an
-  editable **`TEAM` JS array** near the bottom (`{group, name, title, bio, photo, link}`),
-  grouped by `group` and rendered client-side; **professors (non-empty `title`) first,
-  then students alphabetically**. A missing/empty `photo` falls back to a coloured-initials
-  avatar; an empty `title` is omitted. To add someone: extract their `.docx` from `team/`
-  (it's a zip — `word/document.xml` for text, `word/media/` for the photo), and add an
-  entry with a resized photo (see *image assets* below).
+  text stays legible), research-focus cards, team grid, a **Media & outreach** section,
+  footer. Team members live in an editable **`TEAM` JS array** near the bottom
+  (`{group, name, title, bio, photo, link}`), grouped by `group` and rendered
+  client-side; **professors (non-empty `title`) first, then students alphabetically**. A
+  missing/empty `photo` falls back to a coloured-initials avatar; an empty `title` is
+  omitted. To add someone: extract their `.docx` from `team/` (it's a zip —
+  `word/document.xml` for text, `word/media/` for the photo), and add an entry with a
+  resized photo (see *image assets* below). The **Media & outreach** cards (`#outreach`)
+  are hand-written static HTML sourced from `fame/FAME_Articles_Vulgarisation.docx`
+  (private — extract its paragraphs/links, then publish only the public article
+  titles/summaries/links).
 
 - **Hub page** `docs/hub/index.html` is **generated — never edit it directly.** Its
   markup/CSS is the `INDEX_HTML` template string in **`site.py`**, rendered by
